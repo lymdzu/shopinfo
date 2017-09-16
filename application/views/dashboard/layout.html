@@ -1,0 +1,368 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <link href="{{'static/css/index.css'|base_url}}?v=3" type="text/css" rel="stylesheet">
+    <link href="{{'static/css/iconfont.css'|base_url}}" type="text/css" rel="stylesheet">
+    <script src="{{'static/js/jquery-1.11.3.min.js'|base_url}}"></script>
+</head>
+<body id="top">
+<div class="jdm-toolbar-wrap J-wrap">
+    <div class="jdm-toolbar J-toolbar">
+        <div class="jdm-toolbar-panels J-panel">
+        </div>
+        <div class="jdm-toolbar-tabs J-tab">
+            <div data-type="bar" class="J-trigger jdm-toolbar-tab jdm-tbar-tab-cart">
+                <i class="tab-ico"></i> <em class="tab-text">购物车
+            </em>
+            </div>
+            <div data-type="bar" clstag="h|keycount|cebianlan_h_follow|btn"
+                 class="J-trigger jdm-toolbar-tab jdm-tbar-tab-follow" data-name="follow" data-login="true">
+                <i class="tab-ico"></i> <em class="tab-text"> 我的关注
+            </em>
+            </div>
+            <div data-type="bar" clstag="h|keycount|cebianlan_h_history|btn"
+                 class="J-trigger jdm-toolbar-tab jdm-tbar-tab-history" data-name="history">
+                <i class="tab-ico"></i> <em class="tab-text"> 我的足迹
+            </em>
+            </div>
+            <div class="J-trigger jdm-toolbar-tab jdm-tbar-tab-message" data-name="message"><a target="_blank" href="#">
+                <i class="tab-ico"></i>
+                <em class="tab-text"> 我的消息
+                </em></a>
+            </div>
+            <div data-type="bar" clstag="h|keycount|cebianlan_h_jimi|btn"
+                 class="J-trigger jdm-toolbar-tab jdm-tbar-tab-jimi" data-name="jimi" data-login="true"
+                 data-iframe="//jimi.jd.com/index.action?source=jdhome">
+                <i class="tab-ico"></i>
+                <em class="tab-text"> 咨询JIMI
+                </em>
+            </div>
+        </div>
+        <div class="jdm-toolbar-footer">
+            <div data-type="link" id="#top" class="J-trigger jdm-toolbar-tab jdm-tbar-tab-top">
+                <a href="#" clstag="h|keycount|cebianlan_h|top">
+                    <i class="tab-ico"></i> <em class="tab-text">顶部</em>
+                </a>
+            </div>
+            <div data-type="link" class="J-trigger jdm-toolbar-tab jdm-tbar-tab-feedback">
+                <a href="http://surveys.jd.com/index.php?r=survey/index/sid/889711/newtest/Y/lang/zh-Hans"
+                   target="_blank" clstag="h|keycount|cebianlan_h|feedback">
+                    <i class="tab-ico"></i>
+                    <em class="tab-text">反馈</em>
+                </a>
+            </div>
+            <div data-type="link" class="J-trigger jdm-toolbar-tab jdm-tbar-tab-survey">
+                <a href="http://surveys.jd.com/index.php?r=survey/index/sid/527411/lang/zh-Hans" target="_blank"
+                   clstag="h|keycount|cebianlan_h|survey">
+                    <em class="tab-text">有奖调查</em>
+                </a>
+            </div>
+        </div>
+        <div class="jdm-toolbar-mini">
+        </div>
+    </div>
+    <div id="J-toolbar-load-hook" clstag="h|keycount|cebianlan_h|load"></div>
+</div>
+<!-----------------------------------------顶部-------------->
+<header id="header">
+    <div class="header-box">
+        <ul class="header-left">
+            <li class="bj">
+                送至：北京
+                <i class="ci-leftll">
+                    <s class="jt">◇</s>
+                </i>
+                <div class="bj-1">
+                    <a href="">北京</a><a href="">上海</a><a href="">天津</a><a href="">重庆</a><a href="">河北</a><a
+                        href="">山西</a><a href="">河南</a><a href="">辽宁</a><a href="">吉林</a><a href="">黑龙江</a><a
+                        href="">浙江</a><a href="">江苏</a><a href="">山东</a><a href="">安徽</a><a href="">内蒙古</a><a
+                        href="">湖北</a><a href="">湖南</a><a href="">广东</a><a href="">广西</a><a href="">江西</a><a
+                        href="">四川</a><a href="">海南</a><a href="">贵州</a><a href="">云南</a><a href="">西藏</a><a
+                        href="">陕西</a><a href="">甘肃</a><a href="">青海</a><a href="">宁夏</a><a href="">新疆</a><a
+                        href="">台湾</a><a href="">香港</a><a href="">澳门</a><a href="">海外</a><a href="">钓鱼岛</a>
+                </div>
+            </li>
+        </ul>
+        <ul class="header-right">
+            <li class="denglu"><a href="{{'passport/login'|base_url}}">您好，请登录</a> <a
+                    href="{{'passport/register'|base_url}}" class="red">免费注册</a></li>
+            <li class="shu"></li>
+            <li class="denglu"><a href="#">我的订单</a></li>
+            <li class="shu"></li>
+            <li class="my bj">
+                <a href="#">我的京东</a>
+                <i class="ci-right ">
+                    <s class="jt">◇</s>
+                </i>
+                <div class="my1">
+                    <div class="my2">
+                        <img src="{{'static/images/no-img_mid_.jpg'|base_url}}">
+                        <div class="my3">
+                            <h3 class="neirong2"><a href="">您好请登录</a></h3>
+                            <p class="neirong2"><a href="">优惠卷 丨 消息</a></p>
+                        </div>
+                    </div>
+                    <ul class="neirong2">
+                        <li><a href="">带处理订单</a></li>
+                        <li><a href="">京我的订单</a></li>
+                        <li><a href="">京咨询回复</a></li>
+                        <li><a href="">京我的京豆</a></li>
+                        <li><a href="">京降价商品</a></li>
+                        <li><a href="">京我的理财</a></li>
+                        <li><a href="">京返修退换货</a></li>
+                        <li><a href="">京东白条</a></li>
+                    </ul>
+                </div>
+            </li>
+            <li class="shu"></li>
+            <li class="denglu"><a href="#">京东会员</a></li>
+            <li class="shu"></li>
+            <li class="denglu"><a href="#">企业采购</a></li>
+            <li class="shu"></li>
+            <li class="shouji bj">
+                <a href="#">手机京东</a>
+                <i class="ci-right ">
+                    <s class="jt">◇</s>
+                </i>
+                <div class="shouji1">
+                    <img src="{{'static/images/11.jpg'|base_url}}" class="shouji4">
+                    <div class="shouji2">
+                        <p>京东客户端</p>
+                        <p class="red">首次下单满79元，送79元</p>
+                        <img src="{{'static/images/333.jpg'|base_url}}" class="shouji3">
+                        <img src="{{'static/images/333.jpg'|base_url}}" class="shouji3">
+                        <img src="{{'static/images/333.jpg'|base_url}}" class="shouji3">
+
+                    </div>
+                    <div class="yi">
+                        <img src="{{'static/images/222.jpg'|base_url}}" class="shouji4">
+                        <div class="er">
+                            <p>京东钱包客户端</p>
+                            <p class="red">一分钱抢超值豪礼</p>
+                            <img src="{{'static/images/333.jpg'|base_url}}" class="shouji3">
+                            <img src="{{'static/images/333.jpg'|base_url}}" class="shouji3">
+                            <img src="{{'static/images/333.jpg'|base_url}}" class="shouji3">
+
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class="shu"></li>
+            <li class="guanzhu bj">
+                <a href="#">关注京东</a>
+                <i class="ci-right ">
+                    <s class="jt">◇</s>
+                </i>
+                <div class="guanzhu1"><img src="{{'static/images/54c84f72Ncc1a02a2.jpg'|base_url}}"></div>
+            </li>
+            <li class="shu"></li>
+            <li class="kehu bj">
+                <a href="#">客户服务</a>
+                <i class="ci-right ">
+                    <s class="jt">◇</s>
+                </i>
+                <div class="kehu1">
+                    <h3 class="neirong2">客户</h3>
+                    <ul class="kehu2">
+                        <li><a href="">帮助中心</a></li>
+                        <li><a href="">售后服务</a></li>
+                        <li><a href="">在线客服</a></li>
+                        <li><a href="">帮助中心</a></li>
+                        <li><a href="">客服邮箱</a></li>
+                    </ul>
+                    <div>
+                        <ul class="kehu3">
+                            <h3 class="neirong2 ll">客户</h3>
+                            <li><a href="">京东商学院</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </li>
+            <li class="shu"></li>
+            <li class="daohang">
+                <a href="#">网站导航</a>
+                <i class="ci-right ">
+                    <s class="jt">◇</s>
+                </i>
+                <div class="aa">
+                    <div class="neirong">
+                        <h4 class="neirong2">特色主题</h4>
+                        <ul>
+                            <li><a href="">品牌街</a></li>
+                            <li><a href="">今日抄底</a></li>
+                            <li><a href="">好东西</a></li>
+                            <li><a href="">京东预售</a></li>
+                        </ul>
+                        <ul>
+
+                            <li><a href="">尖er货</a></li>
+                            <li><a href="">京东首发</a></li>
+                            <li><a href="">今日团购</a></li>
+                            <li><a href="">优惠券</a></li>
+                        </ul>
+                        <ul>
+
+                            <li><a href="">闪购</a></li>
+                            <li><a href="">京东会员</a></li>
+                            <li><a href="">京东京选</a></li>
+                            <li><a href="">定期送</a></li>
+                        </ul>
+                        <ul>
+
+                            <li><a href="">装机大师</a></li>
+                            <li><a href="">新奇特</a></li>
+                            <li><a href="">京东试用</a></li>
+
+                        </ul>
+
+                    </div>
+                    <div class="neirong">
+
+                        <h4 class="neirong2">行业频道</h4>
+
+                        <ul>
+
+                            <li><a href="">品牌街</a></li>
+                            <li><a href="">今日抄底</a></li>
+                            <li><a href="">好东西</a></li>
+
+                        </ul>
+                        <ul>
+
+                            <li><a href="">尖er货</a></li>
+                            <li><a href="">京东首发</a></li>
+                            <li><a href="">今日团购</a></li>
+
+                        </ul>
+                        <ul>
+
+                            <li><a href="">闪购</a></li>
+                            <li><a href="">京东会员</a></li>
+                            <li><a href="">京东京选</a></li>
+
+                        </ul>
+                        <ul>
+
+                            <li><a href="">装机大师</a></li>
+                            <li><a href="">新奇特</a></li>
+                            <li><a href="">京东试用</a></li>
+
+                        </ul>
+                        <ul>
+
+                            <li><a href="">智能馆</a></li>
+                            <li><a href="">玩bigger</a></li>
+                            <li><a href="">大牌免息</a></li>
+
+                        </ul>
+                    </div>
+                    <div class="neirong">
+                        <h4 class="neirong2">生活服务</h4>
+                        <ul>
+                            <li><a href="">品牌街</a></li>
+                            <li><a href="">今日抄底</a></li>
+                            <li><a href="">好东西</a></li>
+                        </ul>
+                        <ul>
+                            <li><a href="">尖er货</a></li>
+                            <li><a href="">京东首发</a></li>
+                            <li><a href="">今日团购</a></li>
+                        </ul>
+                        <ul>
+                            <li><a href="">闪购</a></li>
+                            <li><a href="">京东会员</a></li>
+                            <li><a href="">京东京选</a></li>
+                        </ul>
+                        <ul>
+                            <li><a href="">装机大师</a></li>
+                            <li><a href="">新奇特</a></li>
+                            <li><a href="">京东试用</a></li>
+                        </ul>
+                        <ul>
+                            <li><a href="">智能馆</a></li>
+                            <li><a href="">玩bigger</a></li>
+                            <li><a href="">大牌免息</a></li>
+                        </ul>
+                    </div>
+                    <div class="neirong neirong3">
+                        <h4 class="neirong2">更多精选</h4>
+                        <ul>
+                            <li><a href="">品牌街</a></li>
+                            <li><a href="">今日抄底</a></li>
+                            <li><a href="">好东西</a></li>
+                        </ul>
+                        <ul>
+                            <li><a href="">尖er货</a></li>
+                            <li><a href="">京东首发</a></li>
+                            <li><a href="">今日团购</a></li>
+                        </ul>
+                        <ul>
+                            <li><a href="">闪购</a></li>
+                            <li><a href="">京东会员</a></li>
+                            <li><a href="">京东京选</a></li>
+                        </ul>
+                        <ul>
+                            <li><a href="">装机大师</a></li>
+                            <li><a href="">新奇特</a></li>
+                            <li><a href="">京东试用</a></li>
+                        </ul>
+                        <ul>
+                            <li><a href="">智能馆</a></li>
+                            <li><a href="">玩bigger</a></li>
+                            <li><a href="">大牌免息</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</header>
+<div id="top-banner">
+    <div class="top-ba">
+        <a href=""><img src="{{'static/images/js.jpg'|base_url}}"></a>
+        <div id="xx"><a href="">X</a></div>
+    </div>
+</div>
+<div class="w">
+    <div class="logo"><a href=""><img src="{{'static/images/logo.png'|base_url}}"></a></div>
+    <div class="search">
+        <input type="text" value="家电一折抢" class="text" id="textt">
+        <button class="button">搜索</button>
+    </div>
+    <div class="right">
+        <i class="gw-left"
+           style="background:url({{'static/images/jd2015img.png'|base_url}})0 -58px no-repeat;width:24px;height:24px;"></i>
+        <i class="gw-right">></i>
+        <i class="gw-count">0</i>
+        <a href="#">我的购物车</a>
+        <div class="dorpdown-layer">
+            <img src="{{'static/images/settleup-nogoods.png'|base_url}}">
+            购物车中还没有商品，赶紧选购吧！
+        </div>
+    </div>
+    <div class="hotwords">
+        <a href="#" class="red">1元秒杀</a>
+        <a href="#">低至1折</a>
+        <a href="#">1元抢</a>
+        <a href="#">时尚鞋靴</a>
+        <a href="#">买一送二</a>
+        <a href="#">乐视乐1</a>
+        <a href="#">特步女鞋</a>
+        <a href="#">威士忌</a>
+        <a href="#">婴儿衣服</a>
+    </div>
+</div>
+
+<div class="clear"></div>
+{{include $__PAGE__}}
+</body>
+<script src="{{'static/js/index.js'|base_url}}"></script>
+<script type="application/javascript">
+    $(function () {
+        $(".edit-favo").on("click", function () {
+            $(".right-up").toggle();
+        })
+    })
+</script>
+</html>
