@@ -110,9 +110,7 @@
                     <input type="text" autocomplete="off" name="authCode" id="authCode" maxlength="6"
                            class="field form-authcode"
                            placeholder="请输入验证码" default='<i class="i-def"></i>看不清？点击图片更换验证码'/>
-                    <img class="img-code" title="换一换" id="imgAuthCode"
-                         onclick="this.src= document.location.protocol +'//authcode.jd.com/verify/image?a=0&amp;acid=551e7371-84c7-494f-8c38-64ad2441beb6&amp;uid=551e7371-84c7-494f-8c38-64ad2441beb6&amp;srcid=reg&amp;is=1dffc02dd1cd537987abb9376e67205b&amp;yys='+new Date().getTime()"
-                         ver_colorofnoisepoint="#888888"/>
+                    <img class="img-code" title="换一换" id="imgAuthCode" onclick="this.src = &quot;{{'passport/captcha'|base_url}}?v=&quot;+Math.random();" src="{{'passport/captcha'|base_url}}"  style="height: 46px; width: 110px; border-left: 1px solid #ddd;" width="46" height="110"/>
                 </div>
                 <div class="input-tip">
                     <span></span>

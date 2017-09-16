@@ -40,12 +40,62 @@ class Passport extends PublicController
         $this->session->sess_destroy();
         redirect('passport/admin_login', "auto", 302);
     }
+
+    /**
+     * 登录页面
+     */
     public function login()
     {
+        if($this->input->method() == "post")
+        {
+            $user_name = $this->input->post("loginname");
+            $password = $this->input->post("nloginpwd");
+        }
         $this->display("passport/login.html");
     }
+
+    /**
+     * 注册页面
+     */
     public function register()
     {
         $this->display("passport/register.html");
+    }
+
+    /**
+     *  生成注册图片二维码
+     */
+    public function captcha()
+    {
+        session_start();
+        //生成验证码图片
+        header("Content-type: image/png");
+        header("Cache-Control: no-cache, must-revalidate");
+        // 全数字
+        $str = "1,2,3,4,5,6,7,8,9,0,A,C,D,E,F,G,H,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Z,Y";      //要显示的字符，可自己进行增删
+        $list = explode(",", $str);
+        $cmax = count($list) - 1;
+        $verifyCode = '';
+        for ($i = 0; $i < 4; $i++) {
+            $randnum = mt_rand(0, $cmax);
+            $verifyCode .= $list[$randnum];           //取出字符，组合成为我们要的验证码字符
+        }
+        //将字符放入SESSION中
+        $this->session->set_userdata("captcha", $verifyCode);
+        $im = imagecreate(50, 20);    //生成图片
+        //此条及以下三条为设置的颜色
+        $white = imagecolorallocate($im, 255, 255, 255);
+        $red = imagecolorallocate($im, 255, 0, 0);
+        imagefill($im, 0, 0, $white);     //给图片填充颜色
+
+        //将验证码绘入图片
+        imagestring($im, 5, 8, 3, $verifyCode, $red);    //将验证码写入到图片中
+
+        $li = ImageColorAllocate($im, 255, 0, 0);
+        for ($i = 0; $i < 4; $i++) {    //加入3条干扰线;也可以不要;视情况而定，因为可能影响用户输入;
+            imageline($im, rand(0, 50), rand(0, 11), rand(20, 50), rand(0, 11), $li);
+        }
+        imagepng($im);
+        imagedestroy($im);
     }
 }
