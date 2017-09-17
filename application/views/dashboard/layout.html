@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <link href="{{'static/css/index.css'|base_url}}?v=3" type="text/css" rel="stylesheet">
-    <link href="{{'static/css/iconfont.css'|base_url}}" type="text/css" rel="stylesheet">
+    <link href="{{'static/css/iconfont.css'|base_url}}?v=3" type="text/css" rel="stylesheet">
     <script src="{{'static/js/jquery-1.11.3.min.js'|base_url}}"></script>
 </head>
 <body id="top">
@@ -85,9 +85,6 @@
             </li>
         </ul>
         <ul class="header-right">
-            <li class="denglu"><a href="{{'passport/login'|base_url}}">您好，请登录</a> <a
-                    href="{{'passport/register'|base_url}}" class="red">免费注册</a></li>
-            <li class="shu"></li>
             <li class="denglu"><a href="#">我的订单</a></li>
             <li class="shu"></li>
             <li class="my bj">
@@ -330,16 +327,11 @@
         <input type="text" value="家电一折抢" class="text" id="textt">
         <button class="button">搜索</button>
     </div>
-    <div class="right">
-        <i class="gw-left"
-           style="background:url({{'static/images/jd2015img.png'|base_url}})0 -58px no-repeat;width:24px;height:24px;"></i>
-        <i class="gw-right">></i>
-        <i class="gw-count">0</i>
-        <a href="#">我的购物车</a>
-        <div class="dorpdown-layer">
-            <img src="{{'static/images/settleup-nogoods.png'|base_url}}">
-            购物车中还没有商品，赶紧选购吧！
-        </div>
+    <div class="btn-reg">
+        <a class="button" href="{{'passport/register'|base_url}}"><button class="text-login"><i class="iconfont">&#xe697;</i>&nbsp;注册</button></a>
+    </div>
+    <div class="btn-login">
+        <a class="button" href="{{'passport/login'|base_url}}"><button class="text-login"><i class="iconfont">&#xe64f;</i>&nbsp;登录</button></a>
     </div>
     <div class="hotwords">
         <a href="#" class="red">1元秒杀</a>

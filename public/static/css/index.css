@@ -573,6 +573,47 @@ body {
     font-size: 12px;
     position: relative;
 }
+.w .btn-login{
+    position:relative;
+    float: right;
+    text-align: center;
+    width:82px;
+    height: 36px;
+    margin-right: 10px;
+    margin-top: 30px;
+    line-height: 36px;
+}
+.w .btn-reg{
+    position:relative;
+    float: right;
+    text-align: center;
+    width:82px;
+    height: 36px;
+    margin-right: 20px;
+    margin-top: 30px;
+    line-height: 36px;
+}
+.btn-login .text-login{
+    background: #7a6e6e;
+    font-size: 16px;
+    height: 100%;
+    width: 100%;
+    color: #fff;
+    border: 0px;
+    cursor: pointer;
+}
+.btn-reg .text-login{
+    background: #7a6e6e;
+    font-size: 16px;
+    height: 100%;
+    width: 100%;
+    color: #fff;
+    border: 0px;
+    cursor: pointer;
+}
+.text-login .iconfont{
+    padding: 0px;
+}
 
 .w .right .gw-left {
     position: absolute;
@@ -1336,6 +1377,43 @@ body {
     position: absolute;
     right: 0;
     top: 60px;
+}
+.m .bbs-search {
+    margin:0 auto;
+    height: 25px;
+    width: 240px;
+    clear: both;
+}
+.bbs-search .search-input{
+    display: block;
+    position: relative;
+    float: left;
+    width: 170px;
+    line-height: 25px;
+    padding-left: 5px;
+}
+.bbs-search .iconfont
+{
+    padding:0px;
+}
+.right-search{
+    position: relative;
+    float: right;
+    font-size: 10px;
+    color: #fff;
+    background: #7a6e6e;
+    text-align: center;
+}
+.bbs-btn-search{
+    height: 28px;
+    width: 60px;
+    line-height: 27px;
+}
+.bbs-search button{
+    border: 0px;
+}
+.bbs-clearfix{
+    clear: both;
 }
 
 .mt {
