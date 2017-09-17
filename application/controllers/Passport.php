@@ -35,6 +35,7 @@ class Passport extends PublicController
             $this->display("passport/admin_login.html");
         }
     }
+
     public function admin_logout()
     {
         $this->session->sess_destroy();
@@ -46,8 +47,7 @@ class Passport extends PublicController
      */
     public function login()
     {
-        if($this->input->method() == "post")
-        {
+        if ($this->input->method() == "post") {
             $user_name = $this->input->post("loginname");
             $password = $this->input->post("nloginpwd");
         }
@@ -59,6 +59,33 @@ class Passport extends PublicController
      */
     public function register()
     {
+        if ($this->input->method() == "post") {
+            $user_name = $this->input->post("regName", true);
+            $pwd = $this->input->post("pwd", true);
+            $pwd_repeat = $this->input->post("pwdRepeat", true);
+            $phone = $this->input->post("phone");
+            $auth_code = $this->input->post("authCode");
+            $verify_code = $this->input->post("mobileCode");
+            $auth_session = $this->session->userdata("captcha");
+            if (!isset($user_name) || empty($user_name)) {
+                $this->json_result(DATA_FORMAT_ERROR, "", "请输入用户名");
+            }
+            if (!isset($pwd) || empty($pwd)) {
+                $this->json_result(DATA_FORMAT_ERROR, "", "请输入密码");
+            }
+            if (!isset($pwd_repeat) || empty($pwd_repeat)) {
+                $this->json_result(DATA_FORMAT_ERROR, "", "请再次输入密码");
+            }
+            if ($pwd != $pwd_repeat) {
+                $this->json_result(DATA_FORMAT_ERROR, "", "两次输入密码不一致,请检查");
+            }
+            if (!isset($phone) || empty($phone)) {
+                $this->json_result(DATA_FORMAT_ERROR, "", "请输入注册手机号码");
+            }
+            if ($auth_session != $auth_code) {
+                $this->json_result(DATA_FORMAT_ERROR, "", "图片验证码错误");
+            }
+        }
         $this->display("passport/register.html");
     }
 

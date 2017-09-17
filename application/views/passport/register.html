@@ -9,7 +9,9 @@
     <link rel="stylesheet" type="text/css" href="{{'static/css/base.css'|base_url}}" media="all">
     <link type="text/css" rel="stylesheet" href="{{'static/css/ui-base.css'|base_url}}"/>
     <link type="text/css" rel="stylesheet" href="{{'static/css/register.css'|base_url}}" source="widget"/>
-    <script type="text/javascript" src="{{'static/js/jquery-1.11.3.min.js'|base_url}}"></script>
+    <link href="{{'static/layer/css/layui.css'|base_url}}?v=3" type="text/css" rel="stylesheet">
+    <script src="{{'static/js/jquery-1.11.3.min.js'|base_url}}"></script>
+    <script src="{{'static/layer/layui.all.js'|base_url}}"></script>
 </head>
 <body>
 <div id="form-header" class="header">
@@ -25,31 +27,7 @@
 
     <div class="main clearfix" id="form-main">
         <div class="reg-form fl">
-            <form action="" id="register-form" method="post">
-                <input type="hidden" name="new" value="new_person_reg"/>
-                <input type="hidden" id="localmisc" name="localmisc"
-                       value=""/>
-                <input type="hidden" name="regType" id="regType" value="person"/>
-                <input type="hidden" name="uuid" id="uuid"
-                       value="551e7371-84c7-494f-8c38-64ad2441beb6"/>
-                <input type="hidden" name="verifymc" id="verifymc" value=""/>
-                <input type="hidden" name="emailMg" id="emailMg"/>
-                <input type="hidden" name="authcodeMg" id="authcodeMg"/>
-                <input type="hidden" name="state" id="state" value=""/>
-                <input type="hidden" name="tgId" id="tgId" value=""/>
-                <input type="hidden" name="eid" id="eid" value=""/>
-                <input type="hidden" name="fp" id="sessionId" value=""/>
-                <input type="hidden" id="jcloud" name="jcloud" value=""/>
-                <input type="hidden" id="ucJcloud" name="ucJcloud" value=""/>
-                <input type="hidden" id="jcloud2" name="jcloud2"
-                       value="jcloud21505149149103"/>
-                <input type="hidden" value="-1" id="hnschool" class="hide"/>
-                <input type="hidden" id="schoolid" name="schoolid" class="hide"/>
-                <input type="hidden" name="tKjCenNoqS" value="HhqJv"/>
-                <!--chrome autocomplete off bug hack-->
-                <input style="display:none" name="hack"/>
-                <input type="password" style="display:none" name="hack1"/>
-
+            <form action="{{'passport/register'|base_url}}" onsubmit="return false;" id="register-form" method="post">
                 <div class="form-item form-item-account" id="form-item-account">
                     <label>用　户　名</label>
                     <input type="text" id="form-account" name="regName" class="field" autocomplete="off" maxlength="20"
@@ -110,7 +88,10 @@
                     <input type="text" autocomplete="off" name="authCode" id="authCode" maxlength="6"
                            class="field form-authcode"
                            placeholder="请输入验证码" default='<i class="i-def"></i>看不清？点击图片更换验证码'/>
-                    <img class="img-code" title="换一换" id="imgAuthCode" onclick="this.src = &quot;{{'passport/captcha'|base_url}}?v=&quot;+Math.random();" src="{{'passport/captcha'|base_url}}"  style="height: 46px; width: 110px; border-left: 1px solid #ddd;" width="46" height="110"/>
+                    <img class="img-code" title="换一换" id="imgAuthCode"
+                         onclick="this.src = &quot;{{'passport/captcha'|base_url}}?v=&quot;+Math.random();"
+                         src="{{'passport/captcha'|base_url}}"
+                         style="height: 46px; width: 110px; border-left: 1px solid #ddd;" width="46" height="110"/>
                 </div>
                 <div class="input-tip">
                     <span></span>
@@ -155,6 +136,17 @@
         Copyright&copy;2004-2016&nbsp;&nbsp;&nbsp;版权所有
     </div>
 </div>
+<script type="application/javascript">
+    $(function () {
+        $(".btn-register").on("click", function () {
+            $.post("{{'passport/register'|base_url}}", $("#register-form").serialize(), function (res) {
+                if (res.ecode != 0) {
+                    layer.msg(res.emsg);
+                }
+            });
+        })
+    })
+</script>
 
 </body>
 </html>
