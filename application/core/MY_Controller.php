@@ -12,6 +12,7 @@ class PublicController extends CI_Controller
     {
         parent::__construct();
         $this->load->helper('url');
+        $this->load->helper('common');
         $this->load->library('smarty/Smarty');
         $this->load->library('session');
         $this->smarty->setCompileDir(APPPATH . '/cache/tpl');
@@ -93,7 +94,6 @@ class PublicController extends CI_Controller
         exit();
     }
 }
-
 class DashboardController extends PublicController
 {
     public function __construct() {

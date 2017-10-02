@@ -39,7 +39,6 @@
                 </div>
                 <div class="form-item">
                     <label>设 置 密 码</label>
-                    <input style="display:none" type="password" name="pwd" class="fakeinput"/>
                     <input type="password" name="pwd" id="form-pwd" class="field" maxlength="20"
                            placeholder="建议至少使用两种字符组合" default="<i class=i-def></i>建议使用字母、数字和符号两种及以上的组合，6-20个字符"/>
                     <i class="i-status"></i>
@@ -138,9 +137,49 @@
 </div>
 <script type="application/javascript">
     $(function () {
+        $("#getPhoneCode").on("click", function () {
+            var auth_code = $("#authCode").val();
+            var phone = $("#form-phone").val();
+            if (!phone) {
+                layer.msg("请输入手机号码");
+            }
+            if (!auth_code) {
+                layer.msg("请输入图片验证码");
+            }
+            $.post("{{'passport/send_phone_code'|base_url}}", {phone: phone, auth_code: auth_code}, function (res) {
+                if (res.ecode == 0) {
+                    layer.msg("短信发送成功");
+                    var _t = 60, _timer = null;
+                    _timer = setInterval(function () {
+                        _t--;
+                        if (_t < 0) {
+                            clearInterval(_timer);
+                            $('#getPhoneCode').removeAttr('disabled').html('重新发送');
+                            return false;
+                        }
+                        if (_t < 10) {
+                            _t = '0' + _t;
+                        }
+                        $('#getPhoneCode').html(_t + '秒').attr("disabled", true);
+                    }, 1000);
+                }
+                else {
+                    layer.msg(res.emsg);
+                }
+            });
+        });
         $(".btn-register").on("click", function () {
+            var user_name = $("#form-account").val();
+//            if(!user_name)
+//            {
+//                $("#form-account").parent(".form-item").addClass("form-item-error").find("input").focus();
+//                return false;
+//            }
             $.post("{{'passport/register'|base_url}}", $("#register-form").serialize(), function (res) {
-                if (res.ecode != 0) {
+                if (res.ecode == 0) {
+                    layer.msg(res.result);
+                    window.location.reload();
+                } else {
                     layer.msg(res.emsg);
                 }
             });

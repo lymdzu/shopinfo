@@ -95,6 +95,7 @@ defined('LACK_REQUIRED_PARAMETER')     OR define("LACK_REQUIRED_PARAMETER", 4000
 defined('USER_NOT_FOUND')              OR define("USER_NOT_FOUND", 404002);//查找不到此用户
 defined('TRANS_NOT_SUCCESS')           OR define("TRANS_NOT_SUCCESS", 404003);//数据没有变化
 defined('RECORD_NOT_FOUND')            OR define("RECORD_NOT_FOUND", 404004);//查找不到记录
+defined('PARAMETER_WRONG')             OR define("PARAMETER_WRONG", 404005);//参数错误
 defined('DATA_FORMAT_ERROR')           OR define("DATA_FORMAT_ERROR", 400010);//数据格式不符
 defined('INSERT_DB_ERROR')             OR define("INSERT_DB_ERROR", 500001);//入库失败
 defined('UPDATE_DB_ERROR')             OR define("UPDATE_DB_ERROR", 500002);//入库失败

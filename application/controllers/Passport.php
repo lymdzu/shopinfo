@@ -82,11 +82,44 @@ class Passport extends PublicController
             if (!isset($phone) || empty($phone)) {
                 $this->json_result(DATA_FORMAT_ERROR, "", "请输入注册手机号码");
             }
-            if ($auth_session != $auth_code) {
+            if (strtolower($auth_session) != strtolower(trim($auth_code))) {
                 $this->json_result(DATA_FORMAT_ERROR, "", "图片验证码错误");
+            }
+            $this->load->model("UserModel", "user", true);
+            $userinfo = $this->user->get_userinfo_by_name($user_name);
+            if (!empty($userinfo['result'])) {
+                $this->json_result(DATA_FORMAT_ERROR, "", "已经存在此用户,请换一个用户名");
+            }
+            $salt = mt_rand(100000, 999999);
+            $password = md5($pwd . $salt);
+            $reg_status = $this->user->reg_user($user_name, $password, $salt);
+            if ($reg_status) {
+                $this->json_result(REQUEST_SUCCESS, "注册成功");
+            } else {
+                $this->json_result(API_ERROR, "", "服务器错误");
             }
         }
         $this->display("passport/register.html");
+    }
+
+    /**
+     * 发送短信
+     */
+    public function send_phone_code()
+    {
+        $phone = $this->input->post("phone", true);
+        $auth_code = trim($this->input->post("auth_code", true));
+        if (!isset($phone) || empty($phone) || !is_mobile_num($phone)) {
+            $this->json_result(LACK_REQUIRED_PARAMETER, "", "请输入正确的手机号码");
+        }
+        $server_auth = $this->session->userdata("captcha");
+        if (strtolower($server_auth) != strtolower($auth_code)) {
+            $this->json_result(PARAMETER_WRONG, "", "请输入正确的验证码");
+        }
+        //        $verify_code = mt_rand(100000, 999999);
+        $verify_code = "000000";
+        $this->session->set_userdata($verify_code);
+        $this->json_result(REQUEST_SUCCESS, "短信发送成功");
     }
 
     /**
