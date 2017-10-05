@@ -18,19 +18,20 @@ class Passport extends PublicController
     public function admin_login()
     {
         if ($this->input->method() == "post") {
-            $username = trim($this->input->post("username", true));
-            $password = trim($this->input->post("password", true));
-            $this->load->model("AdminModel", "admin", true);
-            $user_info = $this->admin->get_admin_by_username($username);
-            if (empty($user_info)) {
-                $this->json_result(404, "", "该用户不存在");
+            $username = $this->input->post("username", true);
+            $password = $this->input->post("password", true);
+            $this->load->model("UserModel", "user", true);
+            $user_res = $this->user->get_user_by_name($username);
+            if (empty($user_res)) {
+                $this->json_result(USER_NOT_FOUND, "", "不存在此用户");
             }
-            $pwd_check = md5($password . $user_info['salt']);
-            if ($user_info['password'] !== $pwd_check) {
-                $this->json_result(403, "", "密码错误");
+            $client_pwd = md5(trim($password) . $user_res['salt']);
+            if ($client_pwd == $user_res['password']) {
+                $this->session->set_userdata("admin_user", $user_res['username']);
+                $this->json_result(REQUEST_SUCCESS, base_url('admin/index'));
+            } else {
+                $this->json_result(PARAMETER_WRONG, "", "密码错误,请重新输入");
             }
-            $this->session->set_userdata("admin_id", $user_info['admin_id']);
-            $this->json_result(200, "登录成功");
         } else {
             $this->display("passport/admin_login.html");
         }

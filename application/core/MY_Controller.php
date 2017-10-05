@@ -101,15 +101,16 @@ class DashboardController extends PublicController
         $this->layout = "dashboard/layout.html";
     }
 }
-class AdminController extends PublicController
+class AdController extends PublicController
 {
     public function __construct()
     {
         parent::__construct();
-        $admin_id = $this->session->userdata("admin_id");
+        $admin_id = $this->session->userdata("admin_user");
         if (empty($admin_id)) {
             redirect("passport/admin_login", "auto", 302);
         }
+        $this->layout = "admin/layout.html";
     }
 
 }
