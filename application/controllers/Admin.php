@@ -10,12 +10,18 @@ class Admin extends AdController
     public function __construct()
     {
         parent::__construct();
+        $this->vars['row'] = "admin";
     }
 
     public function index()
     {
         $this->load->model("UserModel", "user", true);
-        $admin_list = $this->user->get_admin_list();
+        $page = $this->input->get("page");
+        $offset = empty($page) ? 0 : (intval($page) - 1) * PAGESIZE;
+        $total = $this->user->count_admin_list();
+        $admin_list = $this->user->get_admin_list($offset, PAGESIZE);
+        $this->load->library("tgpage", array('total' => $total, 'pagesize' => PAGESIZE));
+        $this->vars['pagelist'] = $this->tgpage->showpage();
         $this->vars['admin_list'] = $admin_list;
         $this->page("admin/index.html");
     }
@@ -47,9 +53,9 @@ class Admin extends AdController
         $this->load->model("UserModel", "user", true);
         $opt_res = $this->user->operate_user(trim($id), $reverse_status);
         if ($opt_res) {
-            $this->json_result(REQUEST_SUCCESS, "success");
+            $this->json_result(REQUEST_SUCCESS, "操作成功");
         } else {
-            $this->json_result(API_ERROR, "", "server wrong");
+            $this->json_result(API_ERROR, "", "服务器错误");
         }
     }
 }

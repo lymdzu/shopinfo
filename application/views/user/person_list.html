@@ -3,10 +3,7 @@
         <div class="col-sm-12">
             <div class="ibox">
                 <div class="ibox-content">
-                    <div class="text-muted small pull-right">
-                        <a data-toggle="modal" class="btn btn-primary" href="#modal-form">添加</a>
-                    </div>
-                    <h2>管理员列表</h2>
+                    <h2>个人用户列表</h2>
                     <div class="clients-list">
                         <div class="tab-content">
                             <div id="tab-1" class="tab-pane active">
@@ -16,36 +13,36 @@
                                             <thead>
                                             <th>ID</th>
                                             <th>用户名</th>
-                                            <th>创建时间</th>
+                                            <th>注册时间</th>
                                             <th>上次登录时间</th>
                                             <th>登录状态</th>
                                             <th>操作</th>
                                             </thead>
                                             <tbody>
-                                            {{foreach $admin_list as $admin}}
+                                            {{foreach $person_list as $person}}
                                             <tr>
                                                 <td class="client-avatar">
-                                                    {{$admin.admin_id}}
+                                                    {{$person.id}}
                                                 </td>
                                                 <td>
-                                                    <a data-toggle="tab" href="#contact-1" class="client-link">{{$admin.username}}</a>
+                                                    <a data-toggle="tab" href="#contact-1" class="client-link">{{$person.user_name}}</a>
                                                 </td>
                                                 <td>
-                                                    {{$admin.create_time|date_format:"%Y-%m-%d %H:%m:%S"}}
+                                                    {{$person.create_time|date_format:"%Y-%m-%d %H:%m:%S"}}
                                                 </td>
                                                 <td>
-                                                    {{if $admin.login_time == 0}}
+                                                    {{if $person.login_time == 0}}
                                                     从未登录
                                                     {{else}}
-                                                    {{$admin.login_time|date_format:"%Y-%m-%d %H:%m:%S"}}
+                                                    {{$person.login_time|date_format:"%Y-%m-%d %H:%m:%S"}}
                                                     {{/if}}
                                                 </td>
                                                 <td class="client-status">
-                                                    <span class="label {{if $admin.user_status == 0}}label-primary{{elseif $admin.user_status ==1}}label-danger{{/if}}">{{if $admin.user_status == 0}}正常{{elseif $admin.user_status ==1}}已禁止{{/if}}</span>
+                                                    <span class="label {{if $person.user_status == 0}}label-primary{{elseif $person.user_status ==1}}label-danger{{/if}}">{{if $person.user_status == 0}}正常{{elseif $person.user_status ==1}}已禁止{{/if}}</span>
                                                 </td>
                                                 <td>
-                                                    <button data-id="{{$admin.admin_id}}" data-status="{{$admin.user_status}}" class="btn btn-xs {{if $admin.user_status == 0}}btn-danger{{elseif $admin.user_status == 1}}btn-primary{{/if}} operate">
-                                                        {{if $admin.user_status == 0}}禁用{{elseif $admin.user_status ==1}}启用{{/if}}
+                                                    <button data-id="{{$person.id}}" data-status="{{$person.user_status}}" class="btn btn-xs {{if $person.user_status == 0}}btn-danger{{elseif $person.user_status == 1}}btn-primary{{/if}} operate">
+                                                        {{if $person.user_status == 0}}<i class="fa fa-close"></i>禁止登录{{elseif $person.user_status ==1}}<i class="fa fa-check"></i>开启登录{{/if}}
                                                     </button>
                                                 </td>
                                             </tr>
@@ -100,28 +97,28 @@
 </div>
 <script type="application/javascript">
     $(function () {
-        $("#add-user").on("click", function () {
-            $.post("{{'admin/add_user'|base_url}}", $(".admin-user").serialize(), function (res) {
-                if (res.ecode == 0) {
-                    layer.msg(res.result);
-                    setTimeout(function () {
-                        window.location.reload();
-                    }, 3000);
-                }
-                else {
-                    layer.msg(res.emsg);
-                }
-            })
-        });
+//        $("#add-user").on("click", function () {
+//            $.post("{{'admin/add_user'|base_url}}", $(".admin-user").serialize(), function (res) {
+//                if (res.ecode == 0) {
+//                    layer.msg(res.result);
+//                    setTimeout(function () {
+//                        window.location.reload();
+//                    }, 3000);
+//                }
+//                else {
+//                    layer.msg(res.emsg);
+//                }
+//            })
+//        });
         $(".operate").on("click", function () {
             var userstatus = $(this).data("status");
             var id = $(this).data("id");
-            $.post("{{'admin/operate_admin'|base_url}}", {id: id, status: userstatus}, function (res) {
+            $.post("{{'user/disable_login'|base_url}}", {id: id, status: userstatus}, function (res) {
                 if (res.ecode == 0) {
                     layer.msg(res.result);
                     setTimeout(function () {
                         window.location.reload();
-                    }, 3000);
+                    }, 1000);
                 }
                 else {
                     layer.msg(res.emsg);
