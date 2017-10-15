@@ -18,9 +18,12 @@
     <link href="{{'static/bscss/bootstrap.min.css'|base_url}}" rel="stylesheet">
     <link href="{{'static/bscss/style.min.css'|base_url}}?v=4.1.0" rel="stylesheet">
     <script type="text/javascript" src="{{'static/bsjs/jquery.min.js'|base_url}}"></script>
+    {{if $page == "goods_list"}}
+    <link href="{{'static/js/plugins/jsTree/style.min.css'|base_url}}" rel="stylesheet">
+    {{/if}}
 </head>
 
-<body class="fixed-sidebar full-height-layout gray-bg" style="overflow:hidden">
+<body class="fixed-sidebar  gray-bg">
 <div id="wrapper">
     <!--左侧导航开始-->
     <nav class="navbar-default navbar-static-side" role="navigation">
@@ -35,7 +38,7 @@
                         </span>
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                                 <span class="clear">
-                               <span class="block m-t-xs"><strong class="font-bold">Beaut-zihan</strong></span>
+                               <span class="block m-t-xs"><strong class="font-bold">{{$smarty.session.admin_user}}</strong></span>
                                 <span class="text-muted text-xs block">管理员<b class="caret"></b></span>
                                 </span>
                         </a>
@@ -82,6 +85,16 @@
                         </li>
                     </ul>
                 </li>
+                <li {{if $row =="goods"}} class="active"{{/if}}>
+                <a href="#">
+                    <i class="fa fa-cubes"></i> <span class="nav-label">商品管理</span> <span class="fa arrow"></span>
+                </a>
+                <ul class="nav nav-second-level">
+                    <li>
+                        <a href="{{'goods/goods_list'|base_url}}" data-index="0">商品类目管理</a>
+                    </li>
+                </ul>
+                </li>
             </ul>
         </div>
     </nav>
@@ -123,5 +136,8 @@
 <script type="text/javascript" src="{{'static/bsjs/hplus.min.js'|base_url}}"></script>
 <script type="text/javascript" src="{{'static/bsjs/contabs.min.js'|base_url}}"></script>
 <script type="text/javascript" src="{{'static/bsjs/pace.min.js'|base_url}}"></script>
+{{if $page == "goods_list"}}
+<script type="text/javascript" src="{{'static/js/plugins/jsTree/jstree.min.js'|base_url}}"></script>
+{{/if}}
 </body>
 </html>
