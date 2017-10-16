@@ -91,7 +91,20 @@
                 </a>
                 <ul class="nav nav-second-level">
                     <li>
-                        <a href="{{'goods/goods_list'|base_url}}" data-index="0">商品类目管理</a>
+                        <a href="{{'goods/level_list'|base_url}}" data-index="0">商品类目管理</a>
+                    </li>
+                    <li>
+                        <a href="{{'goods/goods_list'|base_url}}" data-index="0">商品管理</a>
+                    </li>
+                </ul>
+                </li>
+                <li {{if $row =="for"}} class="active"{{/if}}>
+                <a href="#">
+                    <i class="fa fa-ship"></i> <span class="nav-label">国外商品管理</span> <span class="fa arrow"></span>
+                </a>
+                <ul class="nav nav-second-level">
+                    <li>
+                        <a href="{{'goods/level_list'|base_url}}" data-index="0">商品类目管理</a>
                     </li>
                 </ul>
                 </li>

@@ -101,10 +101,11 @@ class UserModel extends CI_Model
      * @param $limit
      * @return mixed
      */
-    public function get_person_user_list($offset, $limit)
+    public function get_person_user_list($offset, $limit, $user_name)
     {
         $this->db->limit($limit, $offset);
-        $this->db->order_by("create_time", "DESC");
+        $this->db->order_by("id", "DESC");
+        $this->db->like("user_name", $user_name);
         $query = $this->db->get("t_user");
         return $query->result_array();
     }
@@ -113,8 +114,9 @@ class UserModel extends CI_Model
      * 计算个人注册总数
      * @return mixed
      */
-    public function count_person_user_list()
+    public function count_person_user_list($user_name)
     {
+        $this->db->like("user_name", $user_name);
         $this->db->from("t_user");
         return $this->db->count_all_results();
     }

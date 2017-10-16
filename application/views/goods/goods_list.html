@@ -6,7 +6,7 @@
                     <div class="ibox-title">
                         <h5>商品一级类目</h5>
                         <div class="ibox-tools">
-                            <a data-toggle="modal" class="btn btn-primary btn-xs" href="#modal-form">添加类目</a>
+                            <a data-toggle="modal" class="btn btn-primary btn-xs add-btn" href="#modal-form">添加类目</a>
                         </div>
                     </div>
                     <div class="ibox-content">
@@ -14,6 +14,7 @@
 
                             <table class="table table-hover">
                                 <thead>
+                                <th>编号</th>
                                 <th>类目级别</th>
                                 <th>类别名称</th>
                                 <th>创建时间及操作人</th>
@@ -22,30 +23,27 @@
                                 <tbody>
                                 {{foreach $level_list as $level_info}}
                                 <tr>
-                                    <td class="project-status">
+                                    <td class="cate-id">{{$level_info.id}}</td>
+                                    <td class="cate-level">
                                         <span class="label label-primary">{{if $level_info.level == 1}}一{{else if $level_info.level == 2}}二{{else if $level_info.level == 3}}三{{/if}}级类目</span>
                                     </td>
-                                    <td class="project-title">
-                                        <span href="project_detail.html">{{$level_info.name}}</span>
-                                    </td>
+                                    <td class="cate-name">{{$level_info.name}}</td>
                                     <td class="project-completion">
                                         <small>{{$level_info.create_time|date_format:"%Y-%m-%d %H:%m:%S"}} by
                                             {{$level_info.operater}}
                                         </small>
                                     </td>
-
-                                    <td>
-                                        {{if $level < 3}}
+                                    <td>{{if $level < 3}}
                                         <a href="{{'goods/goods_list'|base_url}}?level={{$next_level}}&parent={{$level_info.id}}"
                                            class="btn btn-primary btn-sm"><i class="fa fa-folder-open-o"></i>
                                             设置下级类目
                                         </a>
                                         {{/if}}
-                                        <a href="projects.html#" class="btn btn-white btn-sm"><i
+                                        <a href="#edit-level" data-toggle="modal" class="btn btn-white btn-sm edit-btn"><i
                                                 class="fa fa-pencil"></i>
                                             编辑
                                         </a>
-                                        <a href="javascript:void(0)" class="btn btn-danger btn-sm"><i
+                                        <a href="javascript:void(0)" class="btn btn-danger btn-sm delete-btn"><i
                                                 class="fa fa-close"></i>
                                             删除
                                         </a>
@@ -87,7 +85,7 @@
                 <div class="row">
                     <div class="col-sm-12">
                         <h3 class="m-t-none m-b">添加商品类目</h3>
-                        <form role="form" class="add-level" onsubmit="return false;">
+                        <form role="form" id="add-level" class="add-level" onsubmit="return false;">
                             <div class="form-group">
                                 <label>类目名称：</label>
                                 <input type="text" name="name" placeholder="请输入类目名称"
@@ -116,6 +114,37 @@
         </div>
     </div>
 </div>
+<div id="edit-level" class="modal fade" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <h3 class="m-t-none m-b">修改商品类目</h3>
+                        <form role="form" class="edit-level" onsubmit="return false;">
+                            <div class="form-group">
+                                <label>类目名称：</label>
+                                <input type="text" name="name" placeholder="请输入类目名称"
+                                       class="form-control">
+                            </div>
+                            <div class="form-group" style="display: none">
+                                <label>类目编号：</label>
+                                <input type="text" name="id" placeholder="请输入类目级别" class="form-control">
+                            </div>
+                            <div>
+                                <button class="btn btn-sm btn-primary pull-right m-t-n-xs" id="edit-submit"
+                                        type="submit">
+                                    <strong>提交</strong>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <style>
     .jstree-default .jstree-icon.none {
         width: 0
@@ -127,6 +156,47 @@
 </script>
 <script>
     $(document).ready(function () {
+        $(".add-btn").on("click", function () {
+            $("#add-level").find("input[name='name']").focus();
+        });
+        $(".edit-btn").on("click", function () {
+            var id = $(this).parents("tr").find(".cate-id").text();
+            var name = $(this).parents("tr").find(".cate-name").text();
+            $("#edit-level").find("input[name='name']").val(name);
+            $("#edit-level").find("input[name='id']").val(id);
+        });
+        $(".delete-btn").on("click", function () {
+            var id = $(this).parents("tr").find(".cate-id").text();
+            layer.confirm('是否要删除当前类目及其下属类目？', {
+                btn: ['确定','取消'] //按钮
+            }, function(){
+                $.post("{{'goods/delete_level'|base_url}}", {id:id}, function (res) {
+                    if (res.ecode == 0) {
+                        layer.msg(res.result);
+                        setTimeout(function () {
+                            window.location.reload();
+                        }, 500)
+                    }
+                    else {
+                        layer.msg(res.emsg);
+                    }
+                })
+            }, function(){
+            });
+        });
+        $("#edit-submit").on("click", function () {
+            $.post("{{'goods/edit_level'|base_url}}", $(".edit-level").serialize(), function (res) {
+                if (res.ecode == 0) {
+                    layer.msg(res.result);
+                    setTimeout(function () {
+                        window.location.reload();
+                    }, 500)
+                }
+                else {
+                    layer.msg(res.emsg);
+                }
+            });
+        });
         $("#goods-level").on("click", function () {
             $.post("{{'goods/add_level'|base_url}}", $(".add-level").serialize(), function (res) {
                 if (res.ecode == 0) {
@@ -148,7 +218,7 @@
                 data: {},
                 beforeSend: function () {
                     layer.load(1, {
-                        shade: [0.1,'#fff'] //0.1透明度的白色背景
+                        shade: [0.1, '#fff'] //0.1透明度的白色背景
                     });
                 },
                 success: function (res) {

@@ -54,7 +54,7 @@
                                                 <td>
                                                     <button data-id="{{$person.id}}" data-status="{{$person.user_status}}" class="btn btn-xs {{if $person.user_status == 0}}btn-danger{{elseif $person.user_status == 1}}btn-primary{{/if}} operate">
                                                         {{if $person.user_status == 0}}<i class="fa fa-close"></i>禁止登录{{elseif $person.user_status ==1}}<i class="fa fa-check"></i>开启登录{{/if}}</button>
-                                                    <a href="{{'user/person_desc'|base_url}}?user_id={{$person.id}}" class="btn btn-xs btn-primary"><i class="fa fa-file-text"></i>查看详情</a>
+                                                    <a href="{{'user/user_desc'|base_url}}?user_id={{$person.id}}" class="btn btn-xs btn-primary"><i class="fa fa-file-text"></i>查看详情</a>
                                                 </td>
                                             </tr>
                                             {{/foreach}}

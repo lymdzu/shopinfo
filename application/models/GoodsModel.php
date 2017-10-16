@@ -53,4 +53,50 @@ class GoodsModel extends CI_Model
             return false;
         }
     }
+
+    /**
+     * 修改商户分类名称
+     * @param $id
+     * @param $name
+     * @return bool
+     */
+    public function edit_goods_type($id, $name)
+    {
+        $this->db->where("id", $id);
+        $update_status = $this->db->update("t_type", array("name" => $name));
+        $affect_rows = $this->db->affected_rows();
+        if ($update_status && $affect_rows == 1) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function delete_goods_type($id)
+    {
+        $this->db->trans_start();
+        $this->db->where("id", $id);
+        $this->db->delete("t_type");
+        $this->db->where("parent", $id);
+        $query = $this->db->get("t_type");
+        $children = $query->result_array();
+        $this->db->where("parent", $id);
+        $this->db->delete("t_type");
+        if(!empty($children))
+        {
+            $child_where = array();
+            foreach($children as $child)
+            {
+                $child_where[] = $child['id'];
+            }
+            $this->db->where_in("parent", $child_where);
+            $this->db->delete("t_type");
+        }
+        $this->db->trans_complete();
+        if ($this->db->trans_status() === FALSE) {
+            return false;
+        } else {
+            return true;
+        }
+    }
 }

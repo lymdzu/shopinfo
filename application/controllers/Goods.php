@@ -13,7 +13,7 @@ class Goods extends AdController
         $this->vars['row'] = "goods";
     }
 
-    public function goods_list()
+    public function level_list()
     {
         $level = $this->input->get("level", true);
         $parent = $this->input->get("parent", true);
@@ -56,6 +56,46 @@ class Goods extends AdController
     }
 
     /**
+     * 修改商品类目
+     */
+    public function edit_level()
+    {
+        $name = $this->input->post("name", true);
+        $id = $this->input->post("id", true);
+        if (empty($name)) {
+            $this->json_result(LACK_REQUIRED_PARAMETER, "", "请输入商品类别名称");
+        }
+        if (empty($id)) {
+            $this->json_result(LACK_REQUIRED_PARAMETER, "", "缺少需要修改的类目id");
+        }
+        $this->load->model("GoodsModel", "goods", true);
+        $edit_status = $this->goods->edit_goods_type($id, $name);
+        if ($edit_status) {
+            $this->json_result(REQUEST_SUCCESS, "商品类目修改成功");
+        } else {
+            $this->json_result(API_ERROR, "", "修改失败请检查输入");
+        }
+    }
+
+    /**
+     * 删除当前及其下属类目
+     */
+    public function delete_level()
+    {
+        $id = $this->input->post("id", true);
+        if (empty($id)) {
+            $this->json_result(LACK_REQUIRED_PARAMETER, "", "缺少需要修改的类目id");
+        }
+        $this->load->model("GoodsModel", "goods", true);
+        $edit_status = $this->goods->delete_goods_type($id);
+        if ($edit_status) {
+            $this->json_result(REQUEST_SUCCESS, "商品类目删除成功");
+        } else {
+            $this->json_result(API_ERROR, "", "服务器出错");
+        }
+    }
+
+    /**
      * 重新生成商品类目
      */
     public function make_category()
@@ -89,6 +129,6 @@ class Goods extends AdController
         }
         $cat_json = "var json =" . json_encode($category);
         file_put_contents(dirname(APPPATH) . "/public/file/category.js", $cat_json);
-        $this->json_result(REQUEST_SUCCESS,"生成成功");
+        $this->json_result(REQUEST_SUCCESS, "生成成功");
     }
 }
