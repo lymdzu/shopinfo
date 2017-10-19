@@ -12,6 +12,27 @@ class Goods extends AdController
         parent::__construct();
         $this->vars['row'] = "goods";
     }
+    public function goods_list()
+    {
+        $this->load->model('GoodsModel', "goods", true);
+        $this->load->model("UserModel", "user", true);
+        $admin = $this->admin_company();
+        if ($admin['auth'] == "all") {
+            $company = false;
+        } else {
+            $company = $admin['company'];
+        }
+        //todo 权限角色管理
+        $page = $this->input->get("page");
+        $offset = empty($page) ? 0 : (intval($page) - 1) * PAGESIZE;
+        $total = $this->goods->count_goods_list($company);
+        $goods_list = $this->goods->get_goods_list($offset, PAGESIZE, $company);
+        $this->load->library("tgpage", array('total' => $total, 'pagesize' => PAGESIZE));
+        $this->vars['pagelist'] = $this->tgpage->showpage();
+        $this->vars['goods_list'] = $goods_list;
+        $this->vars['page'] = "goods_list";
+        $this->page("goods/goods_list.html");
+    }
 
     public function level_list()
     {
@@ -24,8 +45,8 @@ class Goods extends AdController
         $this->vars['level_list'] = $type_list;
         $this->vars['level'] = $level;
         $this->vars['next_level'] = $level + 1;
-        $this->vars['page'] = "goods_list";
-        $this->page("goods/goods_list.html");
+        $this->vars['page'] = "level_list";
+        $this->page("goods/level_list.html");
     }
 
     /**

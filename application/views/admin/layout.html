@@ -18,7 +18,7 @@
     <link href="{{'static/bscss/bootstrap.min.css'|base_url}}" rel="stylesheet">
     <link href="{{'static/bscss/style.min.css'|base_url}}?v=4.1.0" rel="stylesheet">
     <script type="text/javascript" src="{{'static/bsjs/jquery.min.js'|base_url}}"></script>
-    {{if $page == "goods_list"}}
+    {{if $page == "level_list"}}
     <link href="{{'static/js/plugins/jsTree/style.min.css'|base_url}}" rel="stylesheet">
     {{/if}}
 </head>
@@ -43,10 +43,6 @@
                                 </span>
                         </a>
                         <ul class="dropdown-menu animated fadeInRight m-t-xs">
-                            <!--<li>-->
-                            <!--<a class="J_menuItem" href="form_avatar.html">e</a>-->
-                            <!--</li>-->
-                            <!--<li class="divider"></li>-->
                             <li>
                                 <a href="{{'passport/admin_logout'|base_url}}">退出</a>
                             </li>
@@ -95,6 +91,16 @@
                     </li>
                     <li>
                         <a href="{{'goods/goods_list'|base_url}}" data-index="0">商品管理</a>
+                    </li>
+                </ul>
+                </li>
+                <li {{if $row =="brand"}} class="active"{{/if}}>
+                <a href="#">
+                    <i class="fa fa-copyright"></i> <span class="nav-label">品牌管理</span> <span class="fa arrow"></span>
+                </a>
+                <ul class="nav nav-second-level">
+                    <li>
+                        <a href="{{'brand/brand_list'|base_url}}" data-index="0">旗下品牌管理</a>
                     </li>
                 </ul>
                 </li>
@@ -149,7 +155,7 @@
 <script type="text/javascript" src="{{'static/bsjs/hplus.min.js'|base_url}}"></script>
 <script type="text/javascript" src="{{'static/bsjs/contabs.min.js'|base_url}}"></script>
 <script type="text/javascript" src="{{'static/bsjs/pace.min.js'|base_url}}"></script>
-{{if $page == "goods_list"}}
+{{if $page == "level_list"}}
 <script type="text/javascript" src="{{'static/js/plugins/jsTree/jstree.min.js'|base_url}}"></script>
 {{/if}}
 </body>

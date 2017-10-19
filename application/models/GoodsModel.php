@@ -8,6 +8,37 @@
 class GoodsModel extends CI_Model
 {
     /**
+     * 获取公司旗下商品列表
+     * @param $offset
+     * @param $limit
+     * @param $company
+     * @return mixed
+     */
+    public function get_goods_list($offset, $limit, $company)
+    {
+        $this->db->limit($limit, $offset);
+        if ($company) {
+            $this->db->where();
+        }
+        $query = $this->db->get("t_goods");
+        return $query->result_array();
+    }
+
+    /**
+     *
+     * @param $company
+     * @return mixed
+     */
+    public function count_goods_list($company)
+    {
+        if($company)
+        {
+            $this->db->where("company", $company);
+        }
+        $this->db->from("t_goods");
+        return $this->db->count_all_results();
+    }
+    /**
      * 获取商品分类列表
      * @param $level
      * @return mixed
@@ -82,11 +113,9 @@ class GoodsModel extends CI_Model
         $children = $query->result_array();
         $this->db->where("parent", $id);
         $this->db->delete("t_type");
-        if(!empty($children))
-        {
+        if (!empty($children)) {
             $child_where = array();
-            foreach($children as $child)
-            {
+            foreach ($children as $child) {
                 $child_where[] = $child['id'];
             }
             $this->db->where_in("parent", $child_where);
@@ -97,6 +126,79 @@ class GoodsModel extends CI_Model
             return false;
         } else {
             return true;
+        }
+    }
+
+    /**
+     * 查询公司旗下所有品牌
+     * @param $offset
+     * @param $limit
+     * @param $company
+     * @return mixed
+     */
+    public function get_brand_list($offset, $limit, $company)
+    {
+        $this->db->limit($limit, $offset);
+        if ($company) {
+            $this->db->where();
+        }
+        $query = $this->db->get("t_brand");
+        return $query->result_array();
+    }
+
+    /**
+     * 查询此公司旗下所有品牌数量
+     * @param $company
+     * @return mixed
+     */
+    public function count_brand_list($company)
+    {
+        if ($company) {
+            $this->db->where("company", $company);
+        }
+        $this->db->from("t_brand");
+        return $this->db->count_all_results();
+    }
+
+    /**
+     * 添加品牌
+     * @param $name
+     * @param $company
+     * @param $operater
+     * @return bool
+     */
+    public function add_brand($name, $company, $operater)
+    {
+        $brand_info = array(
+            "brand"       => $name,
+            "company"     => $company,
+            "operater"    => $operater,
+            "create_time" => time(),
+        );
+        $insert_status = $this->db->insert("t_brand", $brand_info);
+        $affected_row = $this->db->affected_rows();
+        if ($insert_status && $affected_row == 1) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    /**
+     * 修改品牌名称
+     * @param $id
+     * @param $brand
+     * @return bool
+     */
+    public function edit_brand($id, $brand)
+    {
+        $this->db->where("id", $id);
+        $update_status = $this->db->update("t_brand", array("brand" => $brand));
+        $affect_rows = $this->db->affected_rows();
+        if ($update_status && $affect_rows == 1) {
+            return true;
+        } else {
+            return false;
         }
     }
 }

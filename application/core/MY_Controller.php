@@ -112,5 +112,16 @@ class AdController extends PublicController
         }
         $this->layout = "admin/layout.html";
     }
+    /**
+     * 查找管理员所属公司
+     * @return mixed
+     */
+    public function admin_company()
+    {
+        $this->load->model("UserModel", "user", true);
+        $admin_user = $this->session->userdata("admin_user");
+        $admin = $this->user->get_admin_by_name($admin_user);
+        return $admin;
+    }
 
 }
