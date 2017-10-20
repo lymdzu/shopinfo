@@ -12,12 +12,17 @@ class Goods extends AdController
         parent::__construct();
         $this->vars['row'] = "goods";
     }
+
+    /**
+     * 展示所有旗下商品列表
+     */
     public function goods_list()
     {
         $this->load->model('GoodsModel', "goods", true);
         $this->load->model("UserModel", "user", true);
         $first_level = $this->goods->get_goods_type_list(1);
         $admin = $this->admin_company();
+        $brand_list = $this->goods->get_brand_list(0, 1000000, $admin['company']);
         if ($admin['auth'] == "all") {
             $company = false;
         } else {
@@ -29,6 +34,7 @@ class Goods extends AdController
         $total = $this->goods->count_goods_list($company);
         $goods_list = $this->goods->get_goods_list($offset, PAGESIZE, $company);
         $this->load->library("tgpage", array('total' => $total, 'pagesize' => PAGESIZE));
+        $this->vars['brandlist'] = $brand_list;
         $this->vars['first_level'] = $first_level;
         $this->vars['pagelist'] = $this->tgpage->showpage();
         $this->vars['goods_list'] = $goods_list;
@@ -36,14 +42,56 @@ class Goods extends AdController
         $this->page("goods/goods_list.html");
     }
 
+    /**
+     * 添加商品
+     */
+    public function add_goods()
+    {
+        $product = $this->input->post("product", true);
+        $brand = $this->input->post("brand", true);
+        $category = $this->input->post("category", true);
+        $admin = $this->admin_company();
+        if (empty($product)) {
+            $this->json_result(LACK_REQUIRED_PARAMETER, "", "请输入商品名称");
+        }
+        if (empty($brand)) {
+            $this->json_result(LACK_REQUIRED_PARAMETER, "", "请选择品牌名称");
+        }
+        if (empty($category)) {
+            $this->json_result(LACK_REQUIRED_PARAMETER, "", "请选择类别至第三级");
+        }
+        $this->load->model("GoodsModel", "goods", true);
+        $add_status = $this->goods->add_goods($product, $brand, $category, $admin['company'], $admin['admin_id']);
+        if ($add_status) {
+            $this->json_result(REQUEST_SUCCESS, "商品添加成功");
+        } else {
+            $this->json_result(API_ERROR, "", "服务器出错");
+        }
+    }
+
+    /**
+     * 获取各级别商品分类
+     */
+    public function get_level_list()
+    {
+        $level = $this->input->post("level", true);
+        $parent = $this->input->post("parent", true);
+        $this->load->model("GoodsModel", "goods", true);
+        $child_level = $this->goods->get_category_by_level($level, $parent);
+        $this->json_result(REQUEST_SUCCESS, $child_level);
+    }
+
+    /**
+     * 商品分类列表
+     */
     public function level_list()
     {
         $level = $this->input->get("level", true);
         $parent = $this->input->get("parent", true);
-        $this->vars['parent'] = empty($parent) ? null : intval($parent);
+        $this->vars['parent'] = empty($parent) ? 0 : intval($parent);
         $level = empty($level) ? 1 : (intval($level) > 3 ? 3 : intval($level));
         $this->load->model("GoodsModel", "goods", true);
-        $type_list = $this->goods->get_goods_type_list($level);
+        $type_list = $this->goods->get_goods_type_list($level, $parent);
         $this->vars['level_list'] = $type_list;
         $this->vars['level'] = $level;
         $this->vars['next_level'] = $level + 1;

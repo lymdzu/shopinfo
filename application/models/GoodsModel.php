@@ -16,12 +16,42 @@ class GoodsModel extends CI_Model
      */
     public function get_goods_list($offset, $limit, $company)
     {
-        $this->db->limit($limit, $offset);
+        $where_company = "";
         if ($company) {
-            $this->db->where();
+            $where_company = "WHERE g.company={$company}";
         }
-        $query = $this->db->get("t_goods");
+        $query = $this->db->query("select x.id, x.product, x.brand, t.name category, x.company, x.operater, x.create_time from (select g.id, g.product, b.brand, g.category, g.company, g.operater, g.create_time from t_goods g LEFT JOIN t_brand b ON g.brand = b.id" . $where_company . ") as x LEFT JOIN t_type t on x.category = t.id limit {$offset}, {$limit}");
         return $query->result_array();
+    }
+
+    /**
+     * 添加商品
+     * @param $product
+     * @param $brand
+     * @param $catogory
+     * @param $company
+     * @param $operater
+     * @return bool
+     */
+    public function add_goods($product, $brand, $catogory, $company, $operater)
+    {
+        $insert_goods = array(
+            "product"     => $product,
+            "brand"       => $brand,
+            "category"    => $catogory,
+            "company"     => $company,
+            "operater"    => $operater,
+            "create_time" => time(),
+            "update_time" => "",
+            "status"      => 0
+        );
+        $insert_status = $this->db->insert("t_goods", $insert_goods);
+        $affected_rows = $this->db->affected_rows();
+        if ($insert_status && $affected_rows == 1) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     /**
@@ -31,21 +61,25 @@ class GoodsModel extends CI_Model
      */
     public function count_goods_list($company)
     {
-        if($company)
-        {
+        if ($company) {
             $this->db->where("company", $company);
         }
         $this->db->from("t_goods");
         return $this->db->count_all_results();
     }
+
     /**
      * 获取商品分类列表
      * @param $level
+     * @param bool $parent
      * @return mixed
      */
-    public function get_goods_type_list($level)
+    public function get_goods_type_list($level, $parent = false)
     {
         $this->db->where("level", $level);
+        if ($parent) {
+            $this->db->where("parent", $parent);
+        }
         $query = $this->db->get("t_type");
         return $query->result_array();
     }
@@ -140,7 +174,7 @@ class GoodsModel extends CI_Model
     {
         $this->db->limit($limit, $offset);
         if ($company) {
-            $this->db->where();
+            $this->db->where("company", $company);
         }
         $query = $this->db->get("t_brand");
         return $query->result_array();

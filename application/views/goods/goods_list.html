@@ -15,16 +15,20 @@
                             <table class="table table-hover">
                                 <thead>
                                 <th>编号</th>
+                                <th>商品名称</th>
                                 <th>品牌名称</th>
+                                <th>商品分类</th>
                                 <th>创建时间及操作人</th>
                                 <th>操作</th>
                                 </thead>
                                 <tbody>
                                 {{foreach $goods_list as $goods_info}}
                                 <tr>
-                                    <td class="cate-id">{{$goods_info.id}}</td>
-                                    <td class="cate-name">{{$goods_info.goods}}</td>
-                                    <td class="project-completion">
+                                    <td class="id">{{$goods_info.id}}</td>
+                                    <td class="product">{{$goods_info.product}}</td>
+                                    <td class="brand">{{$goods_info.brand}}</td>
+                                    <td class="category">{{$goods_info.category}}</td>
+                                    <td class="">
                                         <small>{{$goods_info.create_time|date_format:"%Y-%m-%d %H:%m:%S"}} by
                                             {{$goods_info.operater}}
                                         </small>
@@ -57,7 +61,7 @@
                 <div class="row">
                     <div class="col-sm-12">
                         <h3 class="m-t-none m-b">添加品牌</h3>
-                        <form role="form" id="add_goods" class="add_goods form-horizontal" onsubmit="return false;">
+                        <form role="form" class="add_goods form-horizontal" onsubmit="return false;">
                             <div class="form-group">
                                 <label class="col-sm-3 control-label">商品名称：</label>
 
@@ -70,6 +74,9 @@
                                 <div class="col-sm-7">
                                     <select class="form-control" name="brand">
                                         <option>请选择商品是公司旗下何种品牌</option>
+                                        {{foreach $brandlist as $brand}}
+                                        <option value="{{$brand.id}}">{{$brand.brand}}</option>
+                                        {{/foreach}}
                                     </select>
                                 </div>
                             </div>
@@ -89,14 +96,14 @@
                                     </select>
                                 </div>
                                 <div class="col-sm-3">
-                                    <select class="form-control third" name="catgary" style="display: none">
+                                    <select class="form-control third" name="category" style="display: none">
                                         <option>请选择商品三级分类</option>
                                     </select>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="col-sm-12 col-sm-offset-3">
-                                    <button class="btn btn-primary" type="submit">保存</button>
+                                    <button class="btn btn-primary add-submit-btn" type="submit">保存</button>
                                 </div>
                             </div>
                         </form>
@@ -154,12 +161,35 @@
         $(".first").on("change", function () {
             $(".second").show();
             var parent = $(".first").val();
-            $.post("{{'goods/get_level_list'|base_url}}", {level: 2, parent: parent}, function (res) {
-                if (res.ecode == 0) {
-
+            $.post("{{'goods/get_level_list'|base_url}}", {level: 2, parent: parent}, function (result) {
+                if (result.ecode == 0) {
+                    var html = "<option>请选择商品二级分类</option>";
+                    var res = result.result;
+                    for (var i = 0; i < res.length; i++) {
+                        html += "<option value='" + res[i].id + "'>" + res[i].name + "</option>";
+                    }
+                    $(".second").html(html);
                 }
                 else {
-                    layer.msg(res.emsg);
+                    layer.msg(result.emsg);
+                }
+
+            })
+        });
+        $(".second").on("change", function () {
+            $(".second").show();
+            var parent = $(".second").val();
+            $.post("{{'goods/get_level_list'|base_url}}", {level: 3, parent: parent}, function (result) {
+                if (result.ecode == 0) {
+                    var html = "<option>请选择商品三级分类</option>";
+                    var res = result.result;
+                    for (var i = 0; i < res.length; i++) {
+                        html += "<option value='" + res[i].id + "'>" + res[i].name + "</option>";
+                    }
+                    $(".third").html(html);
+                }
+                else {
+                    layer.msg(result.emsg);
                 }
 
             })
@@ -199,7 +229,7 @@
                 }
             });
         });
-        $("#goods").on("click", function () {
+        $(".add-submit-btn").on("click", function () {
             $.post("{{'goods/add_goods'|base_url}}", $(".add_goods").serialize(), function (res) {
                 if (res.ecode == 0) {
                     layer.msg(res.result);
