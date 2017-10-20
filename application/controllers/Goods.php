@@ -16,6 +16,7 @@ class Goods extends AdController
     {
         $this->load->model('GoodsModel', "goods", true);
         $this->load->model("UserModel", "user", true);
+        $first_level = $this->goods->get_goods_type_list(1);
         $admin = $this->admin_company();
         if ($admin['auth'] == "all") {
             $company = false;
@@ -28,6 +29,7 @@ class Goods extends AdController
         $total = $this->goods->count_goods_list($company);
         $goods_list = $this->goods->get_goods_list($offset, PAGESIZE, $company);
         $this->load->library("tgpage", array('total' => $total, 'pagesize' => PAGESIZE));
+        $this->vars['first_level'] = $first_level;
         $this->vars['pagelist'] = $this->tgpage->showpage();
         $this->vars['goods_list'] = $goods_list;
         $this->vars['page'] = "goods_list";

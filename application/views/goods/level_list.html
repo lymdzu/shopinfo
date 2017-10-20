@@ -34,7 +34,7 @@
                                         </small>
                                     </td>
                                     <td>{{if $level < 3}}
-                                        <a href="{{'goods/goods_list'|base_url}}?level={{$next_level}}&parent={{$level_info.id}}"
+                                        <a href="{{'goods/level_list'|base_url}}?level={{$next_level}}&parent={{$level_info.id}}"
                                            class="btn btn-primary btn-sm"><i class="fa fa-folder-open-o"></i>
                                             设置下级类目
                                         </a>
@@ -157,7 +157,8 @@
 <script>
     $(document).ready(function () {
         $(".add-btn").on("click", function () {
-            $("#add-level").find("input[name='name']").focus();
+            console.log($("#add-level").find("input[name='name']"));
+            $("#add-level").find("input[name='name']").trigger("click").focus();
         });
         $(".edit-btn").on("click", function () {
             var id = $(this).parents("tr").find(".cate-id").text();
