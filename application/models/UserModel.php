@@ -19,8 +19,8 @@ class UserModel extends CI_Model
      */
     public function get_user_by_name($username)
     {
-        $this->db->where("username", $username);
-        $query = $this->db->get("t_admin");
+        $this->db->where("user_name", $username);
+        $query = $this->db->get("t_user");
         return $query->row_array();
     }
 

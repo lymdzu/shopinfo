@@ -21,7 +21,7 @@ class Passport extends PublicController
             $username = $this->input->post("username", true);
             $password = $this->input->post("password", true);
             $this->load->model("UserModel", "user", true);
-            $user_res = $this->user->get_user_by_name($username);
+            $user_res = $this->user->get_admin_by_name($username);
             if (empty($user_res)) {
                 $this->json_result(USER_NOT_FOUND, "", "不存在此用户");
             }
@@ -49,10 +49,34 @@ class Passport extends PublicController
     public function login()
     {
         if ($this->input->method() == "post") {
-            $user_name = $this->input->post("loginname");
-            $password = $this->input->post("nloginpwd");
+            $four_error = $this->session->userdata("four_error");
+            if ($four_error) {
+                $auth_code = $this->session->userdata("");
+            }
+            $user_name = $this->input->post("user_name", true);
+            $password = $this->input->post("pwd", true);
+            $this->load->model("UserModel", "user", true);
+            $user = $this->user->get_user_by_name($user_name);
+            if (empty($user)) {
+                $this->json_result(LACK_REQUIRED_PARAMETER, "", "此用户不存在");
+            }
+            $pwd_md5 = md5($password . $user['salt']);
+            if ($pwd_md5 == $user['pwd']) {
+                $this->session->set_userdata("person_user", $user['user_name']);
+                $this->load->helper('cookie');
+                set_cookie("person_user", $user['user_name'], 86400 * 30);
+                $this->json_result(REQUEST_SUCCESS, "登录成功");
+
+            } else {
+                $this->json_result(PARAMETER_WRONG, "", "账号或密码错误,请检查后重新输入");
+            }
         }
         $this->display("passport/login.html");
+    }
+    public function user_logout()
+    {
+        $this->session->sess_destroy();
+        redirect('/', "auto", 302);
     }
 
     /**

@@ -455,7 +455,6 @@ body {
 /*我的京东二级页面*/
 .my1 {
     width: 260px;
-    height: 240px;
     border: 1px solid #ccc;
     border-top: none;
     position: absolute;
@@ -1050,9 +1049,10 @@ body {
     top:10px;
 }
 .right-brand{
-    position: relative;
-    float: left;
-    top:2px;
+    position: absolute;
+    float: right;
+    right: 2px;
+    top: 66px;
     border-bottom: 1px solid grey;
     border-left: 1px solid grey;
     border-right: 1px solid grey;

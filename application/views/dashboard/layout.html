@@ -87,6 +87,23 @@
             </li>
         </ul>
         <ul class="header-right">
+            {{if $smarty.session.person_user}}
+            <li class="my bj">亲爱的会员,{{$smarty.session.person_user}}
+                <i class="ci-right ">
+                    <s class="jt">◇</s>
+                </i>
+                <div class="my1">
+                    <div class="my2">
+                        <img src="{{'static/images/no-img_mid_.jpg'|base_url}}">
+                        <div class="my3">
+                            <h3 class="neirong2"><a href="{{'passport/user_logout'|base_url}}">退出</a></h3>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            {{else}}
+            <li class="denglu"><a href="{{'passport/login'|base_url}}">您好,请登录</a></li>
+            {{/if}}
             <li class="denglu"><a href="#">我的订单</a></li>
             <li class="shu"></li>
             <li class="my bj">

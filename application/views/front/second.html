@@ -1,169 +1,690 @@
 <!--轮播图上方导航栏  一栏-->
-<div class="navy">
-    <div class="focus">
-        <div class="catagory-all">
-            <div class="dt list-title"><a href="">全部商品分类</a></div>
-            <!--轮播图左边当行蓝-->
-            <div class="dd-inner list-down" style="display: none">
-                {{include file = "dashboard/category_list.html"}}
-            </div>
-        </div>
-        <div class="focus-btn">
-            <ul>
-                <a href="{{'passport/login'|base_url}}">
-                    <button class="button">进口展</button>
-                </a>
-                <a href="##">
-                    <button class="button">国产馆</button>
-                </a>
-            </ul>
-        </div>
-        <div class="focus-b">
+<div id="navv">
+    <div class="nav-img" style="background:url({{'static/images/568a1258N2edec1ab.jpg'|base_url}}) repeat-x"></div>
+</div>
+<div class="focus">
+    <div class="focus-a">
+        <div class="fouc-img1"><img src="{{'static/images/5689d4ebN19f155a6.jpg'|base_url}}" class="nav-img2"></div>
+        <div class="fouc-font"><a href="">全部商品分类</a></div>
+    </div>
+    <div class="focus-btn">
+        <ul>
+            <a href="{{'passport/login'|base_url}}">
+                <button class="button">进口展</button>
+            </a>
+            <a href="##">
+                <button class="button">国产馆</button>
+            </a>
+        </ul>
+    </div>
+    <div class="focus-b">
 
-            <i class="iconfont" style="color: red">&#xe84a;</i>
-            <div>
-                <i class="iconfont right-up">&#xe69a;</i>
-                <a href="#">服装城</a>
+        <i class="iconfont" style="color: red">&#xe84a;</i>
+        <div>
+            <i class="iconfont right-up">&#xe6c0;</i>
+            <a href="#">服装城</a>
+        </div>
+        <div>
+            <i class="iconfont right-up">&#xe6c0;</i>
+            <a href="#">服装城</a>
+        </div>
+        <div>
+            <i class="iconfont right-up">&#xe6c0;</i>
+            <a href="#">服装城</a>
+        </div>
+        <div>
+            <i class="iconfont right-up">&#xe6c0;</i>
+            <a href="#">服装城</a>
+        </div>
+        <a class="edit-favo">编辑</a>
+    </div>
+    <!--轮播图左边当行蓝-->
+    <div class="bb"></div>
+    <div class="dd-inner">
+        {{include file = "dashboard/category_list.html"}}
+    </div>
+    <!------------------------------------轮播图------------------------------------>
+    <div id="lunbo">
+        {{include file = "dashboard/lunbo.html"}}
+    </div>
+    <div class="right-brand">
+        <div class="hs-brands">
+            <div class="brands-left">
+                <ul>
+                    <li>
+                        <a href="#" class="item"><img src="{{'static/images/56c6e9f8N4dbb9d82.jpg'|base_url}}"></a>
+                    </li>
+                    <li>
+                        <a class="item">
+                            <img src="{{'static/images/56cfc8ecN4e1be163.jpg'|base_url}}"></a>
+                    </li>
+                    <li>
+                        <a href="#" class="item"><img src="{{'static/images/56cad6bbNfb26d292.jpg'|base_url}}">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="item"><img src="{{'static/images/56cad7d2N1874563f.jpg'|base_url}}">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="item"><img src="{{'static/images/56c6e6d1N5ca75add.jpg'|base_url}}">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="item"><img src="{{'static/images/56cad981N823d9db6.jpg'|base_url}}">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="item"><img src="{{'static/images/56cad9bfN2f47ae16.jpg'|base_url}}">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="item"><img src="{{'static/images/56cad9bfN2f47ae16.jpg'|base_url}}">
+                        </a>
+                    </li>
+                </ul>
             </div>
-            <div>
-                <i class="iconfont right-up">&#xe69a;</i>
-                <a href="#">服装城</a>
+            <div class="brands-right">
+                <ul>
+                    <li>
+                        <a href="#" class="item"><img src="{{'static/images/56c6e93aNbe80cb1b.jpg'|base_url}}">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="item"><img src="{{'static/images/56cad85aNcbcc9dd3.jpg'|base_url}}">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="item"><img src="{{'static/images/56cada49N382d2e2c.jpg'|base_url}}"></a>
+                    </li>
+                    <li>
+                        <a href="#" class="item"><img src="{{'static/images/56c6e872Nb185d562.jpg'|base_url}}">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="item"><img src="{{'static/images/56c6e7eeN5b058659.jpg'|base_url}}">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="item"><img src="{{'static/images/56c6ea8aN2c6a427d.jpg'|base_url}}">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="item"><img src="{{'static/images/56cad903N7a43faa0.jpg'|base_url}}">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="item"><img src="{{'static/images/56cad9bfN2f47ae16.jpg'|base_url}}">
+                        </a>
+                    </li>
+                </ul>
             </div>
-            <div>
-                <i class="iconfont right-up">&#xe69a;</i>
-                <a href="#">服装城</a>
+            <div class="brands-right">
+                <ul>
+                    <li>
+                        <a href="#" class="item"><img src="{{'static/images/56c6e93aNbe80cb1b.jpg'|base_url}}">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="item"><img src="{{'static/images/56cad85aNcbcc9dd3.jpg'|base_url}}">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="item"><img src="{{'static/images/56cada49N382d2e2c.jpg'|base_url}}"></a>
+                    </li>
+                    <li>
+                        <a href="#" class="item"><img src="{{'static/images/56c6e872Nb185d562.jpg'|base_url}}">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="item"><img src="{{'static/images/56c6e7eeN5b058659.jpg'|base_url}}">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="item"><img src="{{'static/images/56c6ea8aN2c6a427d.jpg'|base_url}}">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="item"><img src="{{'static/images/56cad903N7a43faa0.jpg'|base_url}}">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="item"><img src="{{'static/images/56cad9bfN2f47ae16.jpg'|base_url}}">
+                        </a>
+                    </li>
+                </ul>
             </div>
-            <div>
-                <i class="iconfont right-up">&#xe69a;</i>
-                <a href="#">服装城</a>
-            </div>
-            <a class="edit-favo">编辑</a>
         </div>
     </div>
-    <div class="w">
-        <div class="second-con">
-            <div class="left-hot">
+    <div class="lazy-fn lazy-fn-done" id="lazy-todays">
+        <div id="guessyou" class="">
+            <div class="mt">
+                <h2>猜你喜欢</h2>
+                <a href="#" class="extra">换一批</a>
+            </div>
+            <div class="list1">
+                <div class="spacer"><i></i></div>
+                <ul>
+                    <li class="fore1">
+                        <div class="p-img">
+                            <a href="#" target="_blank">
+                                <img data-lazy-img="done" width="130" height="130"
+                                     title="小米（MI）红米note3 双卡双待 智能 手机 金色 全网通高配版(3G RAM+32G ROM)标配"
+                                     src="{{'static/images/56543327N1ecaef4f.jpg'|base_url}}" class="">
+                            </a>
+                        </div>
+                        <div class="p-info">
+                            <div class="p-name">
+                                <a href="#" target="_blank"
+                                   title="小米（MI）红米note3 双卡双待 智能 手机 金色 全网通高配版(3G RAM+32G ROM)标配">小米（MI）红米note3 双卡双待 智能 手机
+                                    金色 全网通高配版(3G RAM+32G ROM)标配
+                                </a>
+                            </div>
+                            <div class="p-price" data-lazyload-fn="done"><i>¥</i>1598.00</div>
+                        </div>
+                    </li>
+                    <li class="fore2">
+                        <div class="p-img">
+                            <a href="#" target="_blank"><img data-lazy-img="done" width="130" height="130"
+                                                             title="小米4 移动合约版 黑色 移动4G手机 不含合约计划"
+                                                             src="{{'static/images/555affefN75bf81ed.jpg'|base_url}}"
+                                                             class=""></a>
+                        </div>
+                        <div class="p-info">
+                            <div class="p-name"><a href="#" target="_blank" title="小米4 移动合约版 黑色 移动4G手机 不含合约计划">小米4 移动合约版
+                                黑色 移动4G手机 不含合约计划</a>
+                            </div>
+                            <div class="p-price"><i>¥</i>1099.00</div>
+                        </div>
+                    </li>
+                    <li class="fore3">
+                        <div class="p-img"><a href="#" target="_blank"><img data-lazy-img="done" width="130"
+                                                                            height="130"
+                                                                            title="勾勾手 重力方向盘无线遥控车 儿童玩具车汽车模型 漂移遥控汽车 可充电 急速游侠 红色"
+                                                                            src="{{'static/images/55376141Na63cbc04.jpg'|base_url}}"
+                                                                            class=""></a>
+                        </div>
+                        <div class="p-info">
+                            <div class="p-name"><a href="#" target="_blank"
+                                                   title="勾勾手 重力方向盘无线遥控车 儿童玩具车汽车模型 漂移遥控汽车 可充电 急速游侠 红色">勾勾手 重力方向盘无线遥控车
+                                儿童玩具车汽车模型 漂移遥控汽车 可充电 急速游侠 红色</a>
+                            </div>
+                            <div class="p-price"><i>¥</i>68.00</div>
+                        </div>
+                    </li>
+                    <li class="fore4">
+                        <div class="p-img">
+                            <a href="#" target="_blank"><img data-lazy-img="done" width="130" height="130"
+                                                             title="【明星同款 年终清仓】吉普盾NIAN JEEP男女情侣款两件套三合一冲锋衣防水防风保暖 男款灰色 M"
+                                                             src="{{'static/images/56849f79N5041bd59.jpg'|base_url}}"
+                                                             class=""></a>
+                        </div>
+                        <div class="p-info">
+                            <div class="p-name"><a href="#" target="_blank"
+                                                   title="【明星同款 年终清仓】吉普盾NIAN JEEP男女情侣款两件套三合一冲锋衣防水防风保暖 男款灰色 M">【明星同款
+                                年终清仓】吉普盾NIAN JEEP男女情侣款两件套三合一冲锋衣防水防风保暖 男款灰色 M</a>
+                            </div>
+                            <div class="p-price"><i>¥</i>238.00</div>
+                        </div>
+                    </li>
+                    <li class="fore5">
+                        <div class="p-img">
+                            <a href="#" target="_blank"><img data-lazy-img="done" width="130" height="130"
+                                                             title="小米（MI）小米蓝牙耳机-黑色 "
+                                                             src="{{'static/images/55d17800N1b88605f.jpg'|base_url}}"
+                                                             class=""></a>
+                        </div>
+                        <div class="p-info">
+                            <div class="p-name">
+                                <a href="#" target="_blank" title="小米（MI）小米蓝牙耳机-黑色 ">小米（MI）小米蓝牙耳机-黑色 </a>
+                            </div>
+                            <div class="p-price"><i>¥</i>79.00</div>
+                        </div>
+                    </li>
+                    <li class="fore6">
+                        <div class="p-img">
+                            <a href="#" target="_blank"><img data-lazy-img="done" width="130" height="130"
+                                                             title="SSC汽车高压洗车机高压清洗机家用220v洗车器洗车泵1616d"
+                                                             src="{{'static/images/568cbdcbNac6d0772.jpg'|base_url}}"
+                                                             class=""></a>
+                        </div>
+                        <div class="p-info">
+                            <div class="p-name">
+                                <a href="#" target="_blank" title="SSC汽车高压洗车机高压清洗机家用220v洗车器洗车泵1616d">SSC汽车高压洗车机高压清洗机家用220v洗车器洗车泵1616d</a>
+                            </div>
+                            <div class="p-price"><i>¥</i>428.00</div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div><!--猜你喜欢结束-->
+        <div class="w clearfix lazy-fn lazy-fn-done" id="lazy-special">
+            <div id="special">
+                <div class="mt">
+                    <h2>天天低价</h2>
+                </div>
+                <div class="mc">
+                    <ul>
 
+                        <li class="fore1">
+                            <div class="p-img">
+                                <a href="#" target="_blank"><img
+                                        src="http://shop.local/static/images/56cd4890Ncb5e42dc.png" width="160"
+                                        height="160" alt=""></a>
+                            </div>
+                            <div class="p-info">
+                                <div class="p-name"><a href="#" target="_blank">小米4 移动合约版 黑色 移动4G手机 不含合约计划</a></div>
+                                <div class="p-price">
+                                    <span>￥1099.00</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="fore2">
+                            <div class="p-img">
+                                <a href="#" target="_blank"><img
+                                        src="http://shop.local/static/images/56cd606eN2bca1efb.png" width="100"
+                                        height="100" alt=""></a>
+                            </div>
+                            <div class="p-info">
+                                <div class="p-name"><a href="#" target="_blank">彩虹的梦8000毫安时聚合物移动电源 充电宝 轻薄小巧便携 白色
+                                    官方标配</a></div>
+                                <div class="p-price">
+                                    <span>￥49.00</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="fore3">
+                            <div class="p-img">
+                                <a href="#" target="_blank"><img
+                                        src="http://shop.local/static/images/56cd6173Nfdc36700.png" width="100"
+                                        height="100" alt=""></a>
+                            </div>
+                            <div class="p-info">
+                                <div class="p-name"><a href="#" target="_blank">德国 进口牛奶 甘蒂牧场（MUH）脱脂纯牛奶1L*12盒</a></div>
+                                <div class="p-price">
+                                    <span>￥129.00</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="fore4">
+                            <div class="p-img">
+                                <a href="#"><img src="http://shop.local/static/images/56cd6333Nb7ab172a.png" width="100"
+                                                 height="100" alt=""></a>
+                            </div>
+                            <div class="p-info">
+                                <div class="p-name"><a href="#" target="_blank">优洋 靠垫办公室腰枕慢回弹腰垫记忆棉腰靠背垫护腰靠垫靠枕 深咖色
+                                    松紧带+延长带</a></div>
+                                <div class="p-price">
+                                    <span>￥99.00</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="fore5" clstag="h|keycount|2015|31a5">
+                            <div class="p-img">
+                                <a href="#"><img src="http://shop.local/static/images/56cd635dNdf30e78b.png" width="100"
+                                                 height="100" alt=""></a>
+                            </div>
+                            <div class="p-info">
+                                <div class="p-name"><a href="#" target="_blank">尼康（NIKON） Coolpix S2900 便携数码相机
+                                    黑色（2005万像素 2.7英寸屏 5倍光学变焦 26mm广角）</a></div>
+                                <div class="p-price">
+                                    <span>￥479.00</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="fore6">
+                            <div class="p-img">
+                                <a href="#" target="_blank"><img
+                                        src="http://shop.local/static/images/56cd639aNe4e10658.png" width="100"
+                                        height="100" alt="立客（LIKE）LK-S2011 2.0升 电水壶 全钢防干烧/自动断电"></a>
+                            </div>
+                            <div class="p-info">
+                                <div class="p-name"><a href="#" target="_blank">立客（LIKE）LK-S2011 2.0升 电水壶 全钢防干烧/自动断电</a>
+                                </div>
+                                <div class="p-price">
+                                    <span>￥29.90</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="fore7">
+                            <div class="p-img">
+                                <a href="#"><img src="http://shop.local/static/images/56d00888Nff020c36.png" width="100"
+                                                 height="100" alt=""></a>
+                            </div>
+                            <div class="p-info">
+                                <div class="p-name">
+                                    <a href="#" target="_blank">康佳（KONKA）LED65S1 65吋 64位 八核智能 LED平板液晶电视（黑色）</a>
+                                </div>
+                                <div class="p-price">
+                                    <span>￥4799.00</span>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
             </div>
-            <div class="middle-ad">
-                <div class="lunbo second-pag">
-                {{include file = "dashboard/lunbo.html"}}
-            </div>
-            </div>
-            <div class="right-brand">
-                <div class="hs-brands">
-                    <div class="brands-left">
-                        <ul>
-                            <li>
-                                <a href="#" class="item"><img src="{{'static/images/56c6e9f8N4dbb9d82.jpg'|base_url}}"></a>
+            <div class="ss" id="share">
+                <div class="mt">
+                    <h2>热门晒单</h2>
+                </div>
+                <div class="mc">
+                    <div class="sw" style="position: relative;">
+                        <ul style="top: -720px; position: absolute; margin-top: 20px;">
+
+
+                            <li clstag="h|keycount|2015|31b6" data-switchable-clone="1" style="display: list-item;">
+                                <div class="p-img">
+                                    <a href="#" target="_blank"><img
+                                            src="http://shop.local/static/images/566e3801N5416f870.jpg"
+                                            alt="电陶炉很好，拆开试了加热很快。" width="80" height="80"></a>
+                                </div>
+                                <div class="p-info">
+                                    <div class="author-info">
+                                        <img title="lhm9199" src="http://shop.local/static/images/56cfa1ccN3dee9031.jpg"
+                                             alt="lhm9199" width="28" height="28">
+                                        <span>lhm9199</span>
+                                    </div>
+                                    <div class="p-detail">
+                                        <a target="_blank" href="#">电陶炉很好，拆开试了加热很快。
+                                            <span class="icon-r">”</span></a>
+                                        <span class="detail-arrow">◆</span>
+                                        <span class="icon-l">“</span>
+                                    </div>
+                                </div>
                             </li>
-                            <li>
-                                <a class="item">
-                                    <img src="{{'static/images/56cfc8ecN4e1be163.jpg'|base_url}}"></a>
+                            <li style="display: list-item;">
+                                <div class="p-img">
+                                    <a href="#" target="_blank"><img
+                                            src="http://shop.local/static/images/5668ee98N42fbbfc0.jpg" alt=""
+                                            width="80" height="80"></a>
+                                </div>
+                                <div class="p-info">
+                                    <div class="author-info">
+                                        <img title="zhou-fei"
+                                             src="http://shop.local/static/images/56cfa1a3Ne51145d7.jpg" alt="zhou-fei"
+                                             width="28" height="28">
+                                        <span>zhou-fei</span>
+                                    </div>
+                                    <div class="p-detail">
+                                        <a target="_blank" href="#">质地轻薄挺好吸收的，淡淡的香味……
+                                            <span class="icon-r">”</span></a>
+                                        <span class="detail-arrow">◆</span>
+                                        <span class="icon-l">“</span>
+                                    </div>
+                                </div>
                             </li>
-                            <li>
-                                <a href="#" class="item"><img src="{{'static/images/56cad6bbNfb26d292.jpg'|base_url}}">
-                                </a>
+                            <li style="display: list-item;" class="">
+                                <div class="p-img">
+                                    <a href="#" target="_blank"><img
+                                            src="http://shop.local/static/images/56273f03N5d252709.jpg" alt="感觉还可以，相信京东"
+                                            width="80" height="80"></a>
+                                </div>
+                                <div class="p-info">
+                                    <div class="author-info">
+                                        <img title="沈洪娟" src="http://shop.local/static/images/56cfa1aaNea6b7699.jpg"
+                                             alt="沈洪娟" width="28" height="28">
+                                        <span>沈洪娟</span>
+                                    </div>
+                                    <div class="p-detail">
+                                        <a target="_blank" title="感觉还可以，相信京东" href="#">感觉还可以，相信京东
+                                            <span class="icon-r">”</span></a>
+                                        <span class="detail-arrow">◆</span>
+                                        <span class="icon-l">“</span>
+                                    </div>
+                                </div>
                             </li>
-                            <li>
-                                <a href="#" class="item"><img src="{{'static/images/56cad7d2N1874563f.jpg'|base_url}}">
-                                </a>
+                            <li style="display: list-item;" class="">
+                                <div class="p-img">
+                                    <a href="#" target="_blank"><img
+                                            src="http://shop.local/static/images/56c2dd74N1bd18e2b.jpg"
+                                            alt="台灯买来女儿很开心她说非常好用，京东值得肯定！" width="80" height="80"></a>
+                                </div>
+                                <div class="p-info">
+                                    <div class="author-info">
+                                        <img title="微笑xhq66" src="http://shop.local/static/images/56cfa1b2N3f8a29be.jpg"
+                                             alt="微笑xhq66" width="28" height="28">
+                                        <span>微笑xhq66</span>
+                                    </div>
+                                    <div class="p-detail">
+                                        <a target="_blank" href="#">台灯买来女儿很开心她说非常好用……
+                                            <span class="icon-r">”</span></a>
+                                        <span class="detail-arrow">◆</span>
+                                        <span class="icon-l">“</span>
+                                    </div>
+                                </div>
                             </li>
-                            <li>
-                                <a href="#" class="item"><img src="{{'static/images/56c6e6d1N5ca75add.jpg'|base_url}}">
-                                </a>
+                            <li style="display: list-item;">
+                                <div class="p-img">
+                                    <a href="#" target="_blank"><img
+                                            src="http://shop.local/static/images/56580901N2c691a23.jpg" alt=""
+                                            width="80" height="80"></a>
+                                </div>
+                                <div class="p-info">
+                                    <div class="author-info">
+                                        <img src="http://shop.local/static/images/56cfa1bbNc1ad9a8a.jpg" alt="药材公司办公室"
+                                             width="28" height="28">
+                                        <span>药材公司办公室</span>
+                                    </div>
+                                    <div class="p-detail">
+                                        <a target="_blank" href="#">本本今天收到了，真的好薄的好帅……
+                                            <span class="icon-r">”</span></a>
+                                        <span class="detail-arrow">◆</span>
+                                        <span class="icon-l">“</span>
+                                    </div>
+                                </div>
                             </li>
-                            <li>
-                                <a href="#" class="item"><img src="{{'static/images/56cad981N823d9db6.jpg'|base_url}}">
-                                </a>
+                            <li class="ui-switchable-panel-selected" style="display: list-item;">
+                                <div class="p-img">
+                                    <a href="#" target="_blank"><img
+                                            src="http://shop.local/static/images/55d3f67aNc7bd1217.jpg" alt=""
+                                            width="80" height="80"></a>
+                                </div>
+                                <div class="p-info">
+                                    <div class="author-info">
+                                        <img title="JalenChou1"
+                                             src="http://shop.local/static/images/56cfa1c4Nb5d69f89.jpg"
+                                             alt="JalenChou1" width="28" height="28">
+                                        <span>JalenChou1</span>
+                                    </div>
+                                    <div class="p-detail">
+                                        <a target="_blank" href="#">给老爸买的手机，昨天晚上下的单……
+                                            <span class="icon-r">”</span></a>
+                                        <span class="detail-arrow">◆</span>
+                                        <span class="icon-l">“</span>
+                                    </div>
+                                </div>
                             </li>
-                            <li>
-                                <a href="#" class="item"><img src="{{'static/images/56cad9bfN2f47ae16.jpg'|base_url}}">
-                                </a>
+                            <li class="" style="display: list-item;">
+                                <div class="p-img">
+                                    <a href="#" target="_blank"><img
+                                            src="http://shop.local/static/images/566e3801N5416f870.jpg" alt=""
+                                            width="80" height="80"></a>
+                                </div>
+                                <div class="p-info">
+                                    <div class="author-info">
+                                        <img title="lhm9199" src="http://shop.local/static/images/56cfa1ccN3dee9031.jpg"
+                                             alt="lhm9199" width="28" height="28">
+                                        <span>lhm9199</span>
+                                    </div>
+                                    <div class="p-detail">
+                                        <a target="_blank" href="#">电陶炉很好，拆开试了加热很快。
+                                            <span class="icon-r">”</span></a>
+                                        <span class="detail-arrow">◆</span>
+                                        <span class="icon-l">“</span>
+                                    </div>
+                                </div>
                             </li>
-                            <li>
-                                <a href="#" class="item"><img src="{{'static/images/56cad9bfN2f47ae16.jpg'|base_url}}">
-                                </a>
+                            <li style="display: list-item;">
+                                <div class="p-img">
+                                    <a href="" target="_blank"><img
+                                            src="http://shop.local/static/images/5668ee98N42fbbfc0.jpg" alt=""
+                                            width="80" height="80"></a>
+                                </div>
+                                <div class="p-info">
+                                    <div class="author-info">
+                                        <img title="zhou-fei"
+                                             src="http://shop.local/static/images/56cfa1a3Ne51145d7.jpg" alt="zhou-fei"
+                                             width="28" height="28">
+                                        <span>zhou-fei</span>
+                                    </div>
+                                    <div class="p-detail">
+                                        <a target="_blank" href="#">质地轻薄挺好吸收的，淡淡的香味……
+                                            <span class="icon-r">”</span></a>
+                                        <span class="detail-arrow">◆</span>
+                                        <span class="icon-l">“</span>
+                                    </div>
+                                </div>
                             </li>
-                        </ul>
-                    </div>
-                    <div class="brands-right">
-                        <ul>
-                            <li>
-                                <a href="#" class="item"><img src="{{'static/images/56c6e93aNbe80cb1b.jpg'|base_url}}">
-                                </a>
+                            <li style="display: list-item;">
+                                <div class="p-img">
+                                    <a href="#" target="_blank"><img
+                                            src="http://shop.local/static/images/56273f03N5d252709.jpg" alt="感觉还可以，相信京东"
+                                            width="80" height="80"></a>
+                                </div>
+                                <div class="p-info">
+                                    <div class="author-info">
+                                        <img title="沈洪娟" src="http://shop.local/static/images/56cfa1aaNea6b7699.jpg"
+                                             alt="沈洪娟" width="28" height="28">
+                                        <span>沈洪娟</span>
+                                    </div>
+                                    <div class="p-detail">
+                                        <a target="_blank" href="#">感觉还可以，相信京东
+                                            <span class="icon-r">”</span></a>
+                                        <span class="detail-arrow">◆</span>
+                                        <span class="icon-l">“</span>
+                                    </div>
+                                </div>
                             </li>
-                            <li>
-                                <a href="#" class="item"><img src="{{'static/images/56cad85aNcbcc9dd3.jpg'|base_url}}">
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="item"><img src="{{'static/images/56cada49N382d2e2c.jpg'|base_url}}"></a>
-                            </li>
-                            <li>
-                                <a href="#" class="item"><img src="{{'static/images/56c6e872Nb185d562.jpg'|base_url}}">
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="item"><img src="{{'static/images/56c6e7eeN5b058659.jpg'|base_url}}">
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="item"><img src="{{'static/images/56c6ea8aN2c6a427d.jpg'|base_url}}">
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="item"><img src="{{'static/images/56cad903N7a43faa0.jpg'|base_url}}">
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="item"><img src="{{'static/images/56cad9bfN2f47ae16.jpg'|base_url}}">
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="brands-right">
-                        <ul>
-                            <li>
-                                <a href="#" class="item"><img src="{{'static/images/56c6e93aNbe80cb1b.jpg'|base_url}}">
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="item"><img src="{{'static/images/56cad85aNcbcc9dd3.jpg'|base_url}}">
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="item"><img src="{{'static/images/56cada49N382d2e2c.jpg'|base_url}}"></a>
-                            </li>
-                            <li>
-                                <a href="#" class="item"><img src="{{'static/images/56c6e872Nb185d562.jpg'|base_url}}">
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="item"><img src="{{'static/images/56c6e7eeN5b058659.jpg'|base_url}}">
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="item"><img src="{{'static/images/56c6ea8aN2c6a427d.jpg'|base_url}}">
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="item"><img src="{{'static/images/56cad903N7a43faa0.jpg'|base_url}}">
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="item"><img src="{{'static/images/56cad9bfN2f47ae16.jpg'|base_url}}">
-                                </a>
+                            <li clstag="h|keycount|2015|31b5" data-switchable-clone="1" style="display: list-item;">
+                                <div class="p-img">
+                                    <a href="#"><img src="http://shop.local/static/images/55d3f67aNc7bd1217.jpg" alt=""
+                                                     width="80" height="80"></a>
+                                </div>
+                                <div class="p-info">
+                                    <div class="author-info">
+                                        <img title="JalenChou1"
+                                             src="http://shop.local/static/images/56cfa1c4Nb5d69f89.jpg"
+                                             alt="JalenChou1" width="28" height="28">
+                                        <span>JalenChou1</span>
+                                    </div>
+                                    <div class="p-detail">
+                                        <a target="_blank" href="#">给老爸买的手机，昨天晚上下的单……
+                                            <span class="icon-r">”</span></a>
+                                        <span class="detail-arrow">◆</span>
+                                        <span class="icon-l">“</span>
+                                    </div>
+                                </div>
                             </li>
                         </ul>
                     </div>
                 </div>
             </div>
+            <!--index_ok--></div>
+        <div class="lazy-fn lazy-fn-done" id="lazy-footer">
+            <div id="service-2014">
+                <div class="slogen">
+                    <img src="http://shop.local/static/images/duo.png" alt="">
+                </div>
+                <div class="w">
+                    <dl class="fore1">
+                        <dt>购物指南</dt>
+                        <dd>
+                            <div><a rel="nofollow" target="_blank" href="#">购物流程</a></div>
+                            <div><a rel="nofollow" target="_blank" href="#">会员介绍</a></div>
+                            <div><a rel="nofollow" target="_blank" href="#">生活旅行/团购</a></div>
+                            <div><a rel="nofollow" target="_blank" href="#">常见问题</a></div>
+                            <div><a rel="nofollow" target="_blank" href="#">大家电</a></div>
+                            <div><a rel="nofollow" target="_blank" href="#">联系客服</a></div>
+                        </dd>
+                    </dl>
+                    <dl class="fore2">
+                        <dt>配送方式</dt>
+                        <dd>
+                            <div><a rel="nofollow" target="_blank" href="#">上门自提</a></div>
+                            <div><a rel="nofollow" target="_blank" href="#">211限时达</a></div>
+                            <div><a rel="nofollow" target="_blank" href="#">配送服务查询</a></div>
+                            <div><a rel="nofollow" target="_blank" href="#">配送费收取标准</a></div>
+                            <div><a target="_blank" href="#">海外配送</a></div>
+                        </dd>
+                    </dl>
+                    <dl class="fore3">
+                        <dt>支付方式</dt>
+                        <dd>
+                            <div><a rel="nofollow" target="_blank" href="#">货到付款</a></div>
+                            <div><a rel="nofollow" target="_blank" href="#">在线支付</a></div>
+                            <div><a rel="nofollow" target="_blank" href="#">分期付款</a></div>
+                            <div><a rel="nofollow" target="_blank" href="#">邮局汇款</a></div>
+                            <div><a rel="nofollow" target="_blank" href="#">公司转账</a></div>
+                        </dd>
+                    </dl>
+                    <dl class="fore4">
+                        <dt>售后服务</dt>
+                        <dd>
+                            <div><a rel="nofollow" target="_blank" href="#">售后政策</a></div>
+                            <div><a rel="nofollow" target="_blank" href="#">价格保护</a></div>
+                            <div><a rel="nofollow" target="_blank" href="#">退款说明</a></div>
+                            <div><a rel="nofollow" target="_blank" href="#">返修/退换货</a></div>
+                            <div><a rel="nofollow" target="_blank" href="#">取消订单</a></div>
+                        </dd>
+                    </dl>
+                    <dl class="fore5">
+                        <dt>特色服务</dt>
+                        <dd>
+                            <div><a target="_blank" href="#">夺宝岛</a></div>
+                            <div><a target="_blank" href="#">DIY装机</a></div>
+                            <div><a rel="nofollow" target="_blank" href="#">延保服务</a></div>
+                            <div><a rel="nofollow" target="_blank" href="#">京东E卡</a></div>
+                            <div><a rel="nofollow" target="_blank" href="#">京东通信</a></div>
+                            <div><a rel="nofollow" target="_blank" href="#">京东JD+</a></div>
+                        </dd>
+                    </dl>
+                    <div id="coverage">
+                        <div class="dt">
+                            京东自营覆盖区县
+                        </div>
+                        <div class="dd">
+                            <p>京东已向全国2423个区县提供自营配送服务，支持货到付款、POS机刷卡和售后上门服务。</p>
+                            <p class="ar"><a target="_blank" href="http://help.jd.com/user/issue/103-983.html">查看详情&nbsp;&gt;</a>
+                            </p>
+                        </div>
+                    </div>
+                    <span class="clr"></span>
+                </div>
+            </div>
+            <div class="w">
+                <div id="footer-2014">
+                    <div class="links">
+                        <a rel="nofollow" target="_blank" href="#">关于我们</a>|<a href="#">联系我们</a>|<a rel="nofollow" target="_blank" href="#">商家入驻</a>|<a rel="nofollow" target="_blank" href="#">营销中心</a>|<a rel="nofollow" target="_blank" href="#">手机京东</a>|<a target="_blank" href="#">友情链接</a>|<a target="_blank" href="#">销售联盟</a>|<a href="#" target="_blank">京东社区</a>|<a href="#" target="_blank">京东公益</a>|<a href="#" target="_blank">English Site</a>|<a href="#" target="_blank">Contact
+                        Us</a></div>
+                    <div class="copyright">
+                        <a target="_blank" href="#"><img src="http://shop.local/static/images/56a0a994Nf1b662dc.png"> 京公网安备
+                            11000002000088号</a>&nbsp;&nbsp;|&nbsp;&nbsp;京ICP证070359号&nbsp;&nbsp;|&nbsp;&nbsp;<a target="_blank" href="#">互联网药品信息服务资格证编号(京)-经营性-2014-0008</a>&nbsp;&nbsp;|&nbsp;&nbsp;新出发京零&nbsp;字第大120007号<br><a rel="nofollow" href="#" target="_blank">音像制品经营许可证苏宿批005号</a>&nbsp;&nbsp;|&nbsp;&nbsp;出版物经营许可证编号新出发(苏)批字第N-012号&nbsp;&nbsp;|&nbsp;&nbsp;互联网出版许可证编号新出网证(京)字150号<br><a href="#" target="_blank">网络文化经营许可证京网文[2014]2148-348号</a>&nbsp;&nbsp;违法和不良信息举报电话：4006561155&nbsp;&nbsp;Copyright&nbsp;©&nbsp;2004-2016&nbsp;&nbsp;京东JD.com&nbsp;版权所有<br>京东旗下网站：<a target="_blank" href="http://www.360top.com/">360TOP</a>&nbsp;&nbsp;<a href="#" target="_blank">拍拍网</a>&nbsp;&nbsp;<a href="#" target="_blank">网银在线</a></div>
 
+                    <div class="authentication">
+                        <a rel="nofollow" target="_blank" href="#">
+                            <img width="103" height="32" alt="经营性网站备案中心" src="http://shop.local/static/images/54b8871eNa9a7067e.png" class="err-product">
+                        </a>
+
+                        <a rel="nofollow" target="_blank" id="urlknet" tabindex="-1" href="#">
+                            <img border="true" width="103" height="32" onclick="CNNIC_change('urlknet')" oncontextmenu="return false;" name="CNNIC_seal" alt="可信网站" src="http://shop.local/static/images/54b8872dNe37a9860.png" class="err-product">
+                        </a>
+                        <a rel="nofollow" target="_blank" href="#">
+                            <img width="103" height="32" alt="网络警察" src="http://shop.local/static/images/56a89b8fNfbaade9a.jpg" class="err-product">
+                        </a>
+                        <a rel="nofollow" target="_blank" href="#">
+                            <img width="103" height="32" src="http://shop.local/static/images/54b8875fNad1e0c4c.png" class="err-product">
+                        </a>
+                        <a target="_blank" href="#"><img width="103" height="32" src="http://shop.local/static/images/5698dc03N23f2e3b8.jpg"></a>
+                        <a target="_blank" href="#"><img width="103" height="32" src="http://shop.local/static/images/5698dc16Nb2ab99df.jpg"></a>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
 </div>
+<!--*****************轮播下方*****************-->
+
 <script type="application/javascript">
     $(function () {
         $(".catagory-all").hover(function () {

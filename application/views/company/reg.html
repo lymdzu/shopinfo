@@ -1,0 +1,555 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>注册-企业用户</title>
+    <link type="text/css" rel="stylesheet" href="{{'static/css/passport.base.css'|base_url}}"/>
+    <link type="text/css" rel="stylesheet" href="{{'static/css/regist.company.css'|base_url}}"/>
+    <script type="text/javascript" src="../misc/js/jquery-1.2.6.pack.js"></script>
+    <script>
+        (function uncl(t, e) {
+            t[e] = t[e] || function () {
+                        (t[e].q = t[e].q || []).push(arguments)
+                    }, t[e].t = 1 * new Date;
+            var n = document.createElement("script");
+            n.type = "text/javascript", n.async = !0, n.src = "//static.queit.in/sdk.js";
+            var a = document.getElementsByTagName("script")[0];
+            a.parentNode.insertBefore(n, a)
+        })(window, "uncl");
+        uncl('create', 'jd');
+    </script>
+</head>
+
+<body>
+<script type="text/javascript">function login() {
+    location.href = document.location.protocol + "//passport.jd.com/uc/login" + location.search;
+    return false
+}
+function regist() {
+    location.href = document.location.protocol + "//reg.jd.com/reg/person" + location.search;
+    return false
+}
+(function (a) {
+    a.fn.Jdropdown = function (d, e) {
+        if (!this.length) {
+            return
+        }
+        if (typeof d == "function") {
+            e = d;
+            d = {}
+        }
+        var c = a.extend({event: "mouseover", current: "hover", delay: 0}, d || {});
+        var b = (c.event == "mouseover") ? "mouseout" : "mouseleave";
+        a.each(this, function () {
+            var h = null, g = null, f = false;
+            a(this).bind(c.event,
+                    function () {
+                        if (f) {
+                            clearTimeout(g)
+                        } else {
+                            var j = a(this);
+                            h = setTimeout(function () {
+                                j.addClass(c.current);
+                                f = true;
+                                if (e) {
+                                    e(j)
+                                }
+                            }, c.delay)
+                        }
+                    }).bind(b, function () {
+                if (f) {
+                    var j = a(this);
+                    g = setTimeout(function () {
+                        j.removeClass(c.current);
+                        f = false
+                    }, c.delay)
+                } else {
+                    clearTimeout(h)
+                }
+            })
+        })
+    }
+})(jQuery);
+</script>
+<div id="shortcut-2013">
+    <div class="w">
+        <ul class="fr lh">
+            <li class="fore1" id="loginbar">您好！欢迎来到京东！<a href="javascript:login()">[登录]</a>&nbsp;<a
+                    href="javascript:regist()">[免费注册]</a></li>
+            <li class="fore2 ld">
+                <s></s>
+                <a href="http://jd2008.jd.com/JdHome/OrderList.aspx" rel="nofollow">我的订单</a>
+            </li>
+            <li class="fore3 ld">
+                <s></s>
+                <a href="//app.jd.com/" target="_blank">手机京东</a>
+            </li>
+            <li class="fore4 ld menu" id="biz-service" data-widget="dropdown">
+                <s></s>
+                <span class="outline"></span>
+                <span class="blank"></span>
+                客户服务
+                <b></b>
+
+                <div class="dd">
+                    <div><a href="//help.jd.com/help/question-61.html" target="_blank">常见问题</a></div>
+                    <div><a href="//myjd.jd.com/repair/orderlist.action" target="_blank" rel="nofollow">售后服务</a>
+                    </div>
+                    <div><a href="//chat.jd.com/jdchat/custom.action" target="_blank" rel="nofollow">在线客服</a></div>
+                    <div><a href="//myjd.jd.com/opinion/list.action" target="_blank" rel="nofollow">投诉中心</a></div>
+                    <div><a href="//www.jd.com/contact/service.html" target="_blank">客服邮箱</a></div>
+                </div>
+            </li>
+            <li class="fore5 ld menu" id="site-nav" data-widget="dropdown">
+                <s></s>
+                <span class="outline"></span>
+                <span class="blank"></span>
+                网站导航
+                <b></b>
+
+                <div class="dd lh">
+                    <dl class="item fore1">
+                        <dt>特色栏目</dt>
+                        <dd>
+                            <div><a target="_blank" href="//my.jd.com/personal/guess.html">为我推荐</a></div>
+                            <div><a target="_blank" href="//shipingou.jd.com/">视频购物</a></div>
+                            <div><a target="_blank" href="//club.jd.com/">京东社区</a></div>
+                            <div><a target="_blank" href="//xiaoyuan.jd.com/">校园频道</a></div>
+                            <div><a target="_blank" href="//read.jd.com/">在线读书</a></div>
+                            <div><a target="_blank" href="//diy.jd.com/">装机大师</a></div>
+                            <div><a target="_blank" href="//market.jd.com/giftcard/">礼品卡</a></div>
+                        </dd>
+                    </dl>
+                    <dl class="item fore2">
+                        <dt>企业服务</dt>
+                        <dd>
+                            <div><a target="_blank" href="//market.jd.com/giftcard/company/default.aspx">企业客户</a>
+                            </div>
+                            <div><a target="_blank" href="//sale.jd.com/p10997.html">办公直通车</a></div>
+                        </dd>
+                    </dl>
+                    <dl class="item fore3">
+                        <dt>旗下网站</dt>
+                        <dd>
+                            <div><a target="_blank" href="//www.360top.com/">360TOP</a></div>
+                            <div><a target="_blank" href="//www.minitiao.com/">迷你挑</a></div>
+                            <div><a target="_blank" href="//en.360buy.com/">English Site</a></div>
+                        </dd>
+                    </dl>
+                </div>
+            </li>
+        </ul>
+        <span class="clr"></span>
+    </div>
+</div>
+
+<div class="w" id="logo">
+    <div><a href="//www.jd.com/"><img src="../misc/skin/df/i/logo-2013.png" alt="京东商城" width="170" height="60"/></a>
+        <b></b>
+    </div>
+</div>
+
+<div class="w" id="regist">
+    <div class="mt">
+        <ul class="tab">
+            <li><a href="{{'passport/register'|base_url}}">个人用户</a></li>
+            <li class="curr">企业用户</li>
+        </ul>
+    </div>
+    <div class="mc">
+        <form id="formcompany" method="post">
+            <div class="form">
+                <h3>账户信息</h3>
+
+                <div class="item" id="select-regName">
+                    <span class="label"><b class="ftx04">*</b>用户名：</span>
+
+                    <div class="fl item-ifo">
+                        <div class="o-intelligent-regName">
+                            <input type="text" id="regName" name="regName" maxlength="20" class="text" tabindex="1"
+                                   autoComplete="off"
+                                   onpaste="return false;"
+                                   value=""
+                                   onfocus="if(this.value=='') this.value='';this.style.color='#333'"
+                                   onblur="if(this.value=='') {this.value='';this.style.color='#999999'}"/>
+                            <i class="i-name"></i>
+                            <ul id="intelligent-regName" class="hide"></ul>
+                            <label id="regName_succeed" class="blank"></label>
+                            <label id="regName_error"></label>
+                        </div>
+
+                        <div class="intelligent-error hide" id="morePinDiv">
+                            <h5>推荐您使用：</h5>
+
+                            <div class="groom" id="morePinGroom"></div>
+                        </div>
+                        <input type="hidden" value="-1" id="hnschool"/>
+                        <input type="hidden" id="schoolid" name="schoolid"/>
+                        <input type="hidden" id="hnseli"/>
+                    </div>
+                </div>
+
+                <div id="o-password">
+                    <div id="capslock"><i></i><s></s>键盘大写锁定已打开，请注意大小写</div>
+                    <div class="item">
+                        <span class="label"><b class="ftx04">*</b>请设置密码：</span>
+
+                        <div class="fl item-ifo item-pass">
+                            <input type="password" id="pwd" name="pwd" maxlength="20" class="text" tabindex="2"
+                                   style="ime-mode:disabled;"
+                                   onpaste="return  false" autocomplete="off"/>
+                            <i class="i-pass"></i>
+                            <label id="pwd_succeed" class="blank"></label>
+                            <label id="pwd_error" class="hide"></label>
+                            <span class="clr"></span>
+                            <label class="hide" id="pwdstrength"><span class="fl">安全程度：</span><b></b></label>
+                        </div>
+                    </div>
+                    <script type="text/javascript">
+                        $('#pwd')[0].onkeypress = function (event) {
+                            var e = event || window.event,
+                                    $tip = $('#capslock'),
+                                    kc = e.keyCode || e.which, // 按键的keyCode
+                                    isShift = e.shiftKey || (kc == 16 ) || false; // shift键是否按住
+                            if (((kc >= 65 && kc <= 90) && !isShift) || ((kc >= 97 && kc <= 122) && isShift)) {
+                                $tip.show();
+                            }
+                            else {
+                                $tip.hide();
+                            }
+                        };
+                    </script>
+
+                    <div class="item">
+                        <span class="label"><b class="ftx04">*</b>请确认密码：</span>
+
+                        <div class="fl item-ifo item-pass">
+                            <input type="password" id="pwdRepeat" name="pwdRepeat" maxlength="20" class="text"
+                                   tabindex="3"
+                                   onpaste="return  false" autocomplete="off"/>
+                            <i class="i-pass"></i>
+                            <label id="pwdRepeat_succeed" class="blank"></label>
+                            <label id="pwdRepeat_error"></label>
+                        </div>
+                    </div>
+                </div>
+                <input type="hidden" name="mDayDrGNHO" value="WIBjN"/>
+
+                <h3>公司信息</h3>
+
+                <div class="item">
+                    <span class="label"><b class="ftx04">*</b>发票抬头/营业执照公司名称：</span>
+
+                    <div class="fl item-ifo">
+                        <input type="text" id="companyname" name="companyname" maxlength="40" class="text"
+                               tabindex="4"/>
+                        <label id="companyname_succeed" class="blank"></label>
+                        <label id="companyname_error"></label>
+                    </div>
+                </div>
+                <div class="item it-company">
+                    <span class="label"><b class="ftx04">*</b>公司所在地：</span>
+
+                    <div class="fl item-ifo">
+				    <span class="fl">
+                    <select class="mar" name2="hncompanyarea" rel="select" tabindex="5" id="companyprovince"
+                            name="companyprovince">
+                            <option value="-1">请选择</option>
+             <option value="1">北京</option>
+            <option value="2">上海</option>
+            <option value="3">天津</option>
+            <option value="4">重庆</option>
+            <option value="5">河北</option>
+            <option value="6">山西</option>
+            <option value="7">河南</option>
+            <option value="8">辽宁</option>
+            <option value="9">吉林</option>
+            <option value="10">黑龙江</option>
+            <option value="11">内蒙古</option>
+            <option value="12">江苏</option>
+            <option value="13">山东</option>
+            <option value="14">安徽</option>
+            <option value="15">浙江</option>
+            <option value="16">福建</option>
+            <option value="17">湖北</option>
+            <option value="18">湖南</option>
+            <option value="19">广东</option>
+            <option value="20">广西</option>
+            <option value="21">江西</option>
+            <option value="22">四川</option>
+            <option value="23">海南</option>
+            <option value="24">贵州</option>
+            <option value="25">云南</option>
+            <option value="26">西藏</option>
+            <option value="27">陕西</option>
+            <option value="28">甘肃</option>
+            <option value="29">青海</option>
+            <option value="30">宁夏</option>
+            <option value="31">新疆</option>
+            <option value="32">台湾</option>
+            <option value="42">香港</option>
+            <option value="43">澳门</option>
+            <option value="84">钓鱼岛</option>
+                        </select>
+                    </span>
+                        <span class="fl"><select class="mar" name2="hncompanyarea" rel="select" tabindex="6"
+                                                 id="companycity" name="companycity">
+                        <option value="-1" selected="selected">请选择</option>
+                    </select>
+					</span>
+                        <span class="fl"><select id="companyarea" name="companyarea" name2="hncompanyarea" rel="select"
+                                                 tabindex="7">
+                        <option value="-1" selected="selected">请选择</option>
+                    </select>
+					</span>
+                        <input id="hncompanyarea" type="hidden" value="-1"/>
+                        <input id="hprov" type="hidden"/>
+                        <label id="hncompanyarea_succeed" class="blank"></label>
+
+                        <label id="hncompanyarea_error"></label>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <span class="label">注册邀请码：</span>
+
+                    <div class="fl item-ifo">
+                        <input type="text" id="companysite" name="companysite" maxlength="6" class="text"
+                               tabindex="14"/>
+                        <label id="companysite_succeed" class="blank"></label>
+                        <label id="companysite_error"></label>
+                    </div>
+                </div>
+                <div class="item">
+                    <span class="label">企业人数：</span>
+
+                    <div class="fl item-ifo">
+                        <select rel="select" tabindex="15" id="employees" name="employees">
+                            <option value="-1">请选择</option>
+                            <option value="1">1-49</option>
+                            <option value="2">50-99</option>
+                            <option value="3">100-499</option>
+                            <option value="4">500-999</option>
+                            <option value="5">1000以上</option>
+                        </select>
+                        <label id="employee_succeed" class="blank"></label>
+                        <span class="clr"></span>
+                        <label id="employee_error"></label>
+                    </div>
+                </div>
+                <div class="item">
+                    <span class="label">公司行业：</span>
+
+                    <div class="fl item-ifo">
+                        <select rel="select" tabindex="16" id="industry" name="industry">
+                            <option value="-1">请选择</option>
+                            <option value="1">计算机硬件及网络设备</option>
+                            <option value="2">计算机软件</option>
+                            <option value="3">IT服务（系统/数据/维护）/多领域经营</option>
+                            <option value="4">互联网/电子商务</option>
+                            <option value="5">网络游戏</option>
+                            <option value="6">通讯（设备/运营/增值服务）</option>
+                            <option value="7">电子技术/半导体/集成电路</option>
+                            <option value="8">仪器仪表及工业自动化</option>
+                            <option value="9">金融/银行/投资/基金/证券</option>
+                            <option value="10">保险</option>
+                            <option value="11">房地产/建筑/建材/工程</option>
+                            <option value="12">家居/室内设计/装饰装潢</option>
+                            <option value="13">物业管理/商业中心</option>
+                            <option value="14">广告/会展/公关/市场推广</option>
+                            <option value="15">媒体/出版/影视/文化/艺术</option>
+                            <option value="16">印刷/包装/造纸</option>
+                            <option value="17">咨询/管理产业/法律/财会</option>
+                            <option value="18">教育/培训</option>
+                            <option value="19">检验/检测/认证</option>
+                            <option value="20">中介服务</option>
+                            <option value="21">贸易/进出口</option>
+                            <option value="22">零售/批发</option>
+                            <option value="23">快速消费品（食品/饮料/烟酒/化妆品</option>
+                            <option value="24">耐用消费品（服装服饰/纺织/皮革/家具/家电）</option>
+                            <option value="25">办公用品及设备</option>
+                            <option value="26">礼品/玩具/工艺美术/收藏品</option>
+                            <option value="27">大型设备/机电设备/重工业</option>
+                            <option value="28">加工制造（原料加工/模具）</option>
+                            <option value="29">汽车/摩托车（制造/维护/配件/销售/服务）</option>
+                            <option value="30">交通/运输/物流</option>
+                            <option value="31">医药/生物工程</option>
+                            <option value="32">医疗/护理/美容/保健</option>
+                            <option value="33">医疗设备/器械</option>
+                            <option value="34">酒店/餐饮</option>
+                            <option value="35">娱乐/体育/休闲</option>
+                            <option value="36">旅游/度假</option>
+                            <option value="37">石油/石化/化工</option>
+                            <option value="38">能源/矿产/采掘/冶炼</option>
+                            <option value="39">电气/电力/水利</option>
+                            <option value="40">航空/航天</option>
+                            <option value="41">学术/科研</option>
+                            <option value="42">政府/公共事业/非盈利机构</option>
+                            <option value="43">环保</option>
+                            <option value="44">农/林/牧/渔</option>
+                            <option value="45">跨领域经营</option>
+                            <option value="46">其它</option>
+                        </select>
+                        <label id="industry_succeed" class="blank"></label>
+                        <span class="clr"></span>
+                        <label id="industry_error"></label>
+                    </div>
+                </div>
+
+                <h3>联系人信息</h3>
+
+                <div class="item">
+                    <span class="label"><b class="ftx04">*</b>联系人姓名：</span>
+
+                    <div class="fl item-ifo">
+                        <input type="text" id="realname" name="realname" maxlength="20" class="text" tabindex="18"/>
+                        <label id="realname_succeed" class="blank"></label>
+                        <label id="realname_error"></label>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <span class="label"><b class="ftx04">*</b>验证手机：</span>
+
+                    <div class="fl item-ifo">
+                        <input type="text" id="mobile" name="phone" onblur="mobileBlur();" maxlength="11" class="text"
+                               tabindex="21"/>
+                        <label id="mobile_succeed" class="blank"></label>
+                        <label id="mobile_error"></label>
+                    </div>
+                </div>
+                <div class="item " style="height: 62px;">
+                    <span class="label"><b class="ftx04">*</b>短信验证码：</span>
+
+                    <div class="fl item-ifo">
+                        <input type="text" maxlength="6" autocomplete="off" tabindex="22" class="text text-1"
+                               name="mobileCode"
+                               style="ime-mode:disabled" id="bmobileCode" onblur="bmobileCodeBlur()"
+                               onfocus="bmobileCodeFocus();">
+                        <label class="blank invisible"></label>
+                        <a class="btn" href="javascript:void(0);" onclick="bsendMobileCode();" id="bsendMobileCode">
+                            <span id="bdyMobileButton">获取短信验证码</span></a>
+                        <span class="clr"></span>
+
+                        <div class="msg-text" id="bmobileCodeSucMessage"></div>
+                        <label id="bmobileCode_error" class="blank"></label>
+                        <label id="bmobileCode_succeed" class="blank invisible"></label>
+                    </div>
+                    <span class="clr"></span>
+                </div>
+
+                <!--验证码更改,qianxuedi-->
+                <div class="item" id="authcodeDiv">
+                    <span class="label"><b class="ftx04">*</b>验证码：</span>
+
+                    <div class="fl item-ifo">
+                        <input type="text" id="authCode" style="ime-mode:disabled" name="authCode" class="text text-1"
+                               tabindex="24" autocomplete="off" MaxLength="6"/>
+                        <label class="img">
+                            <img style="cursor:pointer;width:100px;height:36px;display:block;" alt=""
+                                 clstag="regist|keycount|personalreg|06"
+                                 onclick="this.src= document.location.protocol +'//authcode.jd.com/verify/image?a=0&amp;acid=ac1fa9b0-0d37-41b1-b425-a4b5c09aa07c&amp;uid=ac1fa9b0-0d37-41b1-b425-a4b5c09aa07c&amp;srcid=reg&amp;is=f4970ca52bea18172cd7d70a290876e2&amp;yys='+new Date().getTime()"
+                                 ver_colorofnoisepoint="#888888" id="JD_Verification1"> </label>
+                        <script type="text/javascript">$("#JD_Verification1").click();</script>
+                        <label class="ftx23">&nbsp;看不清？<a href="javascript:void(0)" onclick="setTimeout(verc,50);"
+                                                          class="flk13">换一张</a></label>
+                        <label id="authcode_succeed" class="blank invisible"></label>
+                        <span class="clr"></span>
+                        <label id="authcode_error"></label>
+                    </div>
+                </div>
+                <div class="item item-new">
+                    <span class="label">&nbsp;</span>
+
+                    <div class="fl item-ifo">
+                        <input type="checkbox" class="checkbox" checked="checked" id="readme"
+                               onclick="agreeonProtocol();">
+                        <label for="protocol">我已阅读并同意<a href="#" class="blue" id="protocol">《京东用户注册协议》</a>
+                            <a href="#" class="blue" id="protocolPrivacy">《隐私政策》</a>
+                        </label>
+                        <span class="clr"></span>
+                        <label id="protocol_error" class="error hide">请接受服务条款</label>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <span class="label">&nbsp;</span>
+                    <input type="button" class="btn-img btn-regist" id="registsubmit" value="提交" tabindex="25"
+                           clstag="regist|keycount|companyreg|04"/>
+                </div>
+        </form>
+
+    </div>
+</div>
+</div>
+<script type="text/javascript">
+    function hello() {
+        var helloUrl = "https://passport.jd.com/call/getHelloJson?m=ls";
+        jQuery.ajax({
+            url: helloUrl, dataType: "jsonp", scriptCharset: "gb2312", success: function (a) {
+                if (a && a.info) {
+                    $("#loginbar").html(a.info);
+                }
+                if (a && a.sso) {
+                    $.each(a.sso, function () {
+                        $.getJSON(this)
+                    })
+                }
+            }
+        });
+    }
+    (function ($) {
+        $("#shortcut-2013 .menu").Jdropdown({delay: 50});
+        hello();
+    })(jQuery);</script>
+<div class="w">
+    <div id="footer-2013">
+        <div class="links">
+            <a rel="nofollow" target="_blank" href="//www.jd.com/intro/about.aspx"> 关于我们</a>|
+            <a rel="nofollow" target="_blank" href="//www.jd.com/contact/">联系我们</a>|
+            <a rel="nofollow" target="_blank" href="//zhaopin.jd.com/">人才招聘</a>|
+            <a rel="nofollow" target="_blank" href="//www.jd.com/contact/joinin.aspx">商家入驻</a>|
+            <a rel="nofollow" target="_blank" href="//www.jd.com/intro/service.aspx">广告服务</a>|
+            <a rel="nofollow" target="_blank" href="//app.jd.com/">手机京东</a>|
+            <a target="_blank" href="//club.jd.com/links.aspx">友情链接</a>|
+            <a target="_blank" href="//media.jd.com">销售联盟</a>|
+            <a href="//club.jd.com/" target="_blank">京东社区</a>|
+            <a href="//gongyi.jd.com" target="_blank">京东公益</a>|
+            <a target="_blank" href="//en.jd.com/" clstag="pageclick|keycount|20150112ABD|9">English Site</a>
+        </div>
+        <div class="copyright">Copyright&copy;2004-2016&nbsp;&nbsp;京东JD.com&nbsp;版权所有</div>
+    </div>
+</div>
+<script type="text/javascript" src="//seq.jd.com/jseqf.html?bizId=JD_register_pc&platform=js&version=1"></script>
+<script src="//payrisk.jd.com/js/td.js"></script>
+<script type="text/javascript">
+    $(function () {
+        getJdEid(function (eid, fpid) {
+            $("#eid").val(eid);
+            $("#sessionId").val(fpid);
+            uncl('set', 'session-id', $('#uuid').val())
+        });
+    });
+</script>
+<script type="text/javascript" src="../misc/js/jd.lib.js"></script>
+<script type="text/javascript" src="../misc/js/jdThickBox.js"></script>
+<script type="text/javascript" src="../misc/js/companyJdValidate.js?t=20130108"></script>
+<script type="text/javascript" src="../misc/js/jdValidate.emailRegCompany.js?t=20130101"></script>
+<script type="text/javascript">
+    (function () {
+        var ja = document.createElement('script');
+        ja.type = 'text/javascript';
+        ja.async = true;
+        ja.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'cscssl.jd.com/wl.js';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(ja, s);
+    })();
+</script>
+
+</body>
+</html>
+
+
+
+
