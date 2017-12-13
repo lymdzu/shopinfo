@@ -98,7 +98,7 @@ body {
 }
 
 .jdm-tbar-tab:hover .tab-ico {
-    background-color: #c81623;
+    background-color: #f30213;
 }
 
 .jdm-toolbar-tab .tab-ico {
@@ -152,7 +152,7 @@ body {
     height: 30px;
     padding: 2px 0 3px;
     line-height: 15px;
-    background: #c81623;
+    background: #f30213;
     _display: block;
 }
 
@@ -161,12 +161,12 @@ body {
 }
 
 .jdm-toolbar-tab:hover, .jdm-toolbar-tab .tab-ico:hover {
-    background-color: #c81623;
+    background-color: #f30213;
 }
 
 .jdm-toolbar-tab:hover .tab-text {
     left: -60px;
-    background-color: #c81623;
+    background-color: #f30213;
     _display: block;
 }
 
@@ -540,7 +540,7 @@ body {
     line-height: 24px;
     padding: 4px;
     border-width: 2px 0 2px 2px;
-    border-color: #b61d1d;
+    border-color: #f30213;
     border-style: solid;
     font-size: 14px;
     font-family: "microsoft yahei";
@@ -553,10 +553,11 @@ body {
     float: left;
     width: 82px;
     height: 36px;
-    background: #b61d1d;
+    background: #f30213;
     border: none;
     color: #fff;
     font-size: 16px;
+    border-radius: 0;
 }
 
 .w .right {
@@ -634,7 +635,7 @@ body {
     left: 104px;
     display: inline-block;
     font: 400 13px/13px simsun;
-    background: #c81623;
+    background: #f30213;
     border-radius: 7px 7px 7px 0;
     min-width: 12px;
     text-align: center;
@@ -772,11 +773,12 @@ body {
 .focus-btn .button{
     width: 82px;
     height: 36px;
-    background: #b61d1d;
+    background: #f30213;
     border: none;
     color: #fff;
     font-size: 16px;
     cursor: pointer;
+    border-radius: 0;
 }
 .focus .focus-b {
     width: 650px;
@@ -831,7 +833,7 @@ body {
     width: 100%;
     margin-top: 10px;
     height: 36px;
-    border-bottom: 2px solid #b61d1d;
+    border-bottom: 2px solid #f30213;
 }
 .catagory-all{
     float: left;
@@ -840,7 +842,7 @@ body {
     width: 190px;
     height: 36px;
     line-height: 36px;
-    background: #b61d1d;
+    background: #f30213;
     overflow: visible;
 }
 .catagory-all .dt {
@@ -853,7 +855,7 @@ body {
 .catagory-all .dt a {
     display: block;
     height: 36px;
-    background: #b61d1d;
+    background: #f30213;
     color: #fff;
     text-decoration: none;
     text-align: center
@@ -982,13 +984,13 @@ body {
 /*轮播图左边当行蓝*/
 .dd-inner {
     height: 466px;
-    background: #c81623;
+    background: #f30213;
     width: 210px;
     margin-top: 7px;
 }
 .dd-inner.list-down{
     height: 466px;
-    background: #c81623;
+    background: #f30213;
     width: 190px;
     margin-top: 2px;
 }
@@ -997,7 +999,7 @@ body {
     height: 31px;
     color: #fff;
     line-height: 31px;
-    border-left: 2px solid #c81623;
+    border-left: 2px solid #f30213;
     position: relative;
 }
 
@@ -1061,7 +1063,7 @@ body {
 .bb {
     width: 210px;
     height: 2px;
-    background: #c81623;
+    background: #f30213;
     position: absolute;
     top: 49px;
 }
@@ -1072,7 +1074,7 @@ body {
     top: 50px;
     z-index: 100;
     width: 999px;
-    border: 1px solid #c81623;
+    border: 1px solid #f30213;
     border-left: none;
     background: #f7f7f7;
     display: none;
@@ -1108,7 +1110,7 @@ body {
 }
 
 .font-item1 .font-left .one:hover a {
-    background: #c81623;
+    background: #f30213;
 }
 
 .font-item1 .font-left .one:hover i {
@@ -1116,7 +1118,7 @@ body {
 }
 
 .font-item1 .font-left .two:hover a {
-    background: #c81623;
+    background: #f30213;
 }
 
 .font-item1 .font-left .two:hover i {
@@ -1124,7 +1126,7 @@ body {
 }
 
 .font-item1 .font-left .three:hover a {
-    background: #c81623;
+    background: #f30213;
 }
 
 .font-item1 .font-left .three:hover i {
@@ -1132,7 +1134,7 @@ body {
 }
 
 .font-item1 .font-left .four:hover a {
-    background: #c81623;
+    background: #f30213;
 }
 
 .font-item1 .font-left .four:hover i {
@@ -1140,7 +1142,7 @@ body {
 }
 
 .font-item1 .font-left .five:hover a {
-    background: #c81623;
+    background: #f30213;
 }
 
 .font-item1 .font-left .five:hover i {
@@ -1148,7 +1150,7 @@ body {
 }
 
 .font-item1 .font-left .sex:hover a {
-    background: #c81623;
+    background: #f30213;
 }
 
 .font-item1 .font-left .sex:hover i {
@@ -1811,7 +1813,7 @@ a, address, b, big, blockquote, body, center, cite, code, dd, del, div, dl, dt, 
 }
 
 .home-special-buy-v4 .hs-content .has-col1 .has-item .sub-tit .promotion, .home-special-buy-v4 .hs-content .has-col1 .has-item-small .sub-tit .promotion, .home-special-buy-v4 .hs-content .has-col2 .has-item .sub-tit .promotion, .home-special-buy-v4 .hs-content .has-col2 .has-item-small .sub-tit .promotion, .home-special-buy-v4 .hs-content .has-col3 .has-item .sub-tit .promotion, .home-special-buy-v4 .hs-content .has-col3 .has-item-small .sub-tit .promotion {
-    color: #c81623;
+    color: #f30213;
 }
 
 .home-special-buy-v4 .hs-content .has-col1 .has-item-small .sub-tit, .home-special-buy-v4 .hs-content .has-col2 .has-item-small .sub-tit, .home-special-buy-v4 .hs-content .has-col3 .has-item-small .sub-tit {
@@ -1946,11 +1948,11 @@ a, address, b, big, blockquote, body, center, cite, code, dd, del, div, dl, dt, 
 }
 
 .floor .tab-selected a {
-    border-left: solid 1px #c81623;
-    border-right: solid 1px #c81623;
+    border-left: solid 1px #f30213;
+    border-right: solid 1px #f30213;
     height: 33px;
     line-height: 30px;
-    color: #c81623;
+    color: #f30213;
 }
 
 .floor .tab-item {
@@ -1966,10 +1968,10 @@ a, address, b, big, blockquote, body, center, cite, code, dd, del, div, dl, dt, 
 }
 
 .active {
-    border-left: solid 1px #c81623;
-    border-right: solid 1px #c81623;
-    border-top: solid 3px #c81623;
-    color: #c81623;
+    border-left: solid 1px #f30213;
+    border-right: solid 1px #f30213;
+    border-top: solid 3px #f30213;
+    color: #f30213;
 }
 
 .floor .tab-item a {
@@ -2299,7 +2301,7 @@ img {
 }
 
 .slider-nav .active2 {
-    background: #c81623
+    background: #f30213
 }
 
 .floor .main-body {

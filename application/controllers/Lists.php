@@ -16,4 +16,8 @@ class Lists extends DashboardController
     {
         $this->page("front/second.html");
     }
+    public function search()
+    {
+        $this->page("front/third.html");
+    }
 }
