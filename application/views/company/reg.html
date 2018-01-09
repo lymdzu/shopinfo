@@ -6,7 +6,7 @@
     <title>注册-企业用户</title>
     <link type="text/css" rel="stylesheet" href="{{'static/css/passport.base.css'|base_url}}"/>
     <link type="text/css" rel="stylesheet" href="{{'static/css/regist.company.css'|base_url}}"/>
-    <script type="text/javascript" src="../misc/js/jquery-1.2.6.pack.js"></script>
+    <script src="{{'static/js/jquery-1.11.3.min.js'|base_url}}"></script>
     <script>
         (function uncl(t, e) {
             t[e] = t[e] || function () {
@@ -141,12 +141,6 @@ function regist() {
             </li>
         </ul>
         <span class="clr"></span>
-    </div>
-</div>
-
-<div class="w" id="logo">
-    <div><a href="//www.jd.com/"><img src="../misc/skin/df/i/logo-2013.png" alt="京东商城" width="170" height="60"/></a>
-        <b></b>
     </div>
 </div>
 
@@ -483,26 +477,6 @@ function regist() {
     </div>
 </div>
 </div>
-<script type="text/javascript">
-    function hello() {
-        var helloUrl = "https://passport.jd.com/call/getHelloJson?m=ls";
-        jQuery.ajax({
-            url: helloUrl, dataType: "jsonp", scriptCharset: "gb2312", success: function (a) {
-                if (a && a.info) {
-                    $("#loginbar").html(a.info);
-                }
-                if (a && a.sso) {
-                    $.each(a.sso, function () {
-                        $.getJSON(this)
-                    })
-                }
-            }
-        });
-    }
-    (function ($) {
-        $("#shortcut-2013 .menu").Jdropdown({delay: 50});
-        hello();
-    })(jQuery);</script>
 <div class="w">
     <div id="footer-2013">
         <div class="links">
@@ -521,30 +495,12 @@ function regist() {
         <div class="copyright">Copyright&copy;2004-2016&nbsp;&nbsp;京东JD.com&nbsp;版权所有</div>
     </div>
 </div>
-<script type="text/javascript" src="//seq.jd.com/jseqf.html?bizId=JD_register_pc&platform=js&version=1"></script>
-<script src="//payrisk.jd.com/js/td.js"></script>
-<script type="text/javascript">
+<script type="application/javascript">
     $(function () {
-        getJdEid(function (eid, fpid) {
-            $("#eid").val(eid);
-            $("#sessionId").val(fpid);
-            uncl('set', 'session-id', $('#uuid').val())
-        });
-    });
-</script>
-<script type="text/javascript" src="../misc/js/jd.lib.js"></script>
-<script type="text/javascript" src="../misc/js/jdThickBox.js"></script>
-<script type="text/javascript" src="../misc/js/companyJdValidate.js?t=20130108"></script>
-<script type="text/javascript" src="../misc/js/jdValidate.emailRegCompany.js?t=20130101"></script>
-<script type="text/javascript">
-    (function () {
-        var ja = document.createElement('script');
-        ja.type = 'text/javascript';
-        ja.async = true;
-        ja.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'cscssl.jd.com/wl.js';
-        var s = document.getElementsByTagName('script')[0];
-        s.parentNode.insertBefore(ja, s);
-    })();
+        $("#registsubmit").on("click", function () {
+            $.post("{{'company/save_reg'}}", )
+        })
+    })
 </script>
 
 </body>

@@ -16,4 +16,8 @@ class Company extends DashboardController
     {
         $this->display("company/reg.html");
     }
+    public function save_reg()
+    {
+        
+    }
 }

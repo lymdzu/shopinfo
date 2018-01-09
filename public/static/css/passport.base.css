@@ -138,7 +138,7 @@ a:hover,a:active{color:#f00;text-decoration:underline;}
 
 /*shortcut*/
 #shortcut-2013 .fl b,
-#shortcut-2013 .fr b{background-image:url(i/20130330A.png);background-repeat:no-repeat;}
+#shortcut-2013 .fr b{}
 #shortcut-2013,
 #shortcut-2013 .w{height:30px;background:#FAFAFA;}
 #shortcut-2013{width:100%;border-bottom:1px solid #eee;line-height:30px;}
