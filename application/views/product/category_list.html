@@ -12,7 +12,7 @@
                             <table class="table table-hover">
                                 <thead>
                                 <th>编号</th>
-                                <th>品牌名称</th>
+                                <th>商品类目名称</th>
                                 <th>属性一</th>
                                 <th>属性二</th>
                                 <th>属性三</th>
@@ -23,11 +23,11 @@
                                 {{foreach $category_list as $category_info}}
                                 <tr>
                                     <td class="cate-id">{{$category_info.id}}</td>
-                                    <td>{{$category_info.name}}</td>
-                                    <td>{{$category_info.product_cate1}}</td>
-                                    <td>{{$category_info.product_cate2}}</td>
-                                    <td>{{$category_info.product_cate3}}</td>
-                                    <td>{{$category_info.product_cate4}}</td>
+                                    <td class="cate-name">{{$category_info.name}}</td>
+                                    <td class="product_cate1">{{$category_info.product_cate1}}</td>
+                                    <td class="product_cate2">{{$category_info.product_cate2}}</td>
+                                    <td class="product_cate3">{{$category_info.product_cate3}}</td>
+                                    <td class="product_cate4">{{$category_info.product_cate4}}</td>
                                     <td>
                                         {{if !$category_info.product_cate1 || !$category_info.product_cate2 || !$category_info.product_cate3 || !$category_info.product_cate4}}
                                         <a href="#edit_category" data-toggle="modal" class="btn btn-danger btn-sm edit-btn"><i
@@ -52,48 +52,39 @@
         </div>
     </div>
 </div>
-<div id="modal-form" class="modal fade" aria-hidden="true" style="display: none;">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-body">
-                <div class="row">
-                    <div class="col-sm-12">
-                        <h3 class="m-t-none m-b">添加品牌</h3>
-                        <form role="form" id="add_category" class="add_category" onsubmit="return false;">
-                            <div class="form-group">
-                                <label>品牌名称：</label>
-                                <input type="text" name="name" placeholder="请输入品牌名称"
-                                       class="form-control">
-                            </div>
-                            <div>
-                                <button class="btn btn-sm btn-primary pull-right m-t-n-xs" id="category"
-                                        type="submit">
-                                    <strong>提交</strong>
-                                </button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 <div id="edit_category" class="modal fade" aria-hidden="true" style="display: none;">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-body">
                 <div class="row">
                     <div class="col-sm-12">
-                        <h3 class="m-t-none m-b">修改商品类目</h3>
-                        <form role="form" class="edit_category" onsubmit="return false;">
+                        <h3 class="m-t-none m-b">完善商品属性</h3>
+                        <form role="form"  class="edit_category" onsubmit="return false;">
+                            <input type="hidden" name="cate_id">
                             <div class="form-group">
-                                <label>类目名称：</label>
-                                <input type="text" name="name" placeholder="请输入类目名称"
+                                <label>商品属性：</label>
+                                <input type="text" name="name" placeholder="请输入商品商品属性"
                                        class="form-control">
                             </div>
-                            <div class="form-group" style="display: none">
-                                <label>类目编号：</label>
-                                <input type="text" name="id" placeholder="请输入类目级别" class="form-control">
+                            <div class="form-group">
+                                <label>属性一：</label>
+                                <input type="text" name="product_cate1" placeholder="请输入商品属性一"
+                                       class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label>属性二：</label>
+                                <input type="text" name="product_cate2" placeholder="请输入商品属性二"
+                                       class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label>属性三：</label>
+                                <input type="text" name="product_cate3" placeholder="请输入商品属性三"
+                                       class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label>属性四：</label>
+                                <input type="text" name="product_cate4" placeholder="请输入商品属性四"
+                                       class="form-control">
                             </div>
                             <div>
                                 <button class="btn btn-sm btn-primary pull-right m-t-n-xs" id="edit-submit"
@@ -108,61 +99,30 @@
         </div>
     </div>
 </div>
-
-<style>
-    .jstree-default .jstree-icon.none {
-        width: 0
-    }
-</style>
-<script type="application/javascript">
-    var url = "<script type='application/javascript' src=\"{{'file/category.js'|base_url}}?v=" + Math.random() + '\"><\/script>';
-    document.write(url);
-</script>
 <script>
     $(document).ready(function () {
-        $(".add-btn").on("click", function () {
-            $("#add_category").find("input[name='name']").focus();
-        });
         $(".edit-btn").on("click", function () {
             var id = $(this).parents("tr").find(".cate-id").text();
             var name = $(this).parents("tr").find(".cate-name").text();
+            var product_cate1 = $(this).parents("tr").find(".product_cate1").text();
+            var product_cate2 = $(this).parents("tr").find(".product_cate2").text();
+            var product_cate3 = $(this).parents("tr").find(".product_cate3").text();
+            var product_cate4 = $(this).parents("tr").find(".product_cate4").text();
+            console.log(id);
+            console.log(name);
+            console.log(product_cate1);
+            console.log(product_cate2);
+            console.log(product_cate3);
+            console.log(product_cate4);
             $("#edit_category").find("input[name='name']").val(name);
-            $("#edit_category").find("input[name='id']").val(id);
-        });
-        $(".delete-btn").on("click", function () {
-            var id = $(this).parents("tr").find(".cate-id").text();
-            layer.confirm('是否要删除当前品牌？', {
-                btn: ['确定','取消'] //按钮
-            }, function(){
-                $.post("{{'goods/delete_level'|base_url}}", {id:id}, function (res) {
-                    if (res.ecode == 0) {
-                        layer.msg(res.result);
-                        setTimeout(function () {
-                            window.location.reload();
-                        }, 500)
-                    }
-                    else {
-                        layer.msg(res.emsg);
-                    }
-                })
-            }, function(){
-            });
+            $("#edit_category").find("input[name='cate_id']").val(id);
+            $("#edit_category").find("input[name='product_cate1']").val(product_cate1);
+            $("#edit_category").find("input[name='product_cate2']").val(product_cate2);
+            $("#edit_category").find("input[name='product_cate3']").val(product_cate3);
+            $("#edit_category").find("input[name='product_cate4']").val(product_cate4);
         });
         $("#edit-submit").on("click", function () {
-            $.post("{{'category/edit_category'|base_url}}", $(".edit_category").serialize(), function (res) {
-                if (res.ecode == 0) {
-                    layer.msg(res.result);
-                    setTimeout(function () {
-                        window.location.reload();
-                    }, 500)
-                }
-                else {
-                    layer.msg(res.emsg);
-                }
-            });
-        });
-        $("#category").on("click", function () {
-            $.post("{{'category/add_category'|base_url}}", $(".add_category").serialize(), function (res) {
+            $.post("{{'product/save_product_cate'|base_url}}", $(".edit_category").serialize(), function (res) {
                 if (res.ecode == 0) {
                     layer.msg(res.result);
                     setTimeout(function () {
