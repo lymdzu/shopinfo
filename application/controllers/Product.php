@@ -11,10 +11,15 @@ class Product extends AdController
     {
         parent::__construct();
     }
+
+    /**
+     * 商品属性类目
+     */
     public function category_list()
     {
-        $this->load->model("GoodsModel", "goods", true);
-        $type_list = $this->goods->get_goods_type_list(3);
+        $this->load->model("ProductModel", "product", true);
+        $cate_list = $this->product->get_product_category();
+        $this->vars['category_list'] = $cate_list;
         $this->page("product/category_list.html");
     }
 }

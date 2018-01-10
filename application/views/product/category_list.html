@@ -4,10 +4,7 @@
             <div class="col-sm-12">
                 <div class="ibox">
                     <div class="ibox-title">
-                        <h5>旗下品牌展示</h5>
-                        <div class="ibox-tools">
-                            <a data-toggle="modal" class="btn btn-primary btn-xs add-btn" href="#modal-form">添加品牌</a>
-                        </div>
+                        <h5>产品属性</h5>
                     </div>
                     <div class="ibox-content">
                         <div class="project-list">
@@ -16,28 +13,33 @@
                                 <thead>
                                 <th>编号</th>
                                 <th>品牌名称</th>
-                                <th>创建时间及操作人</th>
+                                <th>属性一</th>
+                                <th>属性二</th>
+                                <th>属性三</th>
+                                <th>属性四</th>
                                 <th>操作</th>
                                 </thead>
                                 <tbody>
-                                {{foreach $brand_list as $brand_info}}
+                                {{foreach $category_list as $category_info}}
                                 <tr>
-                                    <td class="cate-id">{{$brand_info.id}}</td>
-                                    <td class="cate-name">{{$brand_info.brand}}</td>
-                                    <td class="project-completion">
-                                        <small>{{$brand_info.create_time|date_format:"%Y-%m-%d %H:%m:%S"}} by
-                                            {{$brand_info.operater}}
-                                        </small>
-                                    </td>
+                                    <td class="cate-id">{{$category_info.id}}</td>
+                                    <td>{{$category_info.name}}</td>
+                                    <td>{{$category_info.product_cate1}}</td>
+                                    <td>{{$category_info.product_cate2}}</td>
+                                    <td>{{$category_info.product_cate3}}</td>
+                                    <td>{{$category_info.product_cate4}}</td>
                                     <td>
-                                        <a href="#edit_brand" data-toggle="modal" class="btn btn-white btn-sm edit-btn"><i
+                                        {{if !$category_info.product_cate1 || !$category_info.product_cate2 || !$category_info.product_cate3 || !$category_info.product_cate4}}
+                                        <a href="#edit_category" data-toggle="modal" class="btn btn-danger btn-sm edit-btn"><i
                                                 class="fa fa-pencil"></i>
-                                            编辑
+                                            完善产品属性
                                         </a>
-                                        <a href="javascript:void(0)" class="btn btn-danger btn-sm delete-btn"><i
-                                                class="fa fa-close"></i>
-                                            删除
+                                        {{else}}
+                                        <a href="#edit_category" data-toggle="modal" class="btn btn-primary btn-sm edit-btn"><i
+                                                class="fa fa-pencil"></i>
+                                            修改产品属性
                                         </a>
+                                        {{/if}}
                                     </td>
                                 </tr>
                                 {{/foreach}}
@@ -57,14 +59,14 @@
                 <div class="row">
                     <div class="col-sm-12">
                         <h3 class="m-t-none m-b">添加品牌</h3>
-                        <form role="form" id="add_brand" class="add_brand" onsubmit="return false;">
+                        <form role="form" id="add_category" class="add_category" onsubmit="return false;">
                             <div class="form-group">
                                 <label>品牌名称：</label>
                                 <input type="text" name="name" placeholder="请输入品牌名称"
                                        class="form-control">
                             </div>
                             <div>
-                                <button class="btn btn-sm btn-primary pull-right m-t-n-xs" id="brand"
+                                <button class="btn btn-sm btn-primary pull-right m-t-n-xs" id="category"
                                         type="submit">
                                     <strong>提交</strong>
                                 </button>
@@ -76,14 +78,14 @@
         </div>
     </div>
 </div>
-<div id="edit_brand" class="modal fade" aria-hidden="true" style="display: none;">
+<div id="edit_category" class="modal fade" aria-hidden="true" style="display: none;">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-body">
                 <div class="row">
                     <div class="col-sm-12">
                         <h3 class="m-t-none m-b">修改商品类目</h3>
-                        <form role="form" class="edit_brand" onsubmit="return false;">
+                        <form role="form" class="edit_category" onsubmit="return false;">
                             <div class="form-group">
                                 <label>类目名称：</label>
                                 <input type="text" name="name" placeholder="请输入类目名称"
@@ -119,13 +121,13 @@
 <script>
     $(document).ready(function () {
         $(".add-btn").on("click", function () {
-            $("#add_brand").find("input[name='name']").focus();
+            $("#add_category").find("input[name='name']").focus();
         });
         $(".edit-btn").on("click", function () {
             var id = $(this).parents("tr").find(".cate-id").text();
             var name = $(this).parents("tr").find(".cate-name").text();
-            $("#edit_brand").find("input[name='name']").val(name);
-            $("#edit_brand").find("input[name='id']").val(id);
+            $("#edit_category").find("input[name='name']").val(name);
+            $("#edit_category").find("input[name='id']").val(id);
         });
         $(".delete-btn").on("click", function () {
             var id = $(this).parents("tr").find(".cate-id").text();
@@ -147,7 +149,7 @@
             });
         });
         $("#edit-submit").on("click", function () {
-            $.post("{{'brand/edit_brand'|base_url}}", $(".edit_brand").serialize(), function (res) {
+            $.post("{{'category/edit_category'|base_url}}", $(".edit_category").serialize(), function (res) {
                 if (res.ecode == 0) {
                     layer.msg(res.result);
                     setTimeout(function () {
@@ -159,8 +161,8 @@
                 }
             });
         });
-        $("#brand").on("click", function () {
-            $.post("{{'brand/add_brand'|base_url}}", $(".add_brand").serialize(), function (res) {
+        $("#category").on("click", function () {
+            $.post("{{'category/add_category'|base_url}}", $(".add_category").serialize(), function (res) {
                 if (res.ecode == 0) {
                     layer.msg(res.result);
                     setTimeout(function () {
