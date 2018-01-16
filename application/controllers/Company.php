@@ -18,6 +18,11 @@ class Company extends DashboardController
     }
     public function save_reg()
     {
-        
+        $this->input->post();
+        $this->input->post();
+        $this->input->post();
+        $this->input->post();
+        $this->input->post();
+        $this->input->post();
     }
 }
