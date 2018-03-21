@@ -139,4 +139,8 @@ class UserModel extends CI_Model
         $this->db->from("t_admin");
         return $this->db->count_all_results();
     }
+    public function insert_company()
+    {
+
+    }
 }

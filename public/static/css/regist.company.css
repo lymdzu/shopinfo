@@ -27,6 +27,7 @@
 #regist h3{border-top:1px solid #E7E7E7;padding:2px 16px 3px;background:#f7f7f7;height:28px;line-height:28px;margin-bottom:10px;font-family:"΢���ź�";font-weight:normal;}
 #regist .item{padding-top:9px;height:58px;line-height:34px;position:relative;}
 #regist .new-item{padding-top:9px;height:58px;}
+.new-item .item-ifo{position: relative;width: 260px}
 #regist #select-regName{z-index:5;}
 .o-intelligent-regName{z-index:3;}
 #regist .label{width:290px;text-align:right;font-size:14px;color:#999999;padding-right:10px;}
@@ -96,14 +97,12 @@
 #regist .highlight2{border:1px solid #f00;color:#f00;}
 #regist .pwdbg{background:#FFF8EB;}
 #regist .ajax-check{position:absolute;margin-left:-21px;padding-left:21px;right:-70px;top:5px;}
-#regist .focus,#regist .null,#regist .error{overflow:hidden;color:#e4393c;height:34px;line-height:34px;position:absolute;top:0px;right:-310px;padding:0 0px 0 5px;width:300px;background:#ffebeb;border:1px solid #ffbdbe;}
+#regist .null,#regist .error{overflow:hidden;color:#e4393c;height:34px;line-height:34px;position:absolute;top:0px;right:-310px;padding:0 0px 0 5px;width:300px;background:#ffebeb;border:1px solid #ffbdbe;}
 #regist #mobileCode_error.error  {width:290px;right:-307px;}
 #regist .null{background:none;border:none;background:none;}
 #regist #companyname_error.error,#regist #companyname_error.focus{_display:block;_line-height:17px;_width:340px;_height:34px;;_right:-352px;_overflow:hidden;}
 #regist .error span,#regist .focus span {line-height:17px;}
 #regist #regName_error{cursor:pointer;}
-#regist .focus{color:#999;line-height:34px;background:#f7f7f7;border:1px solid #dddddd;}
-#regist .focus{color:#666;}
 #regist #mobileCodeDiv .focus {background:none;border:none;}
 #regist .null,#regist .error{color:#f00;}
 #regist .checkbox{margin-top:8px;*margin-top:5px;_margin-top:6px;}
