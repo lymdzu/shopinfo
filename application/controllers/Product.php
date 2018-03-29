@@ -9,6 +9,7 @@ class Product extends AdController
 {
     public function __construct()
     {
+        $this->vars['row'] = "goods";
         parent::__construct();
     }
 
@@ -23,6 +24,10 @@ class Product extends AdController
         $this->page("product/category_list.html");
     }
 
+    /**
+     * 保存产品属性
+     * @auther lymdzu@hotmail.com
+     */
     public function save_product_cate()
     {
         $cate_id = $this->input->post("cate_id");
