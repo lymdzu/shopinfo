@@ -22,8 +22,8 @@
                                 <tbody>
                                 {{foreach $category_list as $category_info}}
                                 <tr>
-
-                                    <td class="cate-id">{{$category_info.id}}</td>
+                                    <td class="id">{{$category_info.id}}</td>
+                                    <td class="cate-id">{{$category_info.cate_id}}</td>
                                     <td class="cate-name">{{$category_info.name}}</td>
                                     <td class="product_cate1">
                                         {{if $category_info.product_cate1}}
@@ -85,6 +85,7 @@
                     <div class="col-sm-12">
                         <h3 class="m-t-none m-b">完善商品属性</h3>
                         <form role="form"  class="edit_category" onsubmit="return false;">
+                            <input type="hidden" name="id">
                             <input type="hidden" name="cate_id">
                             <div class="form-group">
                                 <label>商品类目：</label>
@@ -127,20 +128,16 @@
 <script>
     $(document).ready(function () {
         $(".edit-btn").on("click", function () {
-            var id = $(this).parents("tr").find(".cate-id").text();
+            var cate_id = $(this).parents("tr").find(".cate-id").text();
+            var id = $(this).parents("tr").find(".id").text();
             var name = $(this).parents("tr").find(".cate-name").text();
             var product_cate1 = $.trim($(this).parents("tr").find(".product_cate1").text());
             var product_cate2 = $.trim($(this).parents("tr").find(".product_cate2").text());
             var product_cate3 = $.trim($(this).parents("tr").find(".product_cate3").text());
             var product_cate4 = $.trim($(this).parents("tr").find(".product_cate4").text());
-            console.log(id);
-            console.log(name);
-            console.log(product_cate1);
-            console.log(product_cate2);
-            console.log(product_cate3);
-            console.log(product_cate4);
             $("#edit_category").find("input[name='name']").val(name);
-            $("#edit_category").find("input[name='cate_id']").val(id);
+            $("#edit_category").find("input[name='cate_id']").val(cate_id);
+            $("#edit_category").find("input[name='id']").val(id);
             $("#edit_category").find("input[name='product_cate1']").val(product_cate1);
             $("#edit_category").find("input[name='product_cate2']").val(product_cate2);
             $("#edit_category").find("input[name='product_cate3']").val(product_cate3);
