@@ -1,10 +1,191 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+<div class="wrapper wrapper-content  animated fadeInRight">
+    <div class="row">
+        <div class="ibox">
+            <div class="col-sm-12">
+                <div class="ibox">
+                    <div class="ibox-title">
+                        <h5>{{$cate_info.name}}属性展示</h5>
+                        <div class="ibox-tools">
+                            <a data-toggle="modal" class="btn btn-primary btn-xs add-btn" href="#modal-form">添加可选属性</a>
+                        </div>
+                    </div>
+                    <div class="ibox-content">
+                        <div class="project-list">
+
+                            <table class="table table-hover">
+                                <thead>
+                                <th>编号</th>
+                                <th>产品名称</th>
+                                <th>属性名称</th>
+                                <th>属性</th>
+                                <th>创建时间</th>
+                                <th>操作</th>
+                                </thead>
+                                <tbody>
+                                {{foreach $cate_list as $cate_info}}
+                                <tr>
+                                    <td class="id">{{$cate_info.id}}</td>
+                                    <td class="pro_name">{{$cate_info.pro_name}}</td>
+                                    <td class="pro_cate">
+                                        {{if $cate_type == 1}}
+                                        {{$pro_attr.product_cate1}}
+                                        {{elseif $cate_type == 2}}
+                                        {{$pro_attr.product_cate2}}
+                                        {{elseif $cate_type == 3}}
+                                        {{$pro_attr.product_cate3}}
+                                        {{else}}
+                                        {{$pro_attr.product_cate4}}
+                                        {{/if}}
+                                    </td>
+                                    <td class="cate-cate">
+                                        {{$cate_info.cate_name}}
+                                    </td>
+                                    <td class="project-completion">
+                                        <small>{{$cate_info.create_time|date_format:"%Y-%m-%d %H:%m:%S"}}
+                                        </small>
+                                    </td>
+                                    <td>
+                                        <a href="#edit-level" data-toggle="modal" class="btn btn-white btn-sm edit-btn"><i
+                                                class="fa fa-pencil"></i>
+                                            编辑
+                                        </a>
+                                        <a href="javascript:void(0)" class="btn btn-danger btn-sm delete-btn"><i
+                                                class="fa fa-close"></i>
+                                            删除
+                                        </a>
+                                    </td>
+                                </tr>
+                                {{/foreach}}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="modal-form" class="modal fade" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <h3 class="m-t-none m-b">添加商品属性</h3>
+                        <form role="form" id="add-cate" class="add-cate" onsubmit="return false;">
+                            <div class="form-group">
+                                <label>属性名称：</label>
+                                <input type="text" name="cate_name" placeholder="请输入属性名称"
+                                       class="form-control">
+                            </div>
+                            <input type="hidden" name="cate_id" value="{{$cate_id}}">
+                            <input type="hidden" name="cate_type" value="{{$cate_type}}">
+                            <div>
+                                <button class="btn btn-sm btn-primary pull-right m-t-n-xs" id="goods-level"
+                                        type="submit">
+                                    <strong>提交</strong>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="edit-level" class="modal fade" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <h3 class="m-t-none m-b">修改商品属性</h3>
+                        <form role="form" class="edit-level" onsubmit="return false;">
+                            <input type="hidden" name="id" value="">
+                            <div class="form-group">
+                                <label>属性名称：</label>
+                                <input type="text" name="name" placeholder="请输入属性名称"
+                                       class="form-control">
+                            </div>
+                            <div>
+                                <button class="btn btn-sm btn-primary pull-right m-t-n-xs" id="edit-submit"
+                                        type="submit">
+                                    <strong>提交</strong>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .jstree-default .jstree-icon.none {
+        width: 0
+    }
+</style>
+<script type="application/javascript">
+    var url = "<script type='application/javascript' src=\"{{'file/category.js'|base_url}}?v=" + Math.random() + '\"><\/script>';
+    document.write(url);
+</script>
+<script>
+    $(document).ready(function () {
+        $(".add-btn").on("click", function () {
+            console.log($("#add-cate").find("input[name='name']"));
+            $("#add-cate").find("input[name='name']").trigger("click").focus();
+        });
+        $(".edit-btn").on("click", function () {
+            var id = $.trim($(this).parents("tr").find(".id").text());
+            var name = $.trim($(this).parents("tr").find(".cate-cate").text());
+            $("#edit-level").find("input[name='name']").val(name);
+            $("#edit-level").find("input[name='id']").val(id);
+        });
+        $(".delete-btn").on("click", function () {
+            var id = $.trim($(this).parents("tr").find(".id").text());
+            layer.confirm('是否要删除当前属性？', {
+                btn: ['确定','取消'] //按钮
+            }, function(){
+                $.post("{{'product/delete_cate'|base_url}}", {id:id}, function (res) {
+                    if (res.ecode == 0) {
+                        layer.msg(res.result);
+                        setTimeout(function () {
+                            window.location.reload();
+                        }, 500)
+                    }
+                    else {
+                        layer.msg(res.emsg);
+                    }
+                })
+            }, function(){
+            });
+        });
+        $("#edit-submit").on("click", function () {
+            $.post("{{'product/edit_cate'|base_url}}", $(".edit-level").serialize(), function (res) {
+                if (res.ecode == 0) {
+                    layer.msg(res.result);
+                    setTimeout(function () {
+                        window.location.reload();
+                    }, 500)
+                }
+                else {
+                    layer.msg(res.emsg);
+                }
+            });
+        });
+        $("#goods-level").on("click", function () {
+            $.post("{{'product/add_cate'|base_url}}", $(".add-cate").serialize(), function (res) {
+                if (res.ecode == 0) {
+                    layer.msg(res.result);
+                    setTimeout(function () {
+                        window.location.reload();
+                    }, 500)
+                }
+                else {
+                    layer.msg(res.emsg);
+                }
+            });
+        });
+    });
+</script>

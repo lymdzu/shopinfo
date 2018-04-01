@@ -24,6 +24,61 @@ class Product extends AdController
         $this->page("product/category_list.html");
     }
 
+    public function list_cate()
+    {
+        $cate_id = $this->input->get("cate_id");
+        $cate_type = $this->input->get("cate_type");
+        $this->load->model("ProductModel", "product", true);
+        $cate_info = $this->product->get_cate_info($cate_id);
+        $pro_attr = $this->product->get_pro_cate_by_cateid($cate_id);
+        $cate_list = $this->product->get_cate_list($cate_id, $cate_type);
+        $this->vars['cate_list'] = $cate_list;
+        $this->vars['cate_info'] = $cate_info;
+        $this->vars['pro_attr'] = $pro_attr;
+        $this->vars['cate_id'] = $cate_id;
+        $this->vars['cate_type'] = $cate_type;
+        $this->page("product/list_cate.html");
+    }
+
+    public function add_cate()
+    {
+        $cate_id = $this->input->post("cate_id");
+        $cate_type = $this->input->post("cate_type");
+        $cate_name = $this->input->post("cate_name");
+        $this->load->model("ProductModel", "product", true);
+        $insert_status = $this->product->add_cate($cate_id, $cate_type, $cate_name);
+        if ($insert_status) {
+            $this->json_result(REQUEST_SUCCESS, "类目添加成功");
+        } else {
+            $this->json_result(API_ERROR, "", "类目添加失败");
+        }
+
+    }
+    public function edit_cate()
+    {
+        $id = $this->input->post("id");
+        $cate_name = $this->input->post("name");
+        $this->load->model("ProductModel", "product", true);
+        $update_status = $this->product->edit_cate($id, $cate_name);
+        if ($update_status) {
+            $this->json_result(REQUEST_SUCCESS, "类目修改成功");
+        } else {
+            $this->json_result(API_ERROR, "", "类目修改失败");
+        }
+    }
+    public function delete_cate()
+    {
+        $id = $this->input->post("id");
+        $this->load->model("ProductModel", "product", true);
+        $update_status = $this->product->delete_cate($id);
+        if ($update_status) {
+            $this->json_result(REQUEST_SUCCESS, "类目删除成功");
+        } else {
+            $this->json_result(API_ERROR, "", "类目删除失败");
+        }
+    }
+
+
     /**
      * 保存产品属性
      * @auther lymdzu@hotmail.com
@@ -64,5 +119,10 @@ class Product extends AdController
         } else {
             $this->json_result(API_ERROR, "", "服务器出错");
         }
+    }
+    public function add_product()
+    {
+        $this->vars['page'] = "add_product";
+        $this->page("product/add_product.html");
     }
 }

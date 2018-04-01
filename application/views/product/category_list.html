@@ -12,6 +12,7 @@
                             <table class="table table-hover">
                                 <thead>
                                 <th>编号</th>
+                                <th>商品类目编号</th>
                                 <th>商品类目名称</th>
                                 <th>属性一</th>
                                 <th>属性二</th>
@@ -22,7 +23,7 @@
                                 <tbody>
                                 {{foreach $category_list as $category_info}}
                                 <tr>
-                                    <td class="id">{{$category_info.id}}</td>
+                                    <td class="id">{{if $category_info.id}}{{$category_info.id}}{{else}}<button class="btn btn-danger btn-xs">未编辑</button> {{/if}}</td>
                                     <td class="cate-id">{{$category_info.cate_id}}</td>
                                     <td class="cate-name">{{$category_info.name}}</td>
                                     <td class="product_cate1">

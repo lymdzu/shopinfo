@@ -20,6 +20,9 @@
     {{if $page == "level_list"}}
     <link href="{{'static/js/plugins/jsTree/style.min.css'|base_url}}" rel="stylesheet">
     {{/if}}
+    {{if $page == "add_product"}}
+    <link href="{{'static/bscss/jquery.steps.css'|base_url}}" rel="stylesheet">
+    {{/if}}
 </head>
 
 <body class="fixed-sidebar  gray-bg">
@@ -159,6 +162,10 @@
 <script type="text/javascript" src="{{'static/bsjs/pace.min.js'|base_url}}"></script>
 {{if $page == "level_list"}}
 <script type="text/javascript" src="{{'static/js/plugins/jsTree/jstree.min.js'|base_url}}"></script>
+{{/if}}
+{{if $page == "add_product"}}
+<script src="{{'static/bsjs/jquery.steps.min.js'|base_url}}"></script>
+<script src="{{'static/bsjs/jquery.validate.min.js'|base_url}}"></script>
 {{/if}}
 </body>
 </html>
