@@ -18,10 +18,19 @@ class ProductModel extends CI_Model
         $query = $this->db->query("SELECT * FROM t_type WHERE id=? ", $cate_id);
         return $query->row_array();
     }
+
     public function get_pro_cate_by_cateid($cate_id)
     {
         $query = $this->db->query("SELECT * FROM t_product_category WHERE cate_id=? ", $cate_id);
         return $query->row_array();
+    }
+
+    public function get_cate_by_type($cate_id, $cate_type)
+    {
+        $this->db->select("cate_name, id");
+        $this->db->where(array("cate_id" => $cate_id, "cate_type" => $cate_type));
+        $query = $this->db->get("t_pro_cate");
+        return $query->result_array();
     }
 
     /**

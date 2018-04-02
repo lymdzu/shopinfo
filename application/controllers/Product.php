@@ -54,6 +54,7 @@ class Product extends AdController
         }
 
     }
+
     public function edit_cate()
     {
         $id = $this->input->post("id");
@@ -66,6 +67,7 @@ class Product extends AdController
             $this->json_result(API_ERROR, "", "类目修改失败");
         }
     }
+
     public function delete_cate()
     {
         $id = $this->input->post("id");
@@ -120,9 +122,139 @@ class Product extends AdController
             $this->json_result(API_ERROR, "", "服务器出错");
         }
     }
+
     public function add_product()
     {
         $this->vars['page'] = "add_product";
+        $this->load->model('GoodsModel', "goods", true);
+        $admin = $this->admin_company();
+        $brand_list = $this->goods->get_brand_list(0, 1000000, $admin['company']);
+        $first_level = $this->goods->get_goods_type_list(1);
+        $this->vars['first_level'] = $first_level;
+        $this->vars['brandlist'] = $brand_list;
         $this->page("product/add_product.html");
+    }
+
+    public function get_pro_cate()
+    {
+        $cate_id = $this->input->post("cate_id");
+        $this->load->model('ProductModel', "product", true);
+        $cate_list = $this->product->get_pro_cate_by_cateid($cate_id);
+        $pro_cate = array();
+        if(!empty($cate_list))
+        {
+            $pro_cate[$cate_list['product_cate1']] = $this->product->get_cate_by_type($cate_id, 1);
+            $pro_cate[$cate_list['product_cate2']] = $this->product->get_cate_by_type($cate_id, 2);
+            $pro_cate[$cate_list['product_cate3']] = $this->product->get_cate_by_type($cate_id, 3);
+            $pro_cate[$cate_list['product_cate4']] = $this->product->get_cate_by_type($cate_id, 4);
+        }
+        if (!empty($cate_list)) {
+            $this->json_result(REQUEST_SUCCESS, $pro_cate);
+        } else {
+            $this->json_result(API_ERROR, "", "尚未设置此类型商品属性");
+        }
+    }
+    public function product_pic()
+    {
+        $targetDir = dirname(APPPATH) . '/public/upload' . DIRECTORY_SEPARATOR . 'file_material_tmp';
+        $uploadDir = dirname(APPPATH) . '/public/upload' . DIRECTORY_SEPARATOR . 'file';
+        $cleanupTargetDir = true; // Remove old files
+        $maxFileAge = 5 * 3600; // Temp file age in seconds
+        // Create target dir
+        if (!file_exists($targetDir)) {
+            @mkdir($targetDir);
+        }
+        // Create target dir
+        if (!file_exists($uploadDir)) {
+            @mkdir($uploadDir);
+        }
+        // Get a file name
+        if (isset($_REQUEST["name"])) {
+            $fileName = $_REQUEST["name"];
+        } elseif (!empty($_FILES)) {
+            $fileName = $_FILES["file"]["name"];
+        } else {
+            $fileName = uniqid("file_");
+        }
+        $oldName = $fileName;
+        $filePath = $targetDir . DIRECTORY_SEPARATOR . $fileName;
+        // Chunking might be enabled
+        $chunk = isset($_REQUEST["chunk"]) ? intval($_REQUEST["chunk"]) : 0;
+        $chunks = isset($_REQUEST["chunks"]) ? intval($_REQUEST["chunks"]) : 1;
+        // Remove old temp files
+        if ($cleanupTargetDir) {
+            $dir = opendir($targetDir);
+            if (!is_dir($targetDir) || !$dir) {
+                $this->json_result(API_ERROR, "", "不能写入文件");
+            }
+            while (($file = readdir($dir)) !== false) {
+                $tmpfilePath = $targetDir . DIRECTORY_SEPARATOR . $file;
+                // If temp file is current file proceed to the next
+                if ($tmpfilePath == "{$filePath}_{$chunk}.part" || $tmpfilePath == "{$filePath}_{$chunk}.parttmp") {
+                    continue;
+                }
+                // Remove temp file if it is older than the max age and is not the current file
+                if (preg_match('/\.(part|parttmp)$/', $file) && (@filemtime($tmpfilePath) < time() - $maxFileAge)) {
+                    @unlink($tmpfilePath);
+                }
+            }
+            closedir($dir);
+        }
+
+        // Open temp file
+        if (!$out = @fopen("{$filePath}_{$chunk}.parttmp", "wb")) {
+            $this->json_result(WRITE_FILE_ERROR, "", "Failed to open input streams");
+        }
+        if (!empty($_FILES)) {
+            if ($_FILES["file"]["error"] || !is_uploaded_file($_FILES["file"]["tmp_name"])) {
+                $this->json_result(WRITE_FILE_ERROR, "", "Failed to open input streams");
+            }
+            // Read binary input stream and append it to temp file
+            if (!$in = @fopen($_FILES["file"]["tmp_name"], "rb")) {
+                $this->json_result(WRITE_FILE_ERROR, "", "Failed to open input streams");
+            }
+        } else {
+            if (!$in = @fopen("php://input", "rb")) {
+                $this->json_result(WRITE_FILE_ERROR, "", "Failed to open input streams");
+            }
+        }
+        while ($buff = fread($in, 4096)) {
+            fwrite($out, $buff);
+        }
+        @fclose($out);
+        @fclose($in);
+        rename("{$filePath}_{$chunk}.parttmp", "{$filePath}_{$chunk}.part");
+        $done = true;
+        for ($index = 0; $index < $chunks; $index++) {
+            if (!file_exists("{$filePath}_{$index}.part")) {
+                $done = false;
+                break;
+            }
+        }
+        if ($done) {
+            $uploadPath = $uploadDir . DIRECTORY_SEPARATOR . $oldName;
+
+            if (!$out = @fopen($uploadPath, "wb")) {
+                $this->json_result(WRITE_FILE_ERROR, "", "图片存储失败");
+            }
+            if (flock($out, LOCK_EX)) {
+                for ($index = 0; $index < $chunks; $index++) {
+                    if (!$in = @fopen("{$filePath}_{$index}.part", "rb")) {
+                        break;
+                    }
+                    while ($buff = fread($in, 4096)) {
+                        fwrite($out, $buff);
+                    }
+                    @fclose($in);
+                    @unlink("{$filePath}_{$index}.part");
+                }
+                flock($out, LOCK_UN);
+            }
+            @fclose($out);
+            $pathInfo = pathinfo($fileName);
+            $filetype = strtoupper($pathInfo['extension']);
+            $size = sprintf("%.2f", $_REQUEST['size'] / 1024 / 1024);
+            $this->json_result(REQUEST_SUCCESS, $fileName);
+        }
     }
 }

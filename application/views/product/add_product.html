@@ -3,7 +3,7 @@
         <div class="col-sm-12">
             <div class="ibox">
                 <div class="ibox-title">
-                    <h5>带验证的表单向导</h5>
+                    <h5>新建商品</h5>
                     <div class="ibox-tools">
                         <a class="collapse-link">
                             <i class="fa fa-chevron-up"></i>
@@ -25,68 +25,118 @@
                     </div>
                 </div>
                 <div class="ibox-content">
-                    <h2>
-                        带验证的表单向导 </h2>
-                    <p>
-                        下面这个示例展示了如何在表单向导中使用 jQuery Validation 插件 </p>
+                    <h2>完善商品信息</h2>
 
-                    <form id="form" action="form_wizard.html#" class="wizard-big">
-                        <h1>账户</h1>
+                    <form id="form" action="{{'product/save_product'|base_url}}" class="wizard-big form-horizontal">
+                        <h1>商品类目</h1>
                         <fieldset>
-                            <h2>账户信息</h2>
+                            <h2>商品类目</h2>
                             <div class="row">
-                                <div class="col-sm-8">
-                                    <div class="form-group">
-                                        <label>用户名 *</label>
-                                        <input id="userName" name="userName" type="text" class="form-control required">
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">商品名称：</label>
+
+                                    <div class="col-sm-7">
+                                        <input class="form-control" type="text" name="product" placeholder="请输入商品名称"
+                                               class="form-control">
                                     </div>
-                                    <div class="form-group">
-                                        <label>密码 *</label>
-                                        <input id="password" name="password" type="text" class="form-control required">
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">品牌：</label>
+                                    <div class="col-sm-7">
+                                        <select class="form-control" name="brand">
+                                            <option>请选择商品是公司旗下何种品牌</option>
+                                            {{foreach $brandlist as $brand}}
+                                            <option value="{{$brand.id}}">{{$brand.brand}}</option>
+                                            {{/foreach}}
+                                        </select>
                                     </div>
-                                    <div class="form-group">
-                                        <label>确认密码 *</label>
-                                        <input id="confirm" name="confirm" type="text" class="form-control required">
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">商品类目：</label>
+                                    <div class="col-sm-3">
+                                        <select class="form-control first" name="">
+                                            <option>请选择商品一级分类</option>
+                                            {{foreach $first_level as $first_item}}
+                                            <option value="{{$first_item.id}}">{{$first_item.name}}</option>
+                                            {{/foreach}}
+                                        </select>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <select class="form-control second" name="" style="display: none">
+                                            <option>请选择商品二级分类</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <select class="form-control third" name="category" style="display: none">
+                                            <option>请选择商品三级分类</option>
+                                        </select>
                                     </div>
                                 </div>
                             </div>
 
                         </fieldset>
-                        <h1>个人资料</h1>
+                        <h1>商品属性</h1>
                         <fieldset>
-                            <h2>个人资料信息</h2>
+                            <h2>选择商品属性</h2>
+                            <div class="row pro-attr">
+                                <div class="form-group" id="pro-cate1">
+                                    <label class="col-sm-3 control-label">商品属性分类：</label>
+                                    <div class="col-sm-7">
+                                        <select class="form-control second" name="product_cate" style="display: none">
+                                            <option>请选择商品分类</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group" id="pro-cate2">
+                                    <label class="col-sm-3 control-label">商品属性分类：</label>
+                                    <div class="col-sm-7">
+                                        <select class="form-control second" name="product_cate" style="display: none">
+                                            <option>请选择商品分类</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group" id="pro-cate3">
+                                    <label class="col-sm-3 control-label">商品属性分类：</label>
+                                    <div class="col-sm-7">
+                                        <select class="form-control second" name="product_cate" style="display: none">
+                                            <option>请选择商品分类</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group" id="pro-cate4">
+                                    <label class="col-sm-3 control-label">商品属性分类：</label>
+                                    <div class="col-sm-7">
+                                        <select class="form-control second" name="product_cate" style="display: none">
+                                            <option>请选择商品分类</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+
+                        <h1>商品图片</h1>
+                        <fieldset>
                             <div class="row">
-                                <div class="col-sm-6">
-                                    <div class="form-group">
-                                        <label>姓名 *</label>
-                                        <input id="name" name="name" type="text" class="form-control required">
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="form-group">
-                                        <label>Email *</label>
-                                        <input id="email" name="email" type="text" class="form-control required email">
-                                    </div>
-                                    <div class="form-group">
-                                        <label>地址 *</label>
-                                        <input id="address" name="address" type="text" class="form-control">
+                                <div class="col-sm-12">
+                                    <div id="uploader" class="wu-example  col-sm-6">
+                                        <div class="queueList">
+                                            <div id="dndArea" class="placeholder">
+                                                <div id="filePicker"></div>
+                                            </div>
+                                        </div>
+                                        <div class="statusBar" style="display:none;">
+                                            <div class="progress">
+                                                <span class="text">0%</span> <span class="percentage"></span>
+                                            </div>
+                                            <div class="info"></div>
+                                            <div class="btns">
+                                                <div id="filePicker2"></div>
+                                                <div class="uploadBtn">开始</div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </fieldset>
-
-                        <h1>警告</h1>
-                        <fieldset>
-                            <div class="text-center" style="margin-top: 120px">
-                                <h2>你是火星人 :-)</h2>
-                            </div>
-                        </fieldset>
-
-                        <h1>完成</h1>
-                        <fieldset>
-                            <h2>条款</h2>
-                            <input id="acceptTerms" name="acceptTerms" type="checkbox" class="required">
-                            <label for="acceptTerms">我同意注册条款</label>
                         </fieldset>
                     </form>
                 </div>
@@ -100,6 +150,21 @@
             bodyTag: "fieldset", onStepChanging: function (event, currentIndex, newIndex) {
                 if (currentIndex > newIndex) {
                     return true
+                }
+                if (newIndex === 1) {
+                    var cate_id = $(".third").val();
+                    $.post("{{'product/get_pro_cate'|base_url}}", {cate_id: cate_id}, function (res) {
+                        var num = 0;
+                        $.each(res.result, function (index, value) {
+                            ($(".pro-attr .form-group").eq(num)).find(".control-label").text(index);
+                            var html = "<option value=''>请选择" + index + "分类</option>";
+                            $.each(value, function (key, pro_attr) {
+                                html += "<option value=" +pro_attr.id+">"+pro_attr.cate_name+"</option>";
+                            });
+                            ($(".pro-attr .form-group").eq(num)).find("select").html(html);
+                            num++;
+                        })
+                    })
                 }
                 if (newIndex === 3 && Number($("#age").val()) < 18) {
                     return false
@@ -127,5 +192,185 @@
                 form.submit()
             }
         });
+        $(".first").on("change", function () {
+            $(".second").show();
+            var parent = $(".first").val();
+            $.post("{{'goods/get_level_list'|base_url}}", {level: 2, parent: parent}, function (result) {
+                if (result.ecode == 0) {
+                    var html = "<option>请选择商品二级分类</option>";
+                    var res = result.result;
+                    for (var i = 0; i < res.length; i++) {
+                        html += "<option value='" + res[i].id + "'>" + res[i].name + "</option>";
+                    }
+                    $(".second").html(html);
+                }
+                else {
+                    layer.msg(result.emsg);
+                }
+
+            })
+        });
+        $(".second").on("change", function () {
+            $(".second").show();
+            var parent = $(".second").val();
+            $.post("{{'goods/get_level_list'|base_url}}", {level: 3, parent: parent}, function (result) {
+                if (result.ecode == 0) {
+                    var html = "<option>请选择商品三级分类</option>";
+                    var res = result.result;
+                    for (var i = 0; i < res.length; i++) {
+                        html += "<option value='" + res[i].id + "'>" + res[i].name + "</option>";
+                    }
+                    $(".third").html(html);
+                }
+                else {
+                    layer.msg(result.emsg);
+                }
+
+            })
+        });
+        $(".second").on("change", function () {
+            $(".third").show();
+        });
+        function e(e) {
+            var a = o('<li id="' + e.id + '"><p class="title">' + e.name + '</p><p class="imgWrap"></p><p class="progress"><span></span></p></li>'), s = o('<div class="file-panel"><span class="cancel">删除</span><span class="rotateRight">向右旋转</span><span class="rotateLeft">向左旋转</span></div>').appendTo(a), i = a.find("p.progress span"), t = a.find("p.imgWrap"), r = o('<p class="error"></p>'), d = function (e) {
+                switch (e) {
+                    case"exceed_size":
+                        text = "文件大小超出";
+                        break;
+                    case"interrupt":
+                        text = "上传暂停";
+                        break;
+                    default:
+                        text = "上传失败，请重试"
+                }
+                r.text(text).appendTo(a)
+            };
+            "invalid" === e.getStatus() ? d(e.statusText) : (t.text("预览中"), n.makeThumb(e, function (e, a) {
+                if (e)return void t.text("不能预览");
+                var s = o('<img src="' + a + '">');
+                t.empty().append(s)
+            }, v, b), w[e.id] = [e.size, 0], e.rotation = 0), e.on("statuschange", function (t, n) {
+                "progress" === n ? i.hide().width(0) : "queued" === n && (a.off("mouseenter mouseleave"), s.remove()), "error" === t || "invalid" === t ? (console.log(e.statusText), d(e.statusText), w[e.id][1] = 1) : "interrupt" === t ? d("interrupt") : "queued" === t ? w[e.id][1] = 0 : "progress" === t ? (r.remove(), i.css("display", "block")) : "complete" === t && a.append('<span class="success"></span>'), a.removeClass("state-" + n).addClass("state-" + t)
+            }), a.on("mouseenter", function () {
+                s.stop().animate({height: 30})
+            }), a.on("mouseleave", function () {
+                s.stop().animate({height: 0})
+            }), s.on("click", "span", function () {
+                var a, s = o(this).index();
+                switch (s) {
+                    case 0:
+                        return void n.removeFile(e);
+                    case 1:
+                        e.rotation += 90;
+                        break;
+                    case 2:
+                        e.rotation -= 90
+                }
+                x ? (a = "rotate(" + e.rotation + "deg)", t.css({
+                    "-webkit-transform": a,
+                    "-mos-transform": a,
+                    "-o-transform": a,
+                    transform: a
+                })) : t.css("filter", "progid:DXImageTransform.Microsoft.BasicImage(rotation=" + ~~(e.rotation / 90 % 4 + 4) % 4 + ")")
+            }), a.appendTo(l)
+        }
+
+        function a(e) {
+            var a = o("#" + e.id);
+            delete w[e.id], s(), a.off().find(".file-panel").off().end().remove()
+        }
+
+        function s() {
+            var e, a = 0, s = 0, t = f.children();
+            o.each(w, function (e, i) {
+                s += i[0], a += i[0] * i[1]
+            }), e = s ? a / s : 0, t.eq(0).text(Math.round(100 * e) + "%"), t.eq(1).css("width", Math.round(100 * e) + "%"), i()
+        }
+
+        function i() {
+            var e, a = "";
+            "ready" === k ? a = "共选中 " + m + "文件，共 " + WebUploader.formatSize(h) + "。" : "confirm" === k ? (e = n.getStats(), e.uploadFailNum && (a = "Upload success" + e.successNum + "，" + e.uploadFailNum + 'Failed，<a class="retry" href="#">Repeat upload</a>the failed OR<a class="ignore" href="#">ignore</a>')) : (e = n.getStats(), a = "Total" + m + " files（" + WebUploader.formatSize(h) + "），Success " + e.successNum + "", e.uploadFailNum && (a += "，Failed" + e.uploadFailNum + "")), p.html(a)
+        }
+
+        function t(e) {
+            var a;
+            if (e !== k) {
+                switch (c.removeClass("state-" + k), c.addClass("state-" + e), k = e) {
+                    case"pedding":
+                        u.removeClass("element-invisible"), l.parent().removeClass("filled"), l.hide(), d.addClass("element-invisible"), n.refresh();
+                        break;
+                    case"ready":
+                        u.addClass("element-invisible"), o("#filePicker2").removeClass("element-invisible"), l.parent().addClass("filled"), l.show(), d.removeClass("element-invisible"), n.refresh();
+                        break;
+                    case"uploading":
+                        o("#filePicker2").addClass("element-invisible"), f.show(), c.text("暂停");
+                        break;
+                    case"paused":
+                        f.show(), c.text("Continue");
+                        break;
+                    case"confirm":
+                        if (f.hide(), c.text("开始上传").addClass("disabled"), a = n.getStats(), a.successNum && !a.uploadFailNum)return void t("finish");
+                        break;
+                    case"finish":
+                        a = n.getStats();
+                        if (a.successNum) {
+                            layer.msg("图片上传成功");
+                        }
+                }
+                i()
+            }
+        }
+
+        var n, o = jQuery, r = o("#uploader"), l = o('<ul class="filelist"></ul>').appendTo(r.find(".queueList")), d = r.find(".statusBar"), p = d.find(".info"), c = r.find(".uploadBtn"), u = r.find(".placeholder"), f = d.find(".progress").hide(), m = 0, h = 0, g = window.devicePixelRatio || 1, v = 110 * g, b = 110 * g, k = "pedding", w = {}, x = function () {
+            var e = document.createElement("p").style, a = "transition" in e || "WebkitTransition" in e || "MozTransition" in e || "msTransition" in e || "OTransition" in e;
+            return e = null, a
+        }();
+        if (!WebUploader.Uploader.support())throw layer.msg("WebUploader does not support the browser you are using"), new Error("WebUploader does not support the browser you are using.");
+        n = WebUploader.create({
+            pick: {id: "#filePicker", label: "点击上传图片"},
+            dnd: "#uploader .queueList",
+            paste: document.body,
+            swf: "{{'static/bsjs/plugins/webuploader/Uploader.swf'|base_url}}",
+            disableGlobalDnd: !0,
+            chunked: !0,
+            server: "{{'product/product_pic'|base_url}}",
+            formData: {
+                pic_type: "activity"
+            }
+        }), n.addButton({id: "#filePicker2", label: "继续添加"}), n.onUploadProgress = function (e, a) {
+            var i = o("#" + e.id), t = i.find(".progress span");
+            t.css("width", 100 * a + "%"), w[e.id][1] = a, s()
+        }, n.onFileQueued = function (a) {
+            m++, h += a.size, 1 === m && (u.addClass("element-invisible"), d.show()), e(a), t("ready"), s()
+        }, n.onFileDequeued = function (e) {
+            m--, h -= e.size, m || t("pedding"), a(e), s()
+        }, n.on("all", function (e) {
+            switch (e) {
+                case"uploadFinished":
+                    t("confirm");
+                    break;
+                case"startUpload":
+                    t("uploading");
+                    break;
+                case"stopUpload":
+                    t("paused")
+            }
+        }), n.on("uploadAccept", function (file, response) {
+            if (response.ecode != 0) {
+                return false;
+            }
+            else {
+                $("#form").append("<input type='hidden' class='product-pic' name='product-pic' value='" + response.result + "'>");
+            }
+
+        }), n.onError = function (e) {
+            alert("Eroor: " + e)
+        }, c.on("click", function () {
+            return o(this).hasClass("disabled") ? !1 : void("ready" === k ? n.upload() : "paused" === k ? n.upload() : "uploading" === k && n.stop())
+        }), p.on("click", ".retry", function () {
+            n.retry()
+        }), p.on("click", ".ignore", function () {
+            alert("todo")
+        }), c.addClass("state-" + k), s()
     });
 </script>
