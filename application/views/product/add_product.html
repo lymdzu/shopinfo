@@ -27,7 +27,7 @@
                 <div class="ibox-content">
                     <h2>完善商品信息</h2>
 
-                    <form id="form" action="{{'product/save_product'|base_url}}" class="wizard-big form-horizontal">
+                    <form id="product-form" action="{{'product/save_product'|base_url}}" onsubmit="return false;" class="wizard-big form-horizontal">
                         <h1>商品类目</h1>
                         <fieldset>
                             <h2>商品类目</h2>
@@ -36,14 +36,13 @@
                                     <label class="col-sm-3 control-label">商品名称：</label>
 
                                     <div class="col-sm-7">
-                                        <input class="form-control" type="text" name="product" placeholder="请输入商品名称"
-                                               class="form-control">
+                                        <input class="form-control" type="text" id="product_name" name="product" placeholder="请输入商品名称"/>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-sm-3 control-label">品牌：</label>
                                     <div class="col-sm-7">
-                                        <select class="form-control" name="brand">
+                                        <select class="form-control" id="brand" name="brand">
                                             <option>请选择商品是公司旗下何种品牌</option>
                                             {{foreach $brandlist as $brand}}
                                             <option value="{{$brand.id}}">{{$brand.brand}}</option>
@@ -67,13 +66,34 @@
                                         </select>
                                     </div>
                                     <div class="col-sm-3">
-                                        <select class="form-control third" name="category" style="display: none">
+                                        <select class="form-control third" id="category" name="category" style="display: none">
                                             <option>请选择商品三级分类</option>
                                         </select>
                                     </div>
                                 </div>
+                                <div class="form-group" style="">
+                                    <label class="col-sm-3 control-label">商品图片：</label>
+                                    <div class="col-sm-10 col-sm-offset-2">
+                                        <div id="uploader" class="wu-example  col-sm-6">
+                                            <div class="queueList">
+                                                <div id="dndArea" class="placeholder">
+                                                    <div id="filePicker"></div>
+                                                </div>
+                                            </div>
+                                            <div class="statusBar" style="display:none;">
+                                                <div class="progress">
+                                                    <span class="text">0%</span> <span class="percentage"></span>
+                                                </div>
+                                                <div class="info"></div>
+                                                <div class="btns">
+                                                    <div id="filePicker2"></div>
+                                                    <div class="uploadBtn">开始</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-
                         </fieldset>
                         <h1>商品属性</h1>
                         <fieldset>
@@ -82,7 +102,7 @@
                                 <div class="form-group" id="pro-cate1">
                                     <label class="col-sm-3 control-label">商品属性分类：</label>
                                     <div class="col-sm-7">
-                                        <select class="form-control second" name="product_cate" style="display: none">
+                                        <select class="form-control second" id="product_cate1" name="product_cate1" style="display: none">
                                             <option>请选择商品分类</option>
                                         </select>
                                     </div>
@@ -90,7 +110,7 @@
                                 <div class="form-group" id="pro-cate2">
                                     <label class="col-sm-3 control-label">商品属性分类：</label>
                                     <div class="col-sm-7">
-                                        <select class="form-control second" name="product_cate" style="display: none">
+                                        <select class="form-control second" id="product_cate2" name="product_cate2" style="display: none">
                                             <option>请选择商品分类</option>
                                         </select>
                                     </div>
@@ -98,7 +118,7 @@
                                 <div class="form-group" id="pro-cate3">
                                     <label class="col-sm-3 control-label">商品属性分类：</label>
                                     <div class="col-sm-7">
-                                        <select class="form-control second" name="product_cate" style="display: none">
+                                        <select class="form-control second" id="product_cate3" name="product_cate3" style="display: none">
                                             <option>请选择商品分类</option>
                                         </select>
                                     </div>
@@ -106,39 +126,13 @@
                                 <div class="form-group" id="pro-cate4">
                                     <label class="col-sm-3 control-label">商品属性分类：</label>
                                     <div class="col-sm-7">
-                                        <select class="form-control second" name="product_cate" style="display: none">
+                                        <select class="form-control second" id="product_cate4" name="product_cate4" style="display: none">
                                             <option>请选择商品分类</option>
                                         </select>
                                     </div>
                                 </div>
                             </div>
                         </fieldset>
-
-                        <h1>商品图片</h1>
-                        <fieldset>
-                            <div class="row">
-                                <div class="col-sm-12">
-                                    <div id="uploader" class="wu-example  col-sm-6">
-                                        <div class="queueList">
-                                            <div id="dndArea" class="placeholder">
-                                                <div id="filePicker"></div>
-                                            </div>
-                                        </div>
-                                        <div class="statusBar" style="display:none;">
-                                            <div class="progress">
-                                                <span class="text">0%</span> <span class="percentage"></span>
-                                            </div>
-                                            <div class="info"></div>
-                                            <div class="btns">
-                                                <div id="filePicker2"></div>
-                                                <div class="uploadBtn">开始</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </fieldset>
-                    </form>
                 </div>
             </div>
         </div>
@@ -146,7 +140,7 @@
 </div>
 <script>
     $(document).ready(function () {
-        $("#form").steps({
+        $("#product-form").steps({
             bodyTag: "fieldset", onStepChanging: function (event, currentIndex, newIndex) {
                 if (currentIndex > newIndex) {
                     return true
@@ -165,6 +159,9 @@
                             num++;
                         })
                     })
+                }
+                if(newIndex === 2)
+                {
                 }
                 if (newIndex === 3 && Number($("#age").val()) < 18) {
                     return false
@@ -188,6 +185,32 @@
                 form.validate().settings.ignore = ":disabled";
                 return form.valid()
             }, onFinished: function (event, currentIndex) {
+                var product_name = $("#product_name").val();
+                var brand = $("#brand").val();
+                var category = $("#category").val();
+                var product_cate1 = $("#product_cate1").val();
+                var product_cate2 = $("#product_cate2").val();
+                var product_cate3 = $("#product_cate3").val();
+                var product_cate4 = $("#product_cate4").val();
+                var product_pic = $(".product-pic").val();
+                console.log(product_cate1);
+                console.log(product_cate2);
+                console.log(product_cate3);
+                console.log(product_cate4);
+                $.post("{{'product/save_product'|base_url}}",
+                        {
+                            product_name:product_name,
+                            brand:brand,
+                            category:category,
+                            product_cate1:product_cate1,
+                            product_cate2:product_cate2,
+                            product_cate3:product_cate3,
+                            product_cate4:product_cate4,
+                            product_pic:product_pic
+                        },
+                        function (res) {
+
+                });
                 var form = $(this);
                 form.submit()
             }
@@ -221,15 +244,13 @@
                         html += "<option value='" + res[i].id + "'>" + res[i].name + "</option>";
                     }
                     $(".third").html(html);
+                    $(".third").show();
                 }
                 else {
                     layer.msg(result.emsg);
                 }
 
             })
-        });
-        $(".second").on("change", function () {
-            $(".third").show();
         });
         function e(e) {
             var a = o('<li id="' + e.id + '"><p class="title">' + e.name + '</p><p class="imgWrap"></p><p class="progress"><span></span></p></li>'), s = o('<div class="file-panel"><span class="cancel">删除</span><span class="rotateRight">向右旋转</span><span class="rotateLeft">向左旋转</span></div>').appendTo(a), i = a.find("p.progress span"), t = a.find("p.imgWrap"), r = o('<p class="error"></p>'), d = function (e) {

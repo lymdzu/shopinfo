@@ -37,6 +37,7 @@ class Product extends AdController
         $this->vars['pro_attr'] = $pro_attr;
         $this->vars['cate_id'] = $cate_id;
         $this->vars['cate_type'] = $cate_type;
+        $this->vars['cate'] = $pro_attr['product_cate' . $cate_type];
         $this->page("product/list_cate.html");
     }
 
@@ -135,14 +136,55 @@ class Product extends AdController
         $this->page("product/add_product.html");
     }
 
+    /**
+     * 添加商品
+     * @auther lymdzu@hotmail.com
+     */
+    public function save_product()
+    {
+        $product_name = $this->input->post("product_name");
+        $brand = $this->input->post("brand");
+        $category = $this->input->post("category");
+        $product_cate1 = $this->input->post("product_cate1");
+        $product_cate2 = $this->input->post("product_cate2");
+        $product_cate3 = $this->input->post("product_cate3");
+        $product_cate4 = $this->input->post("product_cate4");
+        $product_pic = $this->input->post("product_pic");
+        if (empty($product_name)) {
+            $this->json_result(LACK_REQUIRED_PARAMETER, "", "请填写商品名称");
+        }
+        if (empty($brand)) {
+            $this->json_result(LACK_REQUIRED_PARAMETER, "", "请选择商品品牌");
+        }
+        if (empty($category)) {
+            $this->json_result(LACK_REQUIRED_PARAMETER, "", "请选择商品分类类目");
+        }
+        if (empty($product_cate1)) {
+            $this->json_result(LACK_REQUIRED_PARAMETER, "", "请填写商品属性一");
+        }
+        if (empty($product_cate2)) {
+            $this->json_result(LACK_REQUIRED_PARAMETER, "", "请填写商品属性二");
+        }
+        if (empty($product_cate3)) {
+            $this->json_result(LACK_REQUIRED_PARAMETER, "", "请填写商品属性三");
+        }
+        if (empty($product_cate4)) {
+            $this->json_result(LACK_REQUIRED_PARAMETER, "", "请填写商品属性四");
+        }
+        if (empty($product_pic)) {
+            $this->json_result(LACK_REQUIRED_PARAMETER, "", "请上传商品图片");
+        }
+        $this->load->model('ProductModel', "product", true);
+        $this->product->save_product($product_name, $brand, $category, $product_cate1, $product_cate2, $product_cate3, $product_cate4, $product_pic);
+    }
+
     public function get_pro_cate()
     {
         $cate_id = $this->input->post("cate_id");
         $this->load->model('ProductModel', "product", true);
         $cate_list = $this->product->get_pro_cate_by_cateid($cate_id);
         $pro_cate = array();
-        if(!empty($cate_list))
-        {
+        if (!empty($cate_list)) {
             $pro_cate[$cate_list['product_cate1']] = $this->product->get_cate_by_type($cate_id, 1);
             $pro_cate[$cate_list['product_cate2']] = $this->product->get_cate_by_type($cate_id, 2);
             $pro_cate[$cate_list['product_cate3']] = $this->product->get_cate_by_type($cate_id, 3);
@@ -154,6 +196,7 @@ class Product extends AdController
             $this->json_result(API_ERROR, "", "尚未设置此类型商品属性");
         }
     }
+
     public function product_pic()
     {
         $targetDir = dirname(APPPATH) . '/public/upload' . DIRECTORY_SEPARATOR . 'file_material_tmp';

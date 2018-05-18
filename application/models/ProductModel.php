@@ -101,6 +101,7 @@ class ProductModel extends CI_Model
             return false;
         }
     }
+
     public function edit_cate($id, $name)
     {
         $this->db->where("id", $id);
@@ -112,12 +113,25 @@ class ProductModel extends CI_Model
             return false;
         }
     }
+
     public function delete_cate($id)
     {
         $this->db->where("id", $id);
         $update_status = $this->db->delete("t_pro_cate");
         $affect_rows = $this->db->affected_rows();
         if ($update_status && $affect_rows > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function save_product($product_name, $brand, $category, $product_cate1, $product_cate2, $product_cate3, $product_cate4, $product_pic)
+    {
+        $product = array("product_name" => $product_name,
+                         "brand"        => $brand, "category" => $category, "product_cate1" => $product_cate1, "product_cate2" => $product_cate2, "product_cate3" => $product_cate3, "product_cate4" => $product_cate4, "product_pic" => $product_pic);
+        $status = $this->db->insert("t_product", $product);
+        if ($status && $this->db->affected_rows() == 1) {
             return true;
         } else {
             return false;
